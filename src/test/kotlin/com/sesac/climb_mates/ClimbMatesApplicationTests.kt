@@ -9,5 +9,4 @@ class ClimbMatesApplicationTests {
 	@Test
 	fun contextLoads() {
 	}
-
 }
