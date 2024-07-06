@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 class ResourceConfig:WebMvcConfigurer {
 
     private val connectPath = "/img/**"
-    private val resourcePath = "file:///Users/janghyolim/Desktop/code/climb-mates/src/main/resources/static/img"
+    private val resourcePath = "file:///Users/janghyolim/Desktop/code/climb-mates/src/main/resources/static/img/"
 
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler(connectPath).addResourceLocations(resourcePath)

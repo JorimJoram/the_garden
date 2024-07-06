@@ -4,8 +4,7 @@ import jakarta.persistence.*
 import java.time.LocalDateTime
 
 @Entity
-@Table(name="ACCOUNT")
-class Account(
+data class Account(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long? = null,

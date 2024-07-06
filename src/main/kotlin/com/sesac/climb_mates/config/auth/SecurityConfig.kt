@@ -12,12 +12,10 @@ import org.springframework.security.web.SecurityFilterChain
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig(
-
-) {
+class SecurityConfig {
     @Bean
     fun passwordEncoder():PasswordEncoder{
-        return  BCryptPasswordEncoder()
+        return  BCryptPasswordEncoder() // 1234 ->
     }
 
     @Bean
@@ -30,7 +28,7 @@ class SecurityConfig(
         http.csrf { it.disable() }
         http.authorizeHttpRequests{
             it
-                .requestMatchers("/").permitAll()
+                .requestMatchers("/", "/script/**", "/css/**", "/img/**", "/article/**", "/store/**").permitAll()
         }
         return http.build()
     }
