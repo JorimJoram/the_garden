@@ -2,19 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SesacTest</title>
-    <script src="/script/test.js"></script>
+
+    <link href="/css/test.css" rel="stylesheet" type="text/css"/>
+
+    <script src="/script/naverMapConfig.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=9eujxr3k62"></script>
     <!--애러 아니니까 ㄱㄱ-->
 </head>
-    <h1>윤석님</h1>
+    <h1>SeSAC_seongbuk</h1>
     <div id="map" style="width:80%;height:700px;"></div>
     <div>
         <button onclick="getStoreLocationListByStyle('한식')">한식</button>
         <button onclick="getStoreLocationListByStyle('분식')">분식</button>
         <button onclick="getStoreLocationListByStyle('일식')">일식</button>
         <button onclick="getStoreLocationListByStyle('경양식')">경양식</button>
+        <button onclick="getStoreLocationListByStyle('default')">전체</button>
     </div>
 <body>
 </body>

@@ -38,10 +38,24 @@ async function mapSetting() {
     //   myMark.setPosition(e.coord); <- 이 코드를 통해서 위치가 이동되는 듯 합니다. 아마 좌표값을 인자로 넣으면 변할듯
     // });
 
+    setCustomLocationControl(map);
     markMyLocation(map);   //내 위치
     markSeSACLocation(map);//학원 위치
     markDefaultStore(map);  //가게 위치(default)
   }
+}
+
+function setCustomLocationControl(map){
+  var locationBtnHtml = '<button class="btn_mylct"><span class="spr_trff spr_ico_mylct">새싹으로 돌아가기</span></a>';
+  naver.maps.Event.once(map, 'init', function(){
+    var customControl = new naver.maps.CustomControl(locationBtnHtml, {
+      position: naver.maps.Position.TOP_LEFT
+    });
+    customControl.setMap(map);
+    naver.maps.Event.addDOMListener(customControl.getElement(), 'click', function() {
+      map.setCenter(new naver.maps.LatLng(37.6043803, 127.0366509));
+  });
+  });
 }
 
 /**
@@ -88,6 +102,10 @@ function getMyLocation() {
   });
 }
 
+/**
+ * 현재 본인의 위치 표시
+ * @param {*} map 
+ */
 function markMyLocation(map) {
   var myMark = new naver.maps.Marker({
     position: new naver.maps.LatLng(myLat, myLon),
@@ -121,6 +139,9 @@ async function markDefaultStore(map) {
       position: new naver.maps.LatLng(item.lat, item.lon),
       map: map
     });
+    naver.maps.Event.addListener(marker, 'click', function(){
+      location.href=`http://localhost:12571/store/info?id=${item.id}`;
+    })
     markList.push(marker);
   }
 
@@ -200,6 +221,10 @@ async function markStoreByStyle(storeList) {
       position: new naver.maps.LatLng(item.lat, item.lon),
       map: map
     });
+    naver.maps.Event.addListener(marker, 'click', function(){
+      location.href=`http://localhost:12571/store/info?id=${item.id}`;
+    })
     markList.push(marker);
+    console.log(item);
   }
 }

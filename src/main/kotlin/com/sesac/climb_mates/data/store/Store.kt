@@ -11,10 +11,10 @@ data class Store(
     val id: Long? = null,
     @Column(name="name", nullable = false)
     var name:String,
-    @Column(name = "location", nullable = false)
-    val location:String,
+    @Column(name = "location", nullable = true)
+    val location:String?=null,
     @Column(name="attr", nullable = false)
-    val attr:String,
+    var attr:String,
     @Column(name = "lat", nullable = false)
     val lat:String,
     @Column(name = "lon", nullable = false)
