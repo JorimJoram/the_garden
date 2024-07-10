@@ -12,7 +12,10 @@ import org.springframework.security.web.SecurityFilterChain
 
 @Configuration
 @EnableWebSecurity
-class SecurityConfig {
+class SecurityConfig(
+    private val customSuccessHandler: CustomSuccessHandler,
+    private val customFailureHandler: CustomFailureHandler
+) {
     @Bean
     fun passwordEncoder():PasswordEncoder{
         return  BCryptPasswordEncoder() // 1234 ->
@@ -28,7 +31,14 @@ class SecurityConfig {
         http.csrf { it.disable() }
         http.authorizeHttpRequests{
             it
-                .requestMatchers("/", "/script/**", "/css/**", "/img/**", "/article/**", "/store/**").permitAll()
+                .requestMatchers("/", "/script/**", "/css/**", "/img/**", "/article/**", "/store/**", "/login/**").permitAll()
+        }
+        http.formLogin{
+            it
+                .loginPage("/login")
+                .loginProcessingUrl("/login/action")
+                .successHandler(customSuccessHandler)
+                .failureHandler(customFailureHandler)
         }
         return http.build()
     }

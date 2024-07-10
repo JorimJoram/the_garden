@@ -1,6 +1,8 @@
 package com.sesac.climb_mates
 
+import com.sesac.climb_mates.data.account.Account
 import com.sesac.climb_mates.data.store.Store
+import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.StoreService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
@@ -8,7 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest
 
 @SpringBootTest
 class ClimbMatesApplicationTests(
-	@Autowired private val storeService: StoreService
+	@Autowired private val storeService: StoreService,
+	@Autowired private val accountService: AccountService
 ) {
 
 	@Test
@@ -44,5 +47,17 @@ class ClimbMatesApplicationTests(
 //			print(i)
 //			println(storeList[i])
 //		}
+	}
+
+	@Test
+	fun createAccount(){
+		val account = Account(
+			username = "jorimjoram",
+			password = "1234",
+			classRoom = "성북DT",
+			email = "wkdgyfla97@naver.com",
+			role = "ADMIN"
+		)
+		accountService.createAccount(account)
 	}
 }

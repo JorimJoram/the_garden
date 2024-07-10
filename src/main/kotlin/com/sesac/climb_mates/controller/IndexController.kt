@@ -9,4 +9,8 @@ class IndexController {
     fun indexPage():String{
         return "main/main"
     }
+    @GetMapping("/login")
+    fun loginPage():String{
+        return "account/login"
+    }
 }
