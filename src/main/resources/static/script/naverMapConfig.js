@@ -58,7 +58,8 @@ function selectMapType(type){
 }
 
 function setCustomLocationControl(map){
-  var locationBtnHtml = '<button class="btn_mylct"><span class="spr_trff spr_ico_mylct"> 원위치 </span></a>';
+  //var locationBtnHtml = '<button class="btn_mylct"><span class="spr_trff spr_ico_mylct"> 원위치 </span></a>';
+  var locationBtnHtml = `<button class="btn btn-outline"><img src="/img/reLocate.png" style="width: 30px; background-color:#ffffff; height: 30px;"></img></button>`
   naver.maps.Event.once(map, 'init', function(){
     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
       position: naver.maps.Position.LEFT_BOTTOM
@@ -79,7 +80,6 @@ function getMyLocation() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        console.log('testing');
         // GeolocationPosition 객체에서 coords 속성을 통해 latitude와 longitude 값을 추출합니다.
         myLat = position.coords.latitude;
         myLon = position.coords.longitude;
@@ -156,7 +156,7 @@ async function markDefaultStore(map) {
         content: [
           `<div style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 30px;">`,
           ` <div style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px;">`,
-          ` <img src="/img/map_marker/${markerTypes[item.style]}" style="width: 30px; height: 30px;"/>`, //이미지 위치 확인
+          ` <img src="../img/map_marker/${markerTypes[item.style]}" style="width: 30px; height: 30px;"/>`, //이미지 위치 확인
           ` </div>`,
           `</div>`
         ].join(''), //border-radius: 50%;"
@@ -174,8 +174,6 @@ async function markDefaultStore(map) {
 
     markList.push(marker);
   }
-
-  console.log(`markList: ${markList}`);
 }
 
 /**
@@ -231,10 +229,8 @@ function getStoreLocationList() {
 }
 
 function getStoreLocationListByStyle(style) {
-  console.log(`/store/api/list?style=${style}`);
   return axios.get(`/store/api/list?style=${style}`)
     .then(response => {
-      console.log(response.data);
       markStoreByStyle(response.data);
       //return response.data; // axios.get()에서 바로 response.data를 반환
     })
