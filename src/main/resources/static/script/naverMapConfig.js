@@ -21,8 +21,8 @@ async function mapSetting() {
     myLon = location.myLon;
   } catch (error) {
     // reject에서 반환한 값을 처리
-    //myLat = "37.6043803"
-    //myLon = "127.0366509"
+    myLat = "37.6043803"
+    myLon = "127.0366509"
   } finally {
     var mapOptions = {
       center: new naver.maps.LatLng(myLat, myLon),
