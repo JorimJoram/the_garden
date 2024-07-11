@@ -119,23 +119,25 @@ function getMyLocation() {
  * @param {*} map 
  */
 function markMyLocation(map) {
-  var myMark = new naver.maps.Marker({
-    position: new naver.maps.LatLng(myLat, myLon),
-    icon: {
-      content: [
-        `<div style="display: flex; flex-direction: column; align-items: center; width: 20px; height: 20px;">`,
-        ` <div style="display: flex; justify-content: center; align-items: center; width: 20px; height: 20px;">`,
-        ` <img src="../img/circle.svg" style="width: 20px; background-color:#0099ff; height: 20px; border-radius: 50%;"/>`, //이미지 위치 확인
-        ` </div>`,
-        `</div>`
-      ].join(''),
-      size: new naver.maps.Size(25, 25),
-      scaledSize: new naver.maps.Size(25, 25),
-      origin: new naver.maps.Point(0, 0)
-    },
-    map: map,
-    zIndex:100
-  });
+  if(myLat != null){
+    var myMark = new naver.maps.Marker({
+      position: new naver.maps.LatLng(myLat, myLon),
+      icon: {
+        content: [
+          `<div style="display: flex; flex-direction: column; align-items: center; width: 20px; height: 20px;">`,
+          ` <div style="display: flex; justify-content: center; align-items: center; width: 20px; height: 20px;">`,
+          ` <img src="../img/circle.svg" style="width: 20px; background-color:#0099ff; height: 20px; border-radius: 50%;"/>`, //이미지 위치 확인
+          ` </div>`,
+          `</div>`
+        ].join(''),
+        size: new naver.maps.Size(25, 25),
+        scaledSize: new naver.maps.Size(25, 25),
+        origin: new naver.maps.Point(0, 0)
+      },
+      map: map,
+      zIndex:100
+    });
+  } 
 }
 
 /**
