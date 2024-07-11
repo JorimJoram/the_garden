@@ -21,7 +21,7 @@ async function mapSetting() {
     myLon = location.myLon;
   } catch (error) {
     // reject에서 반환한 값을 처리
-    myLat = "37.6043803"
+    myLat = "37.6043708"
     myLon = "127.039257"//"127.0366509"
   } finally {
     var mapOptions = {
@@ -58,14 +58,14 @@ function selectMapType(type){
 }
 
 function setCustomLocationControl(map){
-  var locationBtnHtml = '<button class="btn_mylct"><span class="spr_trff spr_ico_mylct">새싹으로 돌아가기</span></a>';
+  var locationBtnHtml = '<button class="btn_mylct"><span class="spr_trff spr_ico_mylct"> 원위치 </span></a>';
   naver.maps.Event.once(map, 'init', function(){
     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
-      position: naver.maps.Position.TOP_LEFT
+      position: naver.maps.Position.LEFT_BOTTOM
     });
     customControl.setMap(map);
     naver.maps.Event.addDOMListener(customControl.getElement(), 'click', function() {
-      map.setCenter(new naver.maps.LatLng(37.6043803, 127.0366509));
+      map.setCenter(new naver.maps.LatLng(37.6043708, 127.039257));
   });
   });
 }
@@ -169,7 +169,7 @@ async function markDefaultStore(map) {
     });
 
     naver.maps.Event.addListener(marker, 'click', function(){
-      location.href=`http://localhost:12571/store/info?id=${item.id}`;
+      location.href=`http://49.173.81.57:12571/store/info?id=${item.id}`;
     })
 
     markList.push(marker);
@@ -264,7 +264,7 @@ async function markStoreByStyle(storeList) {
       map: map
     });
     naver.maps.Event.addListener(marker, 'click', function(){
-      location.href=`http://localhost:12571/store/info?id=${item.id}`;
+      location.href=`http://49.173.81.57:12571/store/info?id=${item.id}`;
     })
     markList.push(marker);
     console.log(item);
