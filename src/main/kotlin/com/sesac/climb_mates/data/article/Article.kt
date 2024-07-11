@@ -23,4 +23,5 @@ data class Article(
     var account: Account,
     @Column(name="created_date", nullable = false)
     val createdDate:LocalDateTime = LocalDateTime.now()
+    //test
 )
