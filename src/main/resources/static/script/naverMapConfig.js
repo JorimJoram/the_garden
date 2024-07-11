@@ -22,7 +22,7 @@ async function mapSetting() {
   } catch (error) {
     // reject에서 반환한 값을 처리
     myLat = "37.6043803"
-    myLon = "127.0366509"
+    myLon = "127.039257"//"127.0366509"
   } finally {
     var mapOptions = {
       center: new naver.maps.LatLng(myLat, myLon),
@@ -31,7 +31,7 @@ async function mapSetting() {
         style: naver.maps.ZoomControlStyle.SMALL,
         position: naver.maps.Position.TOP_RIGHT
       },
-      zoom: 17
+      zoom: 16
     };
     map = new naver.maps.Map('map', mapOptions);
 
