@@ -3,6 +3,12 @@ window.onload = function () {
 }
 
 var map = null;
+var markerTypes = {
+  '한식': 'blue_marker.png',
+  '일식': 'red_marker.png',
+  '분식': 'green_marker.png',
+  '경양식': 'purple_marker.png'
+}
 var markList = [];
 
 /**
@@ -31,7 +37,7 @@ async function mapSetting() {
 
     var mapType = ["NORMAL", "TERRAIN", "SATELLITE", "HYBRID"] //일반, 지형도, 위성도, 혼합
 
-    map.setMapTypeId(naver.maps.MapTypeId[mapType[3]]); // 지도 유형 변경하기
+    map.setMapTypeId(naver.maps.MapTypeId[mapType[0]]); // 지도 유형 변경하기
 
 
     // naver.maps.Event.addListener(map, 'click', function(e) {
@@ -43,6 +49,12 @@ async function mapSetting() {
     markSeSACLocation(map);//학원 위치
     markDefaultStore(map);  //가게 위치(default)
   }
+}
+
+function selectMapType(type){
+  var mapType = ["NORMAL", "TERRAIN", "SATELLITE", "HYBRID"]
+
+  map.setMapTypeId(naver.maps.MapTypeId[mapType[type]]);
 }
 
 function setCustomLocationControl(map){
@@ -111,18 +123,18 @@ function markMyLocation(map) {
     position: new naver.maps.LatLng(myLat, myLon),
     icon: {
       content: [
-        `<div style="display: flex; flex-direction: column; align-items: center; width: 25px; height: 25px;">`,
-        ` <div style="display: flex; justify-content: center; align-items: center; width: 25px; height: 25px;">`,
-        ` <img src="../img/circle.svg" style="width: 25px; background-color: white; height: 25px; border-radius: 50%;"/>`, //이미지 위치 확인
+        `<div style="display: flex; flex-direction: column; align-items: center; width: 20px; height: 20px;">`,
+        ` <div style="display: flex; justify-content: center; align-items: center; width: 20px; height: 20px;">`,
+        ` <img src="../img/circle.svg" style="width: 20px; background-color:#0099ff; height: 20px; border-radius: 50%;"/>`, //이미지 위치 확인
         ` </div>`,
         `</div>`
       ].join(''),
       size: new naver.maps.Size(25, 25),
       scaledSize: new naver.maps.Size(25, 25),
       origin: new naver.maps.Point(0, 0)
-
     },
-    map: map
+    map: map,
+    zIndex:100
   });
 }
 
@@ -132,16 +144,31 @@ function markMyLocation(map) {
  */
 async function markDefaultStore(map) {
   var locList = await getStoreLocationList()
-  //var markList = [];
+  
   removeMarkList(markList);
+  
   for (item of locList) {
     var marker = new naver.maps.Marker({
+      icon:{
+        content: [
+          `<div style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 30px;">`,
+          ` <div style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px;">`,
+          ` <img src="/img/map_marker/${markerTypes[item.style]}" style="width: 30px; height: 30px;"/>`, //이미지 위치 확인
+          ` </div>`,
+          `</div>`
+        ].join(''), //border-radius: 50%;"
+        size: new naver.maps.Size(30, 30),
+        scaledSize: new naver.maps.Size(30, 30),
+        origin: new naver.maps.Point(0, 0)
+      },
       position: new naver.maps.LatLng(item.lat, item.lon),
-      map: map
+      map: map,
     });
+
     naver.maps.Event.addListener(marker, 'click', function(){
       location.href=`http://localhost:12571/store/info?id=${item.id}`;
     })
+
     markList.push(marker);
   }
 
@@ -170,18 +197,18 @@ function markSeSACLocation(map) {
     position: new naver.maps.LatLng(sesacLocation[0], sesacLocation[1]),
     icon: {
       content: [
-        `<div style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 30px;">`,
-        ` <div style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px;">`,
-        ` <img src="../img/SeSAC_removeBg.png" style="width: 30px; background-color: white; height: 30px; border-radius: 50%;"/>`, //이미지 위치 확인
+        `<div style="display: flex; flex-direction: column; align-items: center; width: 40px; height: 40px;">`,
+        ` <div style="display: flex; justify-content: center; align-items: center; width: 40px; height: 40px;">`,
+        ` <img src="/img/SeSAC.png" style="width: 40px; height: 40px; border-radius: 20%; background-color:#5D5D5D"/>`, //이미지 위치 확인
         ` </div>`,
         `</div>`
       ].join(''),
       size: new naver.maps.Size(30, 30),
       scaledSize: new naver.maps.Size(30, 30),
       origin: new naver.maps.Point(0, 0)
-
     },
-    map: map
+    map: map,
+    zIndex:1
   });
 }
 
@@ -218,6 +245,18 @@ async function markStoreByStyle(storeList) {
   removeMarkList(markList);
   for (item of storeList) {
     var marker = new naver.maps.Marker({
+      icon:{
+        content: [
+          `<div style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 30px;">`,
+          ` <div style="display: flex; justify-content: center; align-items: center; width: 30px; height: 30px;">`,
+          ` <img src="/img/map_marker/${markerTypes[item.style]}" style="width: 30px; height: 30px;"/>`, //이미지 위치 확인
+          ` </div>`,
+          `</div>`
+        ].join(''), //border-radius: 50%;"
+        size: new naver.maps.Size(30, 30),
+        scaledSize: new naver.maps.Size(30, 30),
+        origin: new naver.maps.Point(0, 0)
+      },
       position: new naver.maps.LatLng(item.lat, item.lon),
       map: map
     });

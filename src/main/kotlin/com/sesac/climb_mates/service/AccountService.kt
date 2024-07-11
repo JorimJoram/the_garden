@@ -23,4 +23,7 @@ class AccountService(
 
         return accountRepository.save(account)
     }
+    fun checkUsernameDup(username:String): Boolean {
+        return accountRepository.findByUsername(username).isEmpty //true -> 생성 가능
+    }
 }
