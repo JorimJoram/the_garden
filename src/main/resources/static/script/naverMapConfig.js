@@ -118,10 +118,11 @@ function getMyLocation() {
  * 현재 본인의 위치 표시
  * @param {*} map 
  */
-function markMyLocation(map) {
+async function markMyLocation(map) {
+  var location = await getMyLocation();
   if(myLat != null){
     var myMark = new naver.maps.Marker({
-      position: new naver.maps.LatLng(myLat, myLon),
+      position: new naver.maps.LatLng(location.myLat, location.myLon),
       icon: {
         content: [
           `<div style="display: flex; flex-direction: column; align-items: center; width: 20px; height: 20px;">`,
