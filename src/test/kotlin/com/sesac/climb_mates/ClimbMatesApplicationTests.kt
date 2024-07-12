@@ -1,7 +1,9 @@
 package com.sesac.climb_mates
 
 import com.sesac.climb_mates.data.account.Account
+import com.sesac.climb_mates.data.store.Menu
 import com.sesac.climb_mates.data.store.Store
+import com.sesac.climb_mates.data.store.StoreTime
 import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.StoreService
 import org.junit.jupiter.api.Test
@@ -59,5 +61,49 @@ class ClimbMatesApplicationTests(
 			role = "ADMIN"
 		)
 		accountService.createAccount(account)
+	}
+
+	@Test
+	fun createSingleStore(){
+		val store = Store(
+			name = "버거스태인",
+			location = "서울특별시 성북구 오패산로 23",
+			lat = "37.604465",
+			lon = "127.037200",
+			attr = "1193819667",
+			style= "경양식"
+		)
+		println(storeService.createStore(store))
+	}
+	@Test
+	fun createMenu(){
+		val store = storeService.getStoreById(52)
+		val menuNameList = mutableListOf("파파버거", "마마버거","호두 떡갈비 버거", "당근 버가", "매콤 버거", "크림치즈 떡갈비 버거")
+		val priceList = mutableListOf(7800, 8800, 9800, 10800, 11800, 11800)
+		for(i in menuNameList.indices){
+			storeService.createMenu(
+				Menu(
+					store = store,
+					name = menuNameList[i],
+					price = priceList[i],
+				)
+			)
+			print(menuNameList[i])
+		}
+	}
+
+	@Test
+	fun createStoreTime(){
+		val store = storeService.getStoreById(52)
+		storeService.createStoreTime(
+			StoreTime(
+				store = store,
+				startTime = "11:30",
+				endTime = "20:30",
+				DoW = "화 ~ 일",
+				breakStart = "15:00",
+				breakEnd = "17:00"
+			)
+		)
 	}
 }

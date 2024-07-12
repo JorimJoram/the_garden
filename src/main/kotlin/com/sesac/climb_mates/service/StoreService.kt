@@ -1,19 +1,15 @@
 package com.sesac.climb_mates.service
 
-import com.sesac.climb_mates.data.store.Store
-import com.sesac.climb_mates.data.store.StoreRepository
-import jakarta.transaction.Transactional
+import com.sesac.climb_mates.data.store.*
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
 class StoreService(
-    private val storeRepository: StoreRepository
+    private val storeRepository: StoreRepository,
+    private val menuRepository: MenuRepository,
+    private val storeTimeRepository: StoreTimeRepository
 ) {
-    fun createStore(store:Store): Store {
-        return storeRepository.save(store)
-    }
-
     fun getStoreByStyle(style: String): List<Store> {
         return if (style=="default"){
             storeRepository.findAll()
@@ -24,5 +20,25 @@ class StoreService(
 
     fun getStoreById(id:Long): Store {
         return storeRepository.findById(id).get()
+    }
+
+    fun getMenuByStoreId(storeId: Long): List<Menu> {
+        return menuRepository.findByStoreId(storeId)
+    }
+
+    fun getStoreTimeByStoreId(storeId:Long): Optional<StoreTime> {
+        return storeTimeRepository.findByStoreId(storeId)
+    }
+
+    fun createStore(store:Store): Store {
+        return storeRepository.save(store)
+    }
+
+    fun createMenu(menu:Menu): Menu {
+        return menuRepository.save(menu)
+    }
+
+    fun createStoreTime(storeTime: StoreTime): StoreTime {
+        return storeTimeRepository.save(storeTime)
     }
 }

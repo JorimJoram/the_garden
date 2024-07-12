@@ -31,6 +31,7 @@ async function mapSetting() {
         style: naver.maps.ZoomControlStyle.SMALL,
         position: naver.maps.Position.TOP_RIGHT
       },
+
       zoom: 16
     };
     map = new naver.maps.Map('map', mapOptions);
@@ -136,7 +137,7 @@ async function markMyLocation(map) {
         origin: new naver.maps.Point(0, 0)
       },
       map: map,
-      zIndex:100
+      zIndex:20
     });
   } 
 }
@@ -166,10 +167,11 @@ async function markDefaultStore(map) {
       },
       position: new naver.maps.LatLng(item.lat, item.lon),
       map: map,
+      zIndex: 15,
     });
 
     naver.maps.Event.addListener(marker, 'click', function(){
-      location.href=`http://49.173.81.57:12571/store/info?id=${item.id}`;
+      location.href=`http://localhost:12571/store/info/${item.id}`//`http://49.173.81.57:12571/store/info/${item.id}`;
     })
 
     markList.push(marker);
@@ -257,10 +259,11 @@ async function markStoreByStyle(storeList) {
         origin: new naver.maps.Point(0, 0)
       },
       position: new naver.maps.LatLng(item.lat, item.lon),
-      map: map
+      map: map,
+      zIndex:15
     });
     naver.maps.Event.addListener(marker, 'click', function(){
-      location.href=`http://49.173.81.57:12571/store/info?id=${item.id}`;
+      location.href=`http://49.173.81.57:12571/store/info/${item.id}`;
     })
     markList.push(marker);
     console.log(item);

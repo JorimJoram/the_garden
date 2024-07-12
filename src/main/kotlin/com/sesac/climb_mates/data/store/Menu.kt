@@ -3,6 +3,8 @@ package com.sesac.climb_mates.data.store
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
+@Entity
+@Table(name = "menu")
 data class Menu(
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
