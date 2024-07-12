@@ -151,7 +151,7 @@ async function markDefaultStore(map) {
   
   removeMarkList(markList);
   
-  for (item of locList) {
+  for (let item of locList) {
     var marker = new naver.maps.Marker({
       icon:{
         content: [
@@ -244,7 +244,7 @@ function getStoreLocationListByStyle(style) {
 
 async function markStoreByStyle(storeList) {
   removeMarkList(markList);
-  for (item of storeList) {
+  for (let item of storeList) {
     var marker = new naver.maps.Marker({
       icon:{
         content: [
