@@ -10,9 +10,11 @@
 <body>
     <button onclick="backButton()">Back</button>
     
-
-    <div><img src="/img/store/burgers_taein.png" style="width:30vh;"></div>
-
+    {{#storeImage}}
+    <div>
+        <img src="{{path}}" style="width:30vh;">
+    </div>
+    {{/storeImage}}
     
     
     {{#storeData}}

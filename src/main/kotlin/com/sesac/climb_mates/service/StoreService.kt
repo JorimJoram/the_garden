@@ -1,6 +1,8 @@
 package com.sesac.climb_mates.service
 
 import com.sesac.climb_mates.data.store.*
+import com.sesac.climb_mates.data.store.img.StoreImage
+import com.sesac.climb_mates.data.store.img.StoreImageRepository
 import org.springframework.stereotype.Service
 import java.util.*
 
@@ -8,7 +10,8 @@ import java.util.*
 class StoreService(
     private val storeRepository: StoreRepository,
     private val menuRepository: MenuRepository,
-    private val storeTimeRepository: StoreTimeRepository
+    private val storeTimeRepository: StoreTimeRepository,
+    private val storeImageRepository: StoreImageRepository
 ) {
     fun getStoreByStyle(style: String): List<Store> {
         return if (style=="default"){
@@ -30,6 +33,10 @@ class StoreService(
         return storeTimeRepository.findByStoreId(storeId)
     }
 
+    fun getStoreImageByStoreId(storeId: Long): Optional<StoreImage> {
+        return storeImageRepository.findByStoreId(storeId)
+    }
+
     fun createStore(store:Store): Store {
         return storeRepository.save(store)
     }
@@ -40,5 +47,9 @@ class StoreService(
 
     fun createStoreTime(storeTime: StoreTime): StoreTime {
         return storeTimeRepository.save(storeTime)
+    }
+
+    fun createImageStore(storeImage:StoreImage): StoreImage {
+        return storeImageRepository.save(storeImage)
     }
 }
