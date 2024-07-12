@@ -49,7 +49,7 @@ class StoreService(
         return storeTimeRepository.save(storeTime)
     }
 
-    fun createImageStore(storeImage:StoreImage): StoreImage {
+    fun createStoreImage(storeImage:StoreImage): StoreImage {
         return storeImageRepository.save(storeImage)
     }
 }

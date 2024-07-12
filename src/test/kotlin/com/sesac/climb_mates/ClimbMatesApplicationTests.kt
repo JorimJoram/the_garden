@@ -4,6 +4,7 @@ import com.sesac.climb_mates.data.account.Account
 import com.sesac.climb_mates.data.store.Menu
 import com.sesac.climb_mates.data.store.Store
 import com.sesac.climb_mates.data.store.StoreTime
+import com.sesac.climb_mates.data.store.img.StoreImage
 import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.StoreService
 import org.junit.jupiter.api.Test
@@ -105,5 +106,14 @@ class ClimbMatesApplicationTests(
 				breakEnd = "17:00"
 			)
 		)
+	}
+
+	@Test
+	fun createSingleStoreImage(){
+		println(storeService.createStoreImage(StoreImage(
+			store = storeService.getStoreById(1L),
+			path = "/img/store/제나키친.jpeg",
+			size = 0,
+		)))
 	}
 }
