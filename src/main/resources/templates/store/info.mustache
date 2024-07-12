@@ -7,9 +7,19 @@
 </head>
 <body>
     <button onclick="backButton()">Back</button>
-    <a href="https://map.naver.com/p/entry/place/{{storeData.attr}}">이동</a>
+    
 
     <div><img src="/img/store/burgers_taein.png" style="width:30vh;"></div>
+
+    
+    
+    {{#storeData}}
+    <h3>{{name}}</h3>
+    <div style="margin-bottom:5vh;">
+        <span>{{style}}</span>
+        <span>{{location}}</span> <a href="https://map.naver.com/p/entry/place/{{attr}}">네이버 지도</a>
+    </div>
+    {{/storeData}}
 
     {{#storeTimeData}}
     <div>
