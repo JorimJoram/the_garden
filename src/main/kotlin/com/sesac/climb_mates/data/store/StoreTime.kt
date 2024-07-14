@@ -28,5 +28,5 @@ data class StoreTime(
     var DoW:String? = null,
 
     @Column(name="created_date", nullable = false)
-val createdDate: LocalDateTime = LocalDateTime.now()
+    val createdDate: LocalDateTime = LocalDateTime.now()
 )

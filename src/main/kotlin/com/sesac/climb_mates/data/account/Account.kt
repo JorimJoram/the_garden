@@ -17,7 +17,7 @@ data class Account(
     @Column(name="email", nullable = true)
     var email:String,
     @Column(name = "role", nullable = false)
-    var role: String, //USER / ADMIN으로 구분
+    var role: String? = "USER", //USER / ADMIN으로 구분
     @Column(name = "created_date", nullable = false)
     val createdDate: LocalDateTime = LocalDateTime.now()
 )

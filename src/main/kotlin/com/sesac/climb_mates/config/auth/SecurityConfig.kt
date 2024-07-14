@@ -32,7 +32,7 @@ class SecurityConfig(
         http.authorizeHttpRequests{
             it
                 .requestMatchers("/", "/script/**", "/css/**", "/img/**",
-                    "/article/**", "/store/**", "/login/**", "/account/**", "/sms/**"
+                    "/article/**", "/store/**", "/login/**", "/account/**", "/sms/**", "/grouping/**"
                 ).permitAll()
         }
         http.formLogin{
