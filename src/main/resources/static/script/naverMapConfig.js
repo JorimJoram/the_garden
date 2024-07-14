@@ -32,7 +32,7 @@ async function mapSetting() {
         position: naver.maps.Position.TOP_RIGHT
       },
 
-      zoom: 16
+      zoom:17
     };
     map = new naver.maps.Map('map', mapOptions);
 
