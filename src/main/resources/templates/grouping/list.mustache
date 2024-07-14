@@ -3,15 +3,18 @@
 </head>
 <body>
 {{>layout/navi}}
-{{#groupList}}
-    <div>
-        <a href="http://localhost:12571/grouping/detail/{{id}}">{{title}}</a>
-        <span>{{formattedDate}}</span>
-        <span>{{account.username}}</span>
+<div class="container">
+    {{#groupList}}
         <div>
-            <span>{{content}}</span>
+            <a href="http://localhost:12571/grouping/detail/{{id}}">{{title}}</a>
+            <span>{{formattedDate}}</span>
+            <span>{{account.username}}</span>
+            <div>
+                <span>{{content}}</span>
+            </div>
         </div>
-    </div>
-{{/groupList}}
+    {{/groupList}}
+</div>
+{{>layout/footer}}
 </body>
 </html>

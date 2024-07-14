@@ -5,6 +5,7 @@
     <!--애러 아니니까 ㄱㄱ-->
 </head>
     {{>layout/navi}}
+<div class="container">
     <h1>the GARDEN</h1>
     <div>
         <button class="btn btn-primary" onclick="getStoreLocationListByStyle('한식')">한식</button>
@@ -20,6 +21,8 @@
         <button onclick="selectMapType(3)">혼합지도</button>
     </div>
     <div id="map" style="width:95%;height:70vh;margin: 0 auto;"></div>
+</div>
+{{>layout/footer}}
 <body>
 </body>
 </html>
