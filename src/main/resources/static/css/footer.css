@@ -1,0 +1,24 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+footer {
+    background-color: black;
+    padding: 20px;
+    color: white;
+}
+footer table {
+    margin-start: 10%;
+    color: white; /* Table text color set to white */
+}
+footer table span {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    text-align: center;
+    color:white;
+}
+footer table td {
+    color:white;
+    padding: 5px;
+}
