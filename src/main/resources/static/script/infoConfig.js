@@ -1,5 +1,5 @@
-window.onload() = function(){
-    backButton();
+window.onload = function(){
+    //backButton();
 }
 
 function backButton(){
