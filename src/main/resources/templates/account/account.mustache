@@ -1,5 +1,6 @@
 {{>layout/header}}
     <script src="/script/accountConfig.js"></script>
+    <script src="/script/smsConfig.js"></script>  
     <title>회원가입</title>
 </head>
 <body>
@@ -10,13 +11,13 @@
                 <span class="jaksim_font">아이디</span>
             </div>
             <div>
-                <input class="account_input" id="account_username" type="text" placeholder="아이디를 여기에 입력해주세요"/>
-                <button type="button" onclick="checkUsername()">아이디 중복 확인</button>
+                <input class="account_input" id="account_username" type="text" placeholder="아이디를 여기에 입력해주세요" onblur="checkUsername()"/>
+                <button type="button" >아이디 중복 확인</button>
             </div>
             <span id="account_username_result"></span>
         </div>
 
-        <div class="inpuÏt_container">
+        <div class="input_container">
             <div id="account_span_container"><span class="account_span jaksim_font">비밀번호</span></div>
             <div id="account_input_container" class="account_input_container">
                 <input type="password" id="account_password" class="account_input" placeholder="비밀번호를 입력해주세요">
@@ -31,17 +32,20 @@
 
         <div class="input_container">
             <div>
-                <div id="account_span_container"><span class="account_span jaksim_font">새싹 ID</span></div>
-            </div>
-            <input class="account_input" id="account_userid" type="text" placeholder="아이디를 여기에 입력해주세요"/>
-        </div>
-
-        <div class="input_container">
-            <div>
                 <div id="account_span_container"><span class="account_span jaksim_font">email</span></div>
             </div>
-            <input class="account_input" id="account_userid" type="text" placeholder="아이디를 여기에 입력해주세요"/>
-            <button>이메일 인증</button>
+            <input class="account_input" id="account_email" type="text" placeholder="아이디를 여기에 입력해주세요"/>
+            <button onclick="sendEvent()">이메일 인증</button>
+            <div id="account_span_message_container">
+                <span id="account_email_result" style="color:red"></span>
+            </div>
+            <div id="account_span_message_container">
+                <input id="account_email_code" placeholder="인증번호 확인"/>
+                <button onclick="checkEmailCode()">인증</button>
+            </div>
+            <div id="account_span_message_container">
+                <span id="account_emailAuth_result" style="color:red"></span>
+            </div>
         </div>
 
         <div class="input_container">
