@@ -46,22 +46,26 @@
 }
 
 .hidden_list{
-    display: none;
+    opacity: 0;
 }
 
 #navi_set{
     list-style-type: none;
     padding:0;
     margin:0;
+    width:20%;
+
+    position: fixed;
+    top: 10vw;
+
+    z-index: 1000;
 }
 
 #navi_set li{
-    background-color: black;
-    opacity: 0.8;
+    background-color: rgba(0,0,0,0.8);
     border-top: 1px solid #fff;
-    border-bottom: 1px solid #fff;
     padding: 1vw;
-    transition: background-color 0.3s;
+    transition: opacity 0.3s;
 }
 
 #navi_set li a{
