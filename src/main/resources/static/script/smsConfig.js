@@ -87,7 +87,7 @@ function checkEmailCode(){
  * @param {사용자 이메일} email 
  */
 function sendMail(email){
-    axios.get(`http://localhost:12571/sms/api/send?mail=${email}`)
+    axios.get(`/sms/api/send?mail=${email}`)
     .then(response => {
         emailCode = response.data
     })

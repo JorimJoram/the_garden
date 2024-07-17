@@ -43,3 +43,7 @@ out/
 *.properties
 application.properties
 src/main/resources/application.properties
+
+## ResourceConfig ##
+src/main/kotlin/com/sesac/climb_mates/config/ResourceConfig.kt
+ResourceConfig.kt
