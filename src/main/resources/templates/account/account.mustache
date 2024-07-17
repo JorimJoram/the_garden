@@ -1,65 +1,78 @@
 {{>layout/header}}
     <script src="/script/accountConfig.js"></script>
-    <script src="/script/smsConfig.js"></script>  
+    <script src="/script/smsConfig.js"></script>
     <title>회원가입</title>
 </head>
 <body>
     {{>layout/navi}}
     <div class="garden_container">
-        <div class="input_container">
+        <div id="account_username_container">
             <div>
                 <span class="jaksim_font">아이디</span>
             </div>
             <div>
                 <input class="account_input" id="account_username" type="text" placeholder="아이디를 여기에 입력해주세요" onblur="checkUsername()"/>
-                <button type="button" >아이디 중복 확인</button>
             </div>
             <span id="account_username_result"></span>
         </div>
 
-        <div class="input_container">
+        <div id="account_password_container">
             <div id="account_span_container"><span class="account_span jaksim_font">비밀번호</span></div>
             <div id="account_input_container" class="account_input_container">
-                <input type="password" id="account_password" class="account_input" placeholder="비밀번호를 입력해주세요">
-                <input type="password" id="account_confirm" class="account_input" placeholder="비밀번호를 확인해주세요">
-                <button onclick="checkPassword()">비밀번호 확인</button>
+                <input type="password" id="account_password" class="account_input" placeholder="비밀번호를 입력해주세요" onblur="checkPasswordRegex()">
+                <input type="password" id="account_confirm" class="account_input" placeholder="비밀번호를 확인해주세요" onblur="checkPassword()">
             </div>
             <div id="account_span_message_container">
-                <span id="account_password_result" style="color:red"></span>
+                <span id="account_password_result"></span>
             </div>
         </div>
         <!--비밀번호까지는 해결합쇼-->
 
-        <div class="input_container">
+        <div id="account_email_container">
             <div>
                 <div id="account_span_container"><span class="account_span jaksim_font">email</span></div>
             </div>
             <input class="account_input" id="account_email" type="text" placeholder="아이디를 여기에 입력해주세요"/>
-            <button onclick="sendEvent()">이메일 인증</button>
+            <button id="account_email_sendButton" onclick="sendEvent()">이메일 인증</button>
+            <span id="account_email_time" style="color:red"></span>
             <div id="account_span_message_container">
                 <span id="account_email_result" style="color:red"></span>
             </div>
             <div id="account_span_message_container">
                 <input id="account_email_code" placeholder="인증번호 확인"/>
-                <button onclick="checkEmailCode()">인증</button>
+                <button id="account_email_codeCheck" onclick="checkEmailCode()" disabled>인증</button>
             </div>
             <div id="account_span_message_container">
                 <span id="account_emailAuth_result" style="color:red"></span>
             </div>
         </div>
 
-        <div class="input_container">
+        <div id="account_name_container">
+            <div>
+                <div id="account_span_container"><span class="account_span jaksim_font">이름(성명)</span></div>
+            </div>
+            <input class="account_input" id="account_name" type="text" placeholder="이름을 한글로 입력해주세요" onblur="checkKoreanRegex()">
+            <p id="account_name_check" style="color:red"></p>
+        </div>
+
+        <div class="account_tel_container">
             <div>
                 <div id="account_span_container"><span class="account_span jaksim_font">tel</span></div>
             </div>
-            <input class="account_input" id="account_userid" type="text" placeholder="아이디를 여기에 입력해주세요">
+            <input class="account_input" id="account_userid" type="text" placeholder="-없이 입력해주세요">
         </div>
 
-        <div class="input_container">
-            <div>
-                <div id="account_span_container"><span class="account_span jaksim_font">관심 키워드</span></div>
-            </div>
-            <input class="account_input" id="account_userid" type="text" placeholder="아이디를 여기에 입력해주세요">
+        <div class="account_class_container">
+            <select>
+                <option>서대문캠퍼스</option>
+                <option>성북캠퍼스</option>
+                <option>영등포캠퍼스</option>
+
+            </select>
+            <select>
+                <option>올라잇 2기</option>
+                <option>데이터분석 2기</option>
+            </select>
         </div>
     </div>
     {{>layout/footer}}

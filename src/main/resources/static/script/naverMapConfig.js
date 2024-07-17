@@ -172,7 +172,6 @@ async function markDefaultStore(map) {
 
     naver.maps.Event.addListener(marker, 'click', function(){
       location.href=`http://49.173.81.57:12571/store/info/${item.id}`
-      //`http://49.173.81.57:12571/store/info/${item.id}`;
     })
 
     markList.push(marker);
