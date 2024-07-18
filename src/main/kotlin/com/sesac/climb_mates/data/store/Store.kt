@@ -21,6 +21,10 @@ data class Store(
     val lon:String,
     @Column(name = "style", nullable = true)
     val style:String, //어떤 유형의 가게인지 확인 -> type은 내장함수일 가능성이 높아서 style로 명명
+    @Column(name="is_zero", nullable = true)
+    val isZero:Boolean? = null,
+    @Column(name="is_support", nullable = true)
+    val isSupport:Boolean? = null,
     @Column(name = "created_date", nullable = false)
     val createdDate: LocalDateTime = LocalDateTime.now()
 )

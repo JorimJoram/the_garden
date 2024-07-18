@@ -16,9 +16,10 @@ data class Menu(
 
     @Column(name="menu", nullable = false)
     var name:String,
-
     @Column(name = "price", nullable = false)
     var price:Int,
+    @Column(name= "url_path")
+    var urlPath:String? = null,
 
     @Column(name="created_date", nullable = false)
     val createdDate: LocalDateTime = LocalDateTime.now()

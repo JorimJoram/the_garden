@@ -1,12 +1,14 @@
 <div class="account_class_container">
-    <select>
-        <option>서대문캠퍼스</option>
-        <option>성북캠퍼스</option>
-        <option>영등포캠퍼스</option>
+    <select id="account_campus_container" onchange="selectCampus(this)">
+        <option value="0">캠퍼스를 선택해주세요</option>
+        <option value="1">서대문캠퍼스</option>
+        <option value="2">성북캠퍼스</option>
+        <option value="3">영등포캠퍼스</option>
 
     </select>
-    <select>
-        <option>올라잇 2기</option>
-        <option>데이터분석 2기</option>
+    <select id="account_class_container" onchange="selectClass(this)">
+        <option value="0">분반을 선택해주세요</option>
+        <option value="a">올라잇 2기</option>
+        <option value="b">데이터분석 2기</option>
     </select>
 </div>

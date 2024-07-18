@@ -5,6 +5,7 @@ import com.sesac.climb_mates.data.store.img.StoreImage
 import com.sesac.climb_mates.data.store.img.StoreImageRepository
 import org.springframework.stereotype.Service
 import java.util.*
+import kotlin.jvm.optionals.getOrElse
 
 @Service
 class StoreService(
@@ -23,6 +24,19 @@ class StoreService(
 
     fun getStoreById(id:Long): Store {
         return storeRepository.findById(id).get()
+    }
+
+    fun getStoreByName(storeName:String): Store {
+        return storeRepository.findByName(storeName).getOrElse {
+            Store(
+                id=-1,
+                name="",
+                location = "",
+                attr = "",
+                lat="", lon = "",
+                style = "",
+            )
+        }
     }
 
     fun getMenuByStoreId(storeId: Long): List<Menu> {

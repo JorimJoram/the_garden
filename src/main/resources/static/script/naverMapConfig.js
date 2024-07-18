@@ -7,7 +7,9 @@ var markerTypes = {
   '한식': 'blue_marker.png',
   '일식': 'red_marker.png',
   '분식': 'green_marker.png',
-  '경양식': 'purple_marker.png'
+  '경양식': 'purple_marker.png',
+  '베트남': 'yellow_marker.png',
+  '샐러드': 'emerald_marker.png',
 }
 var markList = [];
 
@@ -60,7 +62,7 @@ function selectMapType(type){
 
 function setCustomLocationControl(map){
   //var locationBtnHtml = '<button class="btn_mylct"><span class="spr_trff spr_ico_mylct"> 원위치 </span></a>';
-  var locationBtnHtml = `<button class="btn btn-outline"><img src="/img/reLocate.png" style="width: 30px; background-color:#ffffff; height: 30px;"></img></button>`
+  var locationBtnHtml = `<button class="btn btn-outline"><img src="/img/reLocate.png" style="width: 30px; background-color:#ffffff; height: 30px; border-radius:5px; border:1px solid rgba(0,0,0,0.8);"></img></button>`
   naver.maps.Event.once(map, 'init', function(){
     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
       position: naver.maps.Position.LEFT_BOTTOM

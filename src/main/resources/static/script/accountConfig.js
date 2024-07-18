@@ -94,7 +94,23 @@ function checkKoreanRegex(){
     }
 }
 
-function checkTelRegex(){
+function checkTelRegex(telInput){
+    console.log(telInput.value);
+    var resultSpan = document.getElementById('account_tel_result')
     var phonePattern = /^\d{11}$/;
-    
+    if(phonePattern.test(telInput.value)){
+        telState = true;
+        resultSpan.textContent = "";
+    }else{
+        telState=false;
+        resultSpan.textContent = "전화번호를 다시 입력해주세요"
+    }
+}
+
+function selectCampus(selectElement){
+    console.log(`selected Campus: ${selectElement.value}`);
+}
+
+function selectClass(selectElement){
+    console.log(`selected Class: ${selectElement.value}`);
 }

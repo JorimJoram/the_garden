@@ -1,5 +1,6 @@
 package com.sesac.climb_mates
 
+import com.opencsv.CSVReader
 import com.sesac.climb_mates.data.account.Account
 import com.sesac.climb_mates.data.store.Menu
 import com.sesac.climb_mates.data.store.Store
@@ -10,11 +11,16 @@ import com.sesac.climb_mates.service.StoreService
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.core.io.ResourceLoader
+import java.io.InputStreamReader
+import java.nio.charset.StandardCharsets
+
 
 @SpringBootTest
 class ClimbMatesApplicationTests(
 	@Autowired private val storeService: StoreService,
-	@Autowired private val accountService: AccountService
+	@Autowired private val accountService: AccountService,
+	@Autowired private val resourceLoader: ResourceLoader
 ) {
 
 	@Test
@@ -30,17 +36,17 @@ class ClimbMatesApplicationTests(
 		val attrList = mutableListOf("1839481919", "18916029", "32094307", "1544576697", "1653595806", "1221575218", "1404196964", "38411769", "1811359116", "1193819667")
 		val styleList = mutableListOf("경양식", "한식", "한식","한식","경양식", "일식", "한식", "분식", "일식", "경양식")
 
-		for(i: Int in 0..< nameList.size){
-			val store = Store(
-				name = nameList[i],
-				location = locationList[i],
-				lat = latList[i],
-				lon = lonList[i],
-				attr = attrList[i],
-				style= styleList[i]
-			)
-			println(storeService.createStore(store))
-		}
+//		for(i: Int in 0..< nameList.size){
+//			val store = Store(
+//				name = nameList[i],
+//				location = locationList[i],
+//				lat = latList[i],
+//				lon = lonList[i],
+//				attr = attrList[i],
+//				style= styleList[i]
+//			)
+//			println(storeService.createStore(store))
+//		}
 	}
 
 	@Test
@@ -63,22 +69,21 @@ class ClimbMatesApplicationTests(
 		)
 		println(accountService.createAccount(account))
 	}
-
 	@Test
 	fun createSingleStore(){
-		val store = Store(
-			name = "버거스태인",
-			location = "서울특별시 성북구 오패산로 23",
-			lat = "37.604465",
-			lon = "127.037200",
-			attr = "1193819667",
-			style= "경양식"
-		)
-		println(storeService.createStore(store))
+//		val store = Store(
+//			name = "버거스태인",
+//			location = "서울특별시 성북구 오패산로 23",
+//			lat = "37.604465",
+//			lon = "127.037200",
+//			attr = "1193819667",
+//			style= "경양식"
+//		)
+//		println(storeService.createStore(store))
 	}
 	@Test
 	fun createMenu(){
-		val store = storeService.getStoreById(52)
+		val store = storeService.getStoreByName("버거스태인")
 		val menuNameList = mutableListOf("파파버거", "마마버거","호두 떡갈비 버거", "당근 버가", "매콤 버거", "크림치즈 떡갈비 버거")
 		val priceList = mutableListOf(7800, 8800, 9800, 10800, 11800, 11800)
 		for(i in menuNameList.indices){

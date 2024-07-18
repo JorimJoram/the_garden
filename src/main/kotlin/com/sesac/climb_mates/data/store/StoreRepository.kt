@@ -5,4 +5,5 @@ import java.util.Optional
 
 interface StoreRepository:JpaRepository<Store, Long> {
     fun findByStyle(style: String): Optional<List<Store>>
+    fun findByName(storeName: String): Optional<Store>
 }
