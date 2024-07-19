@@ -1,6 +1,7 @@
 package com.sesac.climb_mates
 
 import com.opencsv.CSVReader
+import com.sesac.climb_mates.data.store.Menu
 import com.sesac.climb_mates.data.store.Store
 import com.sesac.climb_mates.service.StoreService
 import org.json.JSONObject
@@ -105,14 +106,21 @@ class StoreApplicationTest(
 
     @Test
     fun writeMenu(){
-        val menuList = readMenuCSV("menuAndPrice.csv")
+        val menuList = readMenuCSV("menuAndPrice")
         menuList.forEach {
-            println(it)
+            storeService.createMenu(
+                Menu(
+                    store = storeService.getStoreByName(it[0]),
+                    name = it[1],
+                    price = it[2].toInt(),
+                    urlPath = it[3]
+                )
+            )
         }
     }
 
     private fun readMenuCSV(fileName:String): MutableList<List<String>> {
-        val resource = resourceLoader.getResource("classpath:/static/datasets/${fileName}.csv")
+        val resource = resourceLoader.getResource("classpath:/static/data/${fileName}.csv")
         val resultList:MutableList<List<String>> = mutableListOf()
         CSVReader(InputStreamReader(resource.inputStream, StandardCharsets.UTF_8)).use { csvReader ->
             val lines: List<Array<String?>> = csvReader.readAll()

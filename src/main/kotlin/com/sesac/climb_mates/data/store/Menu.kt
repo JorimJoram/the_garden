@@ -18,7 +18,7 @@ data class Menu(
     var name:String,
     @Column(name = "price", nullable = false)
     var price:Int,
-    @Column(name= "url_path")
+    @Column(name= "url_path", length = 512)
     var urlPath:String? = null,
 
     @Column(name="created_date", nullable = false)
