@@ -12,4 +12,19 @@
     height:10vw;
     background-color: black;
     opacity:0.8;
+
+    position: relative;
+}
+
+#main_a{
+    margin: 0 auto;
+    color:white;
+    text-decoration: none;
+    font-size:2em;
+}
+
+.navi_button{
+    margin-right: 20px; /* 필요에 따라 조정 가능 */
+    background: none;
+    border: none;
 }
