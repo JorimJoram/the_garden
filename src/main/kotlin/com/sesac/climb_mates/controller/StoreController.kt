@@ -52,14 +52,16 @@ class StoreController(
                 size= 0
             )
         }
+        val numList = (1..menuData.size).toList()
 
         model.addAttribute("storeData", storeData)
-        model.addAttribute("menuData", menuData)
+        model.addAttribute("menuData", menuData.subList(0,4))
         model.addAttribute("storeTimeData", storeTimeData)
         model.addAttribute("storeImage", storeImage)
         model.addAttribute("groupingList", groupingListByStoreIdList)
         model.addAttribute("groupCnt", groupingListByStoreIdList.size)
         model.addAttribute("today", defaultLocalDate())
+        model.addAttribute("indexList", numList)
 
         return "store/info"
     }

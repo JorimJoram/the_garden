@@ -9,11 +9,7 @@
 <div class="garden_container">
     <button onclick="backButton()">Back</button>
 
-    {{#storeImage}}
-        <div>
-            <img src="{{path}}" style="width:30vh;">
-        </div>
-    {{/storeImage}}
+    {{>store/info_fragment/carousel}}
 
 
     {{#storeData}}
@@ -55,7 +51,7 @@
     </table>
     <p>일자: {{today}}</p>
 </div>
-{{>layout/footer}}
+
 {{>layout/bottom_navi}}
 </body>
 </html>
