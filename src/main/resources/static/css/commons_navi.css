@@ -1,5 +1,8 @@
 #navi_container{
-    display: flex;
+    position:fixed;
+    bottom:0;
+
+    display:flex;
     justify-content: space-between;
     align-items: center;
 
@@ -7,6 +10,8 @@
     height:10vw;
     background-color: black;
     opacity:0.8;
+
+    z-index:10;
 }
 
 #main_a{
@@ -48,27 +53,24 @@
 .hidden_list{
     opacity: 0;
 }
-.remove_list{
-    display:none;
-}
 
 #navi_set{
+    position: absolute;
     list-style-type: none;
     padding:0;
     margin:0;
     width:20%;
 
-    position: absolute;
     top: 10vw;
 
-    z-index: 1000;
+    z-index: 10;
 }
 
 #navi_set li{
     background-color: rgba(0,0,0,0.8);
     border-top: 1px solid #fff;
     padding: 1vw;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, display 0.3s;
 }
 
 #navi_set li a{

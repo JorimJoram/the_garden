@@ -7,7 +7,7 @@
     <title>theGARDEN</title>
     <!--애러 아니니까 ㄱㄱ-->
 </head>
-    {{>layout/navi}}
+    {{>layout/head_title}}
 <div class="garden_container">
     <div style="margin:5px">
         <button class="btn btn-primary" onclick="getStoreLocationListByStyle('한식')">한식</button>
@@ -16,9 +16,12 @@
         <button class="btn btn-primary" onclick="getStoreLocationListByStyle('경양식')">경양식</button>
         <button class="btn btn-primary" onclick="getStoreLocationListByStyle('default')">전체</button>
     </div>
-    <div id="map" style="width:95%;height:60vh;margin: 0 auto;"></div>
+    <div style="positoin:fixed' z-index:0;">
+        <div id="map" style="position:absolute;z-index:0;width:95%;height:60vh;margin:0 auto;"></div>
+    </div>
 </div>
 {{>layout/footer}}
+{{>layout/navi}}
 <body>
 </body>
 </html>

@@ -13,4 +13,8 @@ class IndexController {
     fun loginPage():String{
         return "account/login"
     }
+    @GetMapping("/test")
+    fun testPage(): String {
+        return "test";
+    }
 }

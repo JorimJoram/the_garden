@@ -31,7 +31,7 @@ class SecurityConfig(
         http.csrf { it.disable() }
         http.authorizeHttpRequests{
             it
-                .requestMatchers("/", "/script/**", "/css/**", "/img/**",
+                .requestMatchers("/", "/script/**", "/css/**", "/img/**","/test",
                     "/article/**", "/store/**", "/login/**", "/account/**", "/sms/**", "/grouping/**"
                 ).permitAll()
         }
