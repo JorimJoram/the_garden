@@ -17,14 +17,32 @@
 }
 
 #main_a{
+    position: absolute;
+    left:50%;
+    transform: translateX(-50%);
     margin: 0 auto;
     color:white;
     text-decoration: none;
     font-size:2em;
 }
 
-.navi_button{
+#login_button{
+    position: absolute;
+    right:0;
     margin-right: 20px; /* 필요에 따라 조정 가능 */
     background: none;
     border: none;
+
+    margin: 0.5vw;
+    border-radius: 10px;
+    border: none;
+    box-shadow:none;
+    background-color: black;
+
+    height: 7vw
+}
+
+#login_button img{
+    width: 7vw;
+    height: 7vw;
 }

@@ -2,79 +2,9 @@
     position:fixed;
     bottom:0;
 
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-
     width: 100%;
     height:10vw;
     background-color: black;
-    opacity:0.8;
 
     z-index:10;
-}
-
-#main_a{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    text-decoration:none;
-}
-
-#main_a > span{
-    color:white;
-    font-size: 7vw;
-    font-style: bold;
-}
-
-.navi_button{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-
-    color: white;
-    font-size:4vw;
-
-    margin: 0.5vw;
-    border-radius: 10px;
-    border: none;
-    box-shadow:none;
-    background-color: black;
-
-    height: 7vw
-}
-
-.navi_button img{
-    width: 7vw;
-    height: 7vw;
-}
-
-.hidden_list{
-    opacity: 0;
-}
-
-#navi_set{
-    position: absolute;
-    list-style-type: none;
-    padding:0;
-    margin:0;
-    width:20%;
-
-    top: 10vw;
-
-    z-index: 10;
-}
-
-#navi_set li{
-    background-color: rgba(0,0,0,0.8);
-    border-top: 1px solid #fff;
-    padding: 1vw;
-    transition: opacity 0.3s, display 0.3s;
-}
-
-#navi_set li a{
-    text-decoration: none;
-    color:#fff;
-    display: block;
 }

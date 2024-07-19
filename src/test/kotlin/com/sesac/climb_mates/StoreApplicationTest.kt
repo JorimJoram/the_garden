@@ -102,4 +102,26 @@ class StoreApplicationTest(
             connection.disconnect()
         }
     }
+
+    @Test
+    fun writeMenu(){
+        val menuList = readMenuCSV("menuAndPrice.csv")
+        menuList.forEach {
+            println(it)
+        }
+    }
+
+    private fun readMenuCSV(fileName:String): MutableList<List<String>> {
+        val resource = resourceLoader.getResource("classpath:/static/datasets/${fileName}.csv")
+        val resultList:MutableList<List<String>> = mutableListOf()
+        CSVReader(InputStreamReader(resource.inputStream, StandardCharsets.UTF_8)).use { csvReader ->
+            val lines: List<Array<String?>> = csvReader.readAll()
+
+            for (line in lines) {
+                val lineList = java.util.List.of(*line)
+                resultList.add(lineList as List<String>)
+            }
+        }
+        return resultList
+    }
 }
