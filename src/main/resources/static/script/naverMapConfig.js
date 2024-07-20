@@ -149,12 +149,19 @@ async function markMyLocation(map) {
  * @param {*} map 
  */
 async function markDefaultStore(map) {
+  function switchIsZero(isZero){
+    if(isZero == 1){
+      return `<p style="color:black">제로페이: 가능</p>`
+    }else{
+      return `<p>제로페이: <span style="color:red">지원하지 않음</span></p>`
+    }
+  }
   var locList = await getStoreLocationList()
   
   removeMarkList(markList);
   
   for (let item of locList) {
-    var marker = new naver.maps.Marker({
+    let marker = new naver.maps.Marker({
       icon:{
         content: [
           `<div style="display: flex; flex-direction: column; align-items: center; width: 30px; height: 30px;">`,
@@ -172,12 +179,34 @@ async function markDefaultStore(map) {
       zIndex: 15,
     });
 
+    let contentString = [
+      '<div class="iw_inner" style="border-radius:10px;">',
+        '<div style="padding:3vw;">',
+        `   <h3>${item.name}</h3>`,
+        `   <p>${item.location}</p>`,
+        `   ${switchIsZero(item.isZero)}`,
+        `   <a href="/store/info/${item.id}" targetx="_blank">자세히 보기</a>`,
+        '   </p>',
+        '</div>',
+      '</div>'
+    ].join('');
+    
+    let infowindow = new naver.maps.InfoWindow({
+      content: contentString
+    });
+
     naver.maps.Event.addListener(marker, 'click', function(){
-      location.href=`/store/info/${item.id}`
+      //location.href=
+      if (infowindow.getMap()) {
+        infowindow.close();
+      } else {
+        infowindow.open(map, marker);
+      }
     })
 
     markList.push(marker);
   }
+
 }
 
 /**

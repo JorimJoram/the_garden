@@ -39,8 +39,8 @@ class StoreApplicationTest(
                         name = it[0],
                         location = it[5],
                         attr = it[4],
-                        isZero = switchBoolean(it[2]),
-                        isSupport = switchBoolean(it[3]),
+//                        isZero = switchBoolean(it[2]),
+//                        isSupport = switchBoolean(it[3]),
                         style = it[1],
                         lat = lat,
                         lon = lon
@@ -131,5 +131,9 @@ class StoreApplicationTest(
             }
         }
         return resultList
+    }
+    @Test
+    fun getSingleStore(){
+        println(storeService.getStoreById(1L))
     }
 }
