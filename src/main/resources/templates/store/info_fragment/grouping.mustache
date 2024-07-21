@@ -1,0 +1,13 @@
+<div>
+    <span>오늘 생성된 Group: {{groupCnt}}개</span>
+</div>
+<table>
+    {{#groupingList}}
+        <tr>
+            <td><a href="/grouping/detail/{{id}}">{{title}}</a></td>
+            <td>{{account.username}}</td>
+            <td>{{formattedDate}}</td>
+        </tr>
+    {{/groupingList}}
+</table>
+<p>일자: {{today}}</p>

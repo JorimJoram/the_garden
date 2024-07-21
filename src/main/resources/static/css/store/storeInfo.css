@@ -1,0 +1,16 @@
+#store_review_text_container{
+    display:flex;
+    align-items:center;
+}
+
+#store_review_content{
+    resize:none;
+    width:82%;
+    height: 5vh;
+}
+
+#reviewSendButton{
+    width: 15%;
+    height:5vh;
+    margin-left: 3%;
+}

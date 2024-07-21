@@ -1,5 +1,6 @@
-package com.sesac.climb_mates.data.store
+package com.sesac.climb_mates.data.store.time
 
+import com.sesac.climb_mates.data.store.Store
 import jakarta.persistence.*
 import java.time.LocalDateTime
 
@@ -12,7 +13,7 @@ data class StoreTime(
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = false)
-    var store:Store,
+    var store: Store,
 
     @Column(name="start_time")
     var startTime:String? = null,

@@ -1,10 +1,8 @@
 package com.sesac.climb_mates
 
-import com.opencsv.CSVReader
 import com.sesac.climb_mates.data.account.Account
 import com.sesac.climb_mates.data.store.Menu
-import com.sesac.climb_mates.data.store.Store
-import com.sesac.climb_mates.data.store.StoreTime
+import com.sesac.climb_mates.data.store.time.StoreTime
 import com.sesac.climb_mates.data.store.img.StoreImage
 import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.StoreService
@@ -12,8 +10,6 @@ import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.core.io.ResourceLoader
-import java.io.InputStreamReader
-import java.nio.charset.StandardCharsets
 
 
 @SpringBootTest

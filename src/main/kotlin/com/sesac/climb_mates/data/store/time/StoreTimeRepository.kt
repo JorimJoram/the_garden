@@ -1,4 +1,4 @@
-package com.sesac.climb_mates.data.store
+package com.sesac.climb_mates.data.store.time
 
 import org.springframework.data.jpa.repository.JpaRepository
 import java.util.Optional

@@ -1,6 +1,6 @@
 package com.sesac.climb_mates.controller
 
-import com.sesac.climb_mates.data.store.StoreTime
+import com.sesac.climb_mates.data.store.time.StoreTime
 import com.sesac.climb_mates.data.store.img.StoreImage
 import com.sesac.climb_mates.service.GroupingService
 import com.sesac.climb_mates.service.StoreService
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestParam
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
