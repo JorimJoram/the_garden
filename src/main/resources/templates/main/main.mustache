@@ -9,14 +9,8 @@
 </head>
     {{>layout/head_title}}
 <div class="garden_container">
-    <div style="margin:5px">
-        <button class="btn btn-primary" onclick="getStoreLocationListByStyle('한식')">한식</button>
-        <button class="btn btn-primary" onclick="getStoreLocationListByStyle('분식')">분식</button>
-        <button class="btn btn-primary" onclick="getStoreLocationListByStyle('일식')">일식</button>
-        <button class="btn btn-primary" onclick="getStoreLocationListByStyle('경양식')">경양식</button>
-        <button class="btn btn-primary" onclick="getStoreLocationListByStyle('default')">전체</button>
-    </div>
-    <div style="positoin:fixed' z-index:0;">
+    {{>main/main_fragment/main_button}}
+    <div style="position:fixed' z-index:0;">
         <div id="map" style="width:95%;height:75vh;margin:0 auto;"></div>
     </div>
 </div>

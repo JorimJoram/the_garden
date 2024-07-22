@@ -23,8 +23,8 @@ async function mapSetting() {
     myLon = location.myLon;
   } catch (error) {
     // reject에서 반환한 값을 처리
-    myLat = "37.6043708"
-    myLon = "127.039257"//"127.0366509"
+    myLat = "37.6039"
+    myLon = "127.0377"//"127.0366509" 
   } finally {
     var mapOptions = {
       center: new naver.maps.LatLng(myLat, myLon),
@@ -34,7 +34,7 @@ async function mapSetting() {
         position: naver.maps.Position.TOP_RIGHT
       },
 
-      zoom:16
+      zoom:18
     };
     map = new naver.maps.Map('map', mapOptions);
 
@@ -69,7 +69,7 @@ function setCustomLocationControl(map){
     });
     customControl.setMap(map);
     naver.maps.Event.addDOMListener(customControl.getElement(), 'click', function() {
-      map.setCenter(new naver.maps.LatLng(37.6043708, 127.039257));
+      map.setCenter(new naver.maps.LatLng(37.6039, 127.0377));
   });
   });
 }
@@ -144,18 +144,19 @@ async function markMyLocation(map) {
   } 
 }
 
+function switchIsZero(isZero){
+  if(isZero == 1){
+    return `<img src="/img/store/bizplay.png" style="width:5vw;height:5vw; display:block;"/>`//`<p style="color:black">제로페이: 가능</p>`
+  }else{
+    return ""//`<p>제로페이: <span style="color:red">지원하지 않음</span></p>`
+  }
+}
+
 /**
  * getStoreLocationList()에서 리스트를 가져온 후에 실행됩니다
  * @param {*} map 
  */
 async function markDefaultStore(map) {
-  function switchIsZero(isZero){
-    if(isZero == 1){
-      return `<p style="color:black">제로페이: 가능</p>`
-    }else{
-      return `<p>제로페이: <span style="color:red">지원하지 않음</span></p>`
-    }
-  }
   var locList = await getStoreLocationList()
   
   removeMarkList(markList);
@@ -182,10 +183,10 @@ async function markDefaultStore(map) {
     let contentString = [
       '<div class="iw_inner" style="border-radius:10px;">',
         '<div style="padding:3vw;">',
-        `   <h3>${item.name}</h3>`,
+        `   <div style="display:flex; align-items:center;"><h3>${item.name}</h3><span style="margin-left:1vw;font-size:1em; color: #595959;">${item.style}</span></div>`,
         `   <p>${item.location}</p>`,
         `   ${switchIsZero(item.isZero)}`,
-        `   <a href="/store/info/${item.id}" targetx="_blank">자세히 보기</a>`,
+        `   <br><a href="/store/info/${item.id}" targetx="_blank">자세히 보기</a>`,
         '   </p>',
         '</div>',
       '</div>'
