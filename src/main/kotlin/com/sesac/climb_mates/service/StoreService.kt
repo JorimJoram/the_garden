@@ -24,10 +24,11 @@ class StoreService(
     private val accountRepository: AccountRepository
 ) {
     fun getStoreByStyle(style: String): List<Store> {
-        return if (style=="default"){
-            storeRepository.findAll()
-        }else{
-            storeRepository.findByStyle(style).get()
+        return when(style){
+            "default" -> storeRepository.findAll()
+            "제로페이" -> storeRepository.findByIsZero(1)
+            "식대" -> storeRepository.findByIsSupport(1)
+            else -> storeRepository.findByStyle(style)
         }
     }
 

@@ -2,14 +2,27 @@ window.onload = function () {
   mapSetting();
 }
 
+var lastClickedButton = null;
+var lastButtonText = null;
+
 var map = null;
 var markerTypes = {
-  '한식': 'blue_marker.png',
-  '일식': 'red_marker.png',
-  '분식': 'green_marker.png',
-  '경양식': 'purple_marker.png',
-  '베트남': 'yellow_marker.png',
-  '샐러드': 'emerald_marker.png',
+  '한식': 'darkblue_marker.png',
+  '일식': 'darkgreen_marker.png',
+  '분식': 'purple_marker.png',
+  '중식': 'toquiz_marker.png',
+  '양식': 'orange_marker.png',
+  '아시아': 'lightblue_marker.png',
+  '샐러드': 'green_marker.png',
+}
+var colorList = {
+  '한식':'#0052A4',
+  '일식':'#747F00',
+  '분식':'#996CAC',
+  '중식':'#77C4A3',
+  '양식':'#EF7C1C',
+  '아시아':'#00A4E3',
+  '제로페이':'#00A84D'
 }
 var markList = [];
 
@@ -262,7 +275,41 @@ function getStoreLocationList() {
     });
 }
 
-function getStoreLocationListByStyle(style) {
+function getStoreLocationListByStyle(style, event) {
+  console.log(event.target, event.target.innerText);
+  var button = event.target; // 클릭된 버튼 참조
+  var buttonText = button.innerText; // 버튼의 텍스트 가져오기
+  var buttonColor = colorList[buttonText];
+
+  // 이전에 눌린 버튼의 스타일 초기화
+  if (lastClickedButton && lastClickedButton !== button) {
+      if(lastButtonText != null){
+        var lastButtonColor = colorList[lastButtonText]
+        lastClickedButton.style.border = `1px solid ${lastButtonColor}`;
+        lastClickedButton.style.color = `${lastButtonColor}`
+        lastClickedButton.style.backgroundColor = 'white'
+      }
+  }
+
+  // 현재 클릭된 버튼의 스타일 토글
+  if (button.style.border === `1px solid ${buttonColor}` && button.style.color === `${buttonColor}`){
+    button.style.border = `1px solid ${buttonColor}`;
+    button.style.color = `${buttonColor}`
+    button.style.backgroundColor = 'white'
+    lastClickedButton = null;
+    lastButtonText = null;
+  }else{
+    button.style.border = 'white';
+    button.style.color = 'white'
+    button.style.backgroundColor = `${buttonColor}`
+    lastClickedButton = button;
+    lastButtonText = button.innerText;
+  }
+
+  // 현재 클릭된 버튼을 마지막으로 눌린 버튼으로 설정
+  //lastClickedButton = button.classList.contains('clicked') ? button : null;
+
+
   return axios.get(`/store/api/list?style=${style}`)
     .then(response => {
       markStoreByStyle(response.data);
@@ -312,7 +359,6 @@ async function markStoreByStyle(storeList) {
     });
 
     naver.maps.Event.addListener(marker, 'click', function(){
-      //location.href=
       if (infowindow.getMap()) {
         infowindow.close();
       } else {
