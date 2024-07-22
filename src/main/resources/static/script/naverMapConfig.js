@@ -34,7 +34,7 @@ async function mapSetting() {
         position: naver.maps.Position.TOP_RIGHT
       },
 
-      zoom:18
+      zoom:17
     };
     map = new naver.maps.Map('map', mapOptions);
 
@@ -65,7 +65,7 @@ function setCustomLocationControl(map){
   var locationBtnHtml = `<button class="btn btn-outline"><img src="/img/reLocate.png" style="width: 30px; background-color:#ffffff; height: 30px; border-radius:5px; border:1px solid rgba(0,0,0,0.8);"></img></button>`
   naver.maps.Event.once(map, 'init', function(){
     var customControl = new naver.maps.CustomControl(locationBtnHtml, {
-      position: naver.maps.Position.LEFT_BOTTOM
+      position: naver.maps.Position.LEFT_TOP
     });
     customControl.setMap(map);
     naver.maps.Event.addDOMListener(customControl.getElement(), 'click', function() {
@@ -146,7 +146,7 @@ async function markMyLocation(map) {
 
 function switchIsZero(isZero){
   if(isZero == 1){
-    return `<img src="/img/store/bizplay.png" style="width:5vw;height:5vw; display:block;"/>`//`<p style="color:black">제로페이: 가능</p>`
+    return `<img src="/img/store/bizplay.png" style="width:10vw;height:10vw; display:block;"/>`//`<p style="color:black">제로페이: 가능</p>`
   }else{
     return ""//`<p>제로페이: <span style="color:red">지원하지 않음</span></p>`
   }
@@ -170,7 +170,7 @@ async function markDefaultStore(map) {
           ` <img src="../img/map_marker/${markerTypes[item.style]}" style="width: 30px; height: 30px;"/>`, //이미지 위치 확인
           ` </div>`,
           `</div>`
-        ].join(''), //border-radius: 50%;"
+        ].join(''),
         size: new naver.maps.Size(30, 30),
         scaledSize: new naver.maps.Size(30, 30),
         origin: new naver.maps.Point(0, 0)

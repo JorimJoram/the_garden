@@ -46,3 +46,7 @@
     width: 7vw;
     height: 7vw;
 }
+
+#main_button_container::-webkit-scrollbar{
+    display:none;
+}
