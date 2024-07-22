@@ -16,13 +16,16 @@ var markerTypes = {
   '샐러드': 'green_marker.png',
 }
 var colorList = {
+  '초기화':'#000000',
   '한식':'#0052A4',
   '일식':'#747F00',
   '분식':'#996CAC',
   '중식':'#77C4A3',
   '양식':'#EF7C1C',
   '아시아':'#00A4E3',
-  '제로페이':'#00A84D'
+  '제로페이':'#00A84D',
+  '1만원 이하': '#E6186C',
+  '점심팟': '#BDB092'
 }
 var markList = [];
 
@@ -285,16 +288,16 @@ function getStoreLocationListByStyle(style, event) {
   if (lastClickedButton && lastClickedButton !== button) {
       if(lastButtonText != null){
         var lastButtonColor = colorList[lastButtonText]
-        lastClickedButton.style.border = `1px solid ${lastButtonColor}`;
-        lastClickedButton.style.color = `${lastButtonColor}`
+        lastClickedButton.style.border = `1px solid black`;
+        lastClickedButton.style.color = `black`
         lastClickedButton.style.backgroundColor = 'white'
       }
   }
 
   // 현재 클릭된 버튼의 스타일 토글
   if (button.style.border === `1px solid ${buttonColor}` && button.style.color === `${buttonColor}`){
-    button.style.border = `1px solid ${buttonColor}`;
-    button.style.color = `${buttonColor}`
+    button.style.border = `1px solid black`;
+    button.style.color = `black`
     button.style.backgroundColor = 'white'
     lastClickedButton = null;
     lastButtonText = null;
