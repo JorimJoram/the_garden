@@ -4,6 +4,7 @@ import com.sesac.climb_mates.data.store.time.StoreTime
 import com.sesac.climb_mates.data.store.img.StoreImage
 import com.sesac.climb_mates.service.GroupingService
 import com.sesac.climb_mates.service.StoreService
+import jakarta.servlet.http.HttpSession
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -19,7 +20,8 @@ import java.time.format.DateTimeFormatter
 @RequestMapping("/store")
 class StoreController(
     private val storeService: StoreService,
-    private val groupingService: GroupingService
+    private val groupingService: GroupingService,
+    private val session:HttpSession
 ) {
     @GetMapping("/info/{storeId}")
     fun infoPage(@PathVariable("storeId") storeId:Long, @RequestParam(name="date", defaultValue = "none")date:String, model: Model): String {
@@ -53,6 +55,7 @@ class StoreController(
             )
         }
         val numList = (1..menuData.size).toList()
+        val userSession = session.getAttribute("session_user")
 
         model.addAttribute("storeData", storeData)
         model.addAttribute("menuData", menuData.subList(0,4))
@@ -62,6 +65,7 @@ class StoreController(
         model.addAttribute("groupCnt", groupingListByStoreIdList.size)
         model.addAttribute("today", defaultLocalDate())
         model.addAttribute("indexList", numList)
+        model.addAttribute("session_user", userSession)
 
         return "store/info"
     }

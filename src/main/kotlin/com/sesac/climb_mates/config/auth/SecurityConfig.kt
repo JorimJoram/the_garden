@@ -18,7 +18,7 @@ class SecurityConfig(
 ) {
     @Bean
     fun passwordEncoder():PasswordEncoder{
-        return  BCryptPasswordEncoder() // 1234 ->
+        return  BCryptPasswordEncoder() //
     }
 
     @Bean
@@ -41,6 +41,12 @@ class SecurityConfig(
                 .loginProcessingUrl("/login/action")
                 .successHandler(customSuccessHandler)
                 .failureHandler(customFailureHandler)
+        }
+        http.logout {
+            it.deleteCookies("JSESSIONID")
+            it.invalidateHttpSession(true)
+            it.logoutUrl("/logout").permitAll()
+            it.logoutSuccessUrl("/")
         }
         return http.build()
     }

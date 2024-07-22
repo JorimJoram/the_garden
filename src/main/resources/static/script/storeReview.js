@@ -38,9 +38,17 @@ function setReviewList(itemList){
     const reviewListContainer = document.getElementById('store_review_list')
     reviewListContainer.innerHTML = '';
     itemList.forEach(item => {
-        const reviewElement = document.createElement('span');
-        reviewElement.textContent = `Star: ${item.star}, Content:${item.content}`;
-        reviewListContainer.appendChild(reviewElement);
+        const rowElement = document.createElement('tr');
+        //별점 추가
+        const starCell = document.createElement('td')
+        starCell.textContent = item.star
+        rowElement.appendChild(starCell)
+        //내용 추가
+        const contentCell = document.createElement('td');
+        contentCell.textContent = item.content;
+        rowElement.appendChild(contentCell);
+
+        reviewListContainer.appendChild(rowElement);
     });
 }
 
