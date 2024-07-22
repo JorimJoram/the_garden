@@ -23,8 +23,8 @@ async function mapSetting() {
     myLon = location.myLon;
   } catch (error) {
     // reject에서 반환한 값을 처리
-    myLat = "37.6039"
-    myLon = "127.0377"//"127.0366509" 
+    myLat = "37.6041272"
+    myLon = "127.0370565"//"127.0366509" 
   } finally {
     var mapOptions = {
       center: new naver.maps.LatLng(myLat, myLon),
@@ -69,7 +69,7 @@ function setCustomLocationControl(map){
     });
     customControl.setMap(map);
     naver.maps.Event.addDOMListener(customControl.getElement(), 'click', function() {
-      map.setCenter(new naver.maps.LatLng(37.6039, 127.0377));
+      map.setCenter(new naver.maps.LatLng(37.6041272, 127.0370565));
   });
   });
 }
