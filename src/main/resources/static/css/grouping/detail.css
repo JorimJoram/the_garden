@@ -1,11 +1,14 @@
 .applicant_img{
     width:7vw;
     height:7vw;
-    border-radius: 50%;
-    margin-right:3vw;
+    border-radius: 50%; 
+}
+.center_content{
+    display:flex;
+    align-items:center;
+    justify-content: center;
 }
 #grouping_detail_applicantCell{
-    padding-left:5vw;
     max-height:10vw;
     overflow-y: auto;
 }

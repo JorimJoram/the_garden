@@ -29,6 +29,7 @@ function setApplicants(){
         var dataCell = document.getElementById('grouping_detail_applicantCell');
         data.forEach(item => {
             const container = document.createElement('div');
+            //container.className = "center-content"
             
             const image = document.createElement('img');
             image.src = item.account.imagePath;
@@ -73,12 +74,13 @@ function setGroupingReview(){
             const underRowElement = document.createElement('tr')
             
             const profileNameCell = document.createElement('td')
-            profileNameCell.textcontent = item.account.username;
+            profileNameCell.textContent = item.account.username;
             underRowElement.appendChild(profileNameCell)
 
             const dateCell = document.createElement('td')
             dateCell.textContent = formattedDate(item.createdDate);
             underRowElement.appendChild(dateCell);
+
             reviewListContainer.append(underRowElement);
         });
             
