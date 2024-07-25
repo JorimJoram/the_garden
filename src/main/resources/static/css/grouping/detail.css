@@ -19,12 +19,12 @@
 
 #grouping_review_content{
     resize:none;
-    width:82%;
+    width:72%;
     height: 5vh;
 }
 
 #groupingSendButton{
-    width: 15%;
+    width: 25%;
     height:5vh;
     margin-left: 3%;
 }

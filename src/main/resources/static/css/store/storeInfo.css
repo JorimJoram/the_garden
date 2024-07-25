@@ -5,12 +5,12 @@
 
 #store_review_content{
     resize:none;
-    width:82%;
+    width:72%;
     height: 5vh;
 }
 
 #reviewSendButton{
-    width: 15%;
+    width: 25%;
     height:5vh;
     margin-left: 3%;
 }
