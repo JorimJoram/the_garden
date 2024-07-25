@@ -8,7 +8,7 @@ import java.time.LocalDateTime
 @Table(name="store_time")
 data class StoreTime(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Long? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -7,7 +7,7 @@ import java.time.LocalDateTime
 @Table(name="STORE")
 data class Store(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column(name="name", nullable = false)
     var name:String,

@@ -6,7 +6,7 @@ import java.time.LocalDateTime
 @Entity
 data class Account(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long? = null,
     @Column(name="username", nullable = false, unique = true)
     val username:String,
@@ -18,6 +18,8 @@ data class Account(
     var email:String,
     @Column(name = "role", nullable = false)
     var role: String? = "USER", //USER / ADMIN으로 구분
+    @Column(name="image_path", nullable = true)
+    var imagePath:String? = "/img/default/profile.png",
     @Column(name = "created_date", nullable = false)
     val createdDate: LocalDateTime = LocalDateTime.now()
 )

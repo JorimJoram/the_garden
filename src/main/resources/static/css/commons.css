@@ -46,3 +46,29 @@
     width: 7vw;
     height: 7vw;
 }
+
+#title_container{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    padding:5vw;
+}
+
+#title_back_button{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    border:none; 
+    background:none; 
+    width:5vw; 
+    height:5vw;
+}
+#title_title{
+    flex-grow:1;
+    text-align: center;
+}
+#title_account_img{
+    width:7vw;
+    height:7vw;
+}

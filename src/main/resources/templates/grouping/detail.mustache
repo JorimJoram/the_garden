@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     {{>layout/header}}
+    <script src="/script/grouping/detail_config.js"></script>
+    <link rel="stylesheet" href="/css/grouping/detail.css">
     <title>{{grouping.title}}</title>
 </head>
 <body>
 {{>layout/bottom_navi}}
-<div class="garden_container">
-    <div>
-        <span>{{grouping.title}}</span>
-        <span>{{grouping.createdDate}}</span>
-        <span>{{grouping.account.username}}</span>
+    <div class="garden_container">
+        {{#grouping}}
+            {{>layout/details_title_bar}}
+            {{>grouping/detail_fragment/head}}
+            {{>grouping/detail_fragment/applicant}}
+            {{>grouping/detail_fragment/review}}
+        {{/grouping}}
+        <button id="grouping_detail_applyButton">test</button>
     </div>
-    <div>
-        <span>{{grouping.content}}</span>
-    </div>
-</div>
-
 </body>
 </html>

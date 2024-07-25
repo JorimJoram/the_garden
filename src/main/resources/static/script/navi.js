@@ -9,3 +9,7 @@ function toMain(){
 function toGrouping(){
     window.location.href="/grouping/list";
 }
+
+function toBack(){
+    window.history.back();
+}

@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     {{>layout/header}}
+    <link rel="stylesheet" href="/css/grouping/grouping_list.css">
+    <script src="/script/grouping/list_config.js"></script>
     <title>그루핑</title>
 </head>
 <body>
@@ -9,12 +11,30 @@
 <div class="garden_container">
     {{#groupList}}
         <div>
-            <a href="/grouping/detail/{{id}}">{{title}}</a>
-            <span>{{formattedDate}}</span>
-            <span>{{account.username}}</span>
-            <div>
-                <span>{{content}}</span>
+            <h3 onclick="toDetail({{id}})">{{title}}</h3>
+            <p>{{formattedDate}}</p>
+            <p>{{store.name}}</p>
+            <div class="grouping_image_name_container">
+                <img class="grouping_list_AccountProfile" src="{{account.imagePath}}" alt="{{account.username}}">
+                <p>작성자: {{account.username}}</p>
             </div>
+        </div>
+        <div>
+            <p>참여자</p>
+            {{#isApply}}
+                <button style="background-color:#909090">참여중</button>
+            {{/isApply}}
+            {{^isApply}}
+                <button>참여하기</button>
+            {{/isApply}}
+
+                <div class="grouping_list_AccountProfile">
+                {{#applicantList}}
+                    <img class="grouping_list_ApplicantProfile" src="{{account.imagePath}}" alt="{{account.username}}">
+                    <span>{{account.username}}</span>
+                {{/applicantList}}
+                </div>
+
         </div>
     {{/groupList}}
 </div>

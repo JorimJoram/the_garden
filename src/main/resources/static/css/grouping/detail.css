@@ -1,0 +1,11 @@
+.applicant_img{
+    width:7vw;
+    height:7vw;
+    border-radius: 50%;
+    margin-right:3vw;
+}
+#grouping_detail_applicantCell{
+    padding-left:5vw;
+    max-height:10vw;
+    overflow-y: auto;
+}

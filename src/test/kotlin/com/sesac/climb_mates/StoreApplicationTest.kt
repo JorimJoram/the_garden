@@ -23,8 +23,8 @@ class StoreApplicationTest(
      * 가게명(0) 음식점유형(1) 제로페이 유무(2) 식대가능유무(3) 메뉴(4) 가격(5) attr(6) 주소(7) 사진주소값(8)
      */
     @Test
-    fun readCsvWithKotlin(){
-        val fileName = "store"
+    fun setStoreList(){
+        val fileName = "storeAndMenu"
         val csvList = readCSV(fileName)
         csvList.forEach{
             val isRegistered = storeService.getStoreByName(it[0])
@@ -39,8 +39,8 @@ class StoreApplicationTest(
                         name = it[0],
                         location = it[5],
                         attr = it[4],
-//                        isZero = switchBoolean(it[2]),
-//                        isSupport = switchBoolean(it[3]),
+                        isZero = it[2].toInt(),
+                        isSupport = it[3].toInt(),
                         style = it[1],
                         lat = lat,
                         lon = lon
@@ -50,12 +50,8 @@ class StoreApplicationTest(
         }
     }
 
-    private fun switchBoolean(value:String): Boolean {
-        return if(value == "1") true else false
-    }
-
     private fun readCSV(fileName:String): MutableList<List<String>> {
-        val resource = resourceLoader.getResource("classpath:/static/datasets/${fileName}.csv")
+        val resource = resourceLoader.getResource("classpath:/static/data/${fileName}.csv")
         val resultList:MutableList<List<String>> = mutableListOf()
         CSVReader(InputStreamReader(resource.inputStream, StandardCharsets.UTF_8)).use { csvReader ->
             val lines: List<Array<String?>> = csvReader.readAll()

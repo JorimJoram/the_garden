@@ -9,7 +9,7 @@ import java.time.LocalDateTime
 @Table(name="store_review")
 data class StoreReview(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Long? = null,
 
     @ManyToOne(fetch = FetchType.LAZY)

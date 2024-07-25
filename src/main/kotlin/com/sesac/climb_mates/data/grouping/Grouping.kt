@@ -3,6 +3,8 @@ package com.sesac.climb_mates.data.grouping
 import com.sesac.climb_mates.data.account.Account
 import com.sesac.climb_mates.data.store.Store
 import jakarta.persistence.*
+import org.springframework.cglib.core.Local
+import java.time.LocalDate
 import java.time.LocalDateTime
 import kotlin.jvm.Transient
 
@@ -10,7 +12,7 @@ import kotlin.jvm.Transient
 @Table(name="grouping")
 data class Grouping(
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id:Long? = null,
     @Column(name="title", nullable = false)
     var title:String,
@@ -26,9 +28,15 @@ data class Grouping(
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "store_id", nullable = false)
     var store: Store,
+    @Column(name="meeting_date", nullable = false)
+    val meetingDate: LocalDateTime,
     @Column(name="created_date", nullable = false)
     val createdDate:LocalDateTime = LocalDateTime.now(),
 ){
     @Transient
     var formattedDate:String? = null
+    @Transient
+    var applicantList:List<GroupingApplicant> = mutableListOf()
+    @Transient
+    var isApply = false
 }

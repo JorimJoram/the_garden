@@ -2,6 +2,7 @@ package com.sesac.climb_mates
 
 import com.sesac.climb_mates.data.account.Account
 import com.sesac.climb_mates.data.store.Menu
+import com.sesac.climb_mates.data.store.Store
 import com.sesac.climb_mates.data.store.time.StoreTime
 import com.sesac.climb_mates.data.store.img.StoreImage
 import com.sesac.climb_mates.service.AccountService
@@ -30,19 +31,19 @@ class ClimbMatesApplicationTests(
 		val latList = mutableListOf("37.6034124", "37.6029048", "37.6044350", "37.6034146", "37.6034658","37.6038651", "37.6032830", "37.6067811", "37.6041487", "37.6044306")
 		val lonList = mutableListOf("127.0416930", "127.0385257", "127.0391857", "127.0379090", "127.0371568","127.0432908", "127.0424731", "127.0365072", "127.0394444", "127.0372134")
 		val attrList = mutableListOf("1839481919", "18916029", "32094307", "1544576697", "1653595806", "1221575218", "1404196964", "38411769", "1811359116", "1193819667")
-		val styleList = mutableListOf("경양식", "한식", "한식","한식","경양식", "일식", "한식", "분식", "일식", "경양식")
+		val styleList = mutableListOf("양식", "한식", "한식","한식","양식", "일식", "한식", "분식", "일식", "양식")
 
-//		for(i: Int in 0..< nameList.size){
-//			val store = Store(
-//				name = nameList[i],
-//				location = locationList[i],
-//				lat = latList[i],
-//				lon = lonList[i],
-//				attr = attrList[i],
-//				style= styleList[i]
-//			)
-//			println(storeService.createStore(store))
-//		}
+		for(i: Int in 0..< nameList.size){
+			val store = Store(
+				name = nameList[i],
+				location = locationList[i],
+				lat = latList[i],
+				lon = lonList[i],
+				attr = attrList[i],
+				style= styleList[i]
+			)
+			println(storeService.createStore(store))
+		}
 	}
 
 	@Test
@@ -56,14 +57,16 @@ class ClimbMatesApplicationTests(
 
 	@Test
 	fun createAccount(){
-		val account = Account(
-			username = "test2",
-			password = "1234",
-			classRoom = "성북DT",
-			email = "test1@naver.com",
-			role = "ADMIN"
-		)
-		println(accountService.createAccount(account))
+		for(i:Int in 1..5){
+			val account = Account(
+				username = "test${i}",
+				password = "1234",
+				classRoom = "성북DT",
+				email = "test${i}@naver.com",
+				role = "ADMIN"
+			)
+			println(accountService.createAccount(account))
+		}
 	}
 	@Test
 	fun createSingleStore(){
