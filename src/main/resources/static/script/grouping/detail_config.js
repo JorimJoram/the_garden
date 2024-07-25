@@ -29,7 +29,6 @@ function setApplicants(){
         var dataCell = document.getElementById('grouping_detail_applicantCell');
         data.forEach(item => {
             const container = document.createElement('div');
-            //container.className = "center-content"
             
             const image = document.createElement('img');
             image.src = item.account.imagePath;
@@ -93,4 +92,27 @@ function formattedDate(date){
     const dateStr = new Date(date.split('.')[0] + 'Z');
     const formattedDate = dateStr.toISOString().slice(0, 19).replace('T', ' ');
     return formattedDate;
+}
+
+function sendReview(){
+    if( document.getElementById('grouping_review_content').value.trim()== ''){
+        alert('댓글을 다시 확인해주세요')
+        return ;
+    }
+
+    var json = {
+        groupId: getGroupId(),
+        content: document.getElementById('grouping_review_content').value
+    }
+    axios.post(`/grouping/api/review/create`, json)
+    .then(response => {
+        console.log(response.data);
+        var item = response.data;
+        if(item.id != -1){
+            document.getElementById('grouping_review_content').value = '';
+            setGroupingReview();
+        }
+    }).catch(error => {
+        console.error('Error fetching ', error);
+    })
 }

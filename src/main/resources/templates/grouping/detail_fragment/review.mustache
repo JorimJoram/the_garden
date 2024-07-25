@@ -1,2 +1,14 @@
+{{^session_user}}
+    <div id="grouping_review_text_container">
+        <textarea name="content" id="grouping_review_content" placeholder="로그인 후 시용해주세요" disabled></textarea>
+        <button id="groupingSendButton" onclick="javascript:void(0);" disabled>작성</button>
+    </div>
+{{/session_user}}
+{{#session_user}}
+    <div id="grouping_review_text_container">
+        <textarea name="content" id="grouping_review_content"></textarea>
+        <button id="groupingSendButton" onclick="sendReview()">작성</button>
+    </div>
+{{/session_user}}
 <table id="review_data_table">
 </table>

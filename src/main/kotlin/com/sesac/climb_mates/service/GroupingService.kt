@@ -1,7 +1,9 @@
 package com.sesac.climb_mates.service
 
 import com.sesac.climb_mates.data.account.Account
+import com.sesac.climb_mates.data.account.AccountRepository
 import com.sesac.climb_mates.data.grouping.*
+import org.springframework.security.core.userdetails.User
 import org.springframework.stereotype.Service
 import java.time.LocalDate
 
@@ -9,7 +11,8 @@ import java.time.LocalDate
 class GroupingService(
     private val groupingRepository: GroupingRepository,
     private val groupingApplicantRepository: GroupingApplicantRepository,
-    private val groupingReviewRepository: GroupingReviewRepository
+    private val groupingReviewRepository: GroupingReviewRepository,
+    private val accountRepository: AccountRepository
 ) {
     fun getGroupingList(): List<Grouping> {
         return groupingRepository.findAll()
@@ -66,7 +69,13 @@ class GroupingService(
         return groupingReviewRepository.findByGroupingId(groupId)
     }
 
-    fun createGroupingReview(groupingReview: GroupingReview): GroupingReview {
-        return groupingReviewRepository.save(groupingReview)
+    fun createGroupingReview(review: GroupingReviewDTO, user: User): GroupingReview {
+        return groupingReviewRepository.save(
+            GroupingReview(
+                grouping = groupingRepository.findById(review.groupId).get(),
+                account = accountRepository.findByUsername(user.username).get(),
+                content = review.content
+            )
+        )
     }
 }

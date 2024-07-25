@@ -12,3 +12,19 @@
     max-height:10vw;
     overflow-y: auto;
 }
+#grouping_review_text_container{
+    display:flex;
+    align-items:center;
+}
+
+#grouping_review_content{
+    resize:none;
+    width:82%;
+    height: 5vh;
+}
+
+#groupingSendButton{
+    width: 15%;
+    height:5vh;
+    margin-left: 3%;
+}

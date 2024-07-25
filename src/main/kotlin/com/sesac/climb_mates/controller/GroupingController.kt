@@ -54,13 +54,14 @@ class GroupingController(
     @GetMapping("/detail/{id}")
     fun groupingDetailPage(@PathVariable(name = "id")id:Long, @AuthenticationPrincipal user:User, model: Model): String {
         val accountData = accountService.getAccountByUsername(user.username).get()
-        println("Account: $accountData")
         val groupingDetail = groupingService.getGroupingById(id)
+        val userSession = session.getAttribute("session_user")
         groupingDetail.formattedDate = getFormattedDate(groupingDetail.meetingDate)
         groupingDetail.isApply = !groupingService.isApplicant(id, accountService.getAccountByUsername(user.username).get())
 
         model.addAttribute("Account", accountData)
         model.addAttribute("grouping", groupingDetail)
+        model.addAttribute("session_user", userSession)
         return "grouping/detail"
     }
 

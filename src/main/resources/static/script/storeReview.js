@@ -5,6 +5,11 @@ window.onload = function(){
 function sendReview(){
     var star = document.getElementById('store_review_star')
     var content = document.getElementById('store_review_content')
+    if(content.value.trim()== ''){
+        alert('댓글을 다시 확인해주세요')
+        return ;
+    }
+
     var json = {
         storeId: getStoreId(),
         star: star.value,
@@ -16,6 +21,7 @@ function sendReview(){
         console.log(response.data)
         var item = response.data
         if(item.id != -1){
+            document.getElementById('store_review_content').value = '';
             getReviewList()
         }
     }).catch(error => {
