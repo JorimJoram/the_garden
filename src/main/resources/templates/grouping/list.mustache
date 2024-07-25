@@ -4,7 +4,7 @@
     {{>layout/header}}
     <link rel="stylesheet" href="/css/grouping/grouping_list.css">
     <script src="/script/grouping/list_config.js"></script>
-    <title>그루핑</title>
+    <title>한끼팟</title>
 </head>
 <body>
 {{>layout/bottom_navi}}
@@ -27,14 +27,12 @@
             {{^isApply}}
                 <button>참여하기</button>
             {{/isApply}}
-
-                <div class="grouping_list_AccountProfile">
-                {{#applicantList}}
-                    <img class="grouping_list_ApplicantProfile" src="{{account.imagePath}}" alt="{{account.username}}">
-                    <span>{{account.username}}</span>
-                {{/applicantList}}
-                </div>
-
+            <div class="grouping_list_AccountProfile">
+            {{#applicantList}}
+                <img class="grouping_list_ApplicantProfile" src="{{account.imagePath}}" alt="{{account.username}}">
+                <span>{{account.username}}</span>
+            {{/applicantList}}
+            </div>
         </div>
     {{/groupList}}
 </div>

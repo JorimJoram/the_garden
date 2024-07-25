@@ -1,6 +1,7 @@
 window.onload = function(){
     setApplyButton()
     setApplicants()
+    setGroupingReview()
 }
 
 function setApplyButton(){
@@ -44,4 +45,50 @@ function setApplicants(){
     }).catch(error => {
         console.error('Error fetching ', error);
     })
+}
+
+function setGroupingReview(){
+    axios.get(`/grouping/api/review/list?groupId=${getGroupId()}`)
+    .then(response => {
+        var itemList = response.data;
+        const reviewListContainer = document.getElementById('review_data_table')
+
+        reviewListContainer.innerHTML = '';
+        itemList.forEach(item => {
+            const rowElement = document.createElement('tr');
+            //별점 추가
+            const profileCell = document.createElement('td')
+            const profile = document.createElement('img')
+            profile.src = item.account.imagePath;
+            profile.className = "applicant_img"
+            profileCell.appendChild(profile);
+            rowElement.appendChild(profileCell)
+            //내용 추가
+            const contentCell = document.createElement('td');
+            contentCell.textContent = item.content;
+            rowElement.appendChild(contentCell);
+
+            reviewListContainer.appendChild(rowElement);
+
+            const underRowElement = document.createElement('tr')
+            
+            const profileNameCell = document.createElement('td')
+            profileNameCell.textcontent = item.account.username;
+            underRowElement.appendChild(profileNameCell)
+
+            const dateCell = document.createElement('td')
+            dateCell.textContent = formattedDate(item.createdDate);
+            underRowElement.appendChild(dateCell);
+            reviewListContainer.append(underRowElement);
+        });
+            
+        }).catch(error => {
+            console.error('Error fetching ', error)
+        })
+}
+
+function formattedDate(date){
+    const dateStr = new Date(date.split('.')[0] + 'Z');
+    const formattedDate = dateStr.toISOString().slice(0, 19).replace('T', ' ');
+    return formattedDate;
 }

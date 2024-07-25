@@ -11,5 +11,10 @@ function toGrouping(){
 }
 
 function toBack(){
-    window.history.back();
+    const currentPath = window.location.pathname;
+    if(currentPath.startsWith('/grouping/detail')){
+        window.location.href = '/grouping/list';
+    }else{
+        window.history.back()
+    }
 }

@@ -1,6 +1,7 @@
 .garden_container {
     padding: 1vw;
-    min-height:110vh
+    min-height:110vh;
+    margin: 1vw 0vw 18vw 1vw;
 }
 
 #head_container{

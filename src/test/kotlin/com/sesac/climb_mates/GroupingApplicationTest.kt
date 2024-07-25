@@ -2,6 +2,7 @@ package com.sesac.climb_mates
 
 import com.sesac.climb_mates.data.grouping.Grouping
 import com.sesac.climb_mates.data.grouping.GroupingApplicant
+import com.sesac.climb_mates.data.grouping.GroupingReview
 import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.GroupingService
 import com.sesac.climb_mates.service.StoreService
@@ -11,7 +12,6 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 import kotlin.test.Test
-
 @SpringBootTest
 class GroupingApplicationTest(
     @Autowired private val accountService: AccountService,
@@ -101,4 +101,18 @@ class GroupingApplicationTest(
             )
         )
     }
+
+    @Test
+    fun createGroupingReview(){
+        println(
+            groupingService.createGroupingReview(
+                GroupingReview(
+                    grouping = groupingService.getGroupingById(3L),
+                    account = accountService.getAccountByUsername("test2").get(),
+                    content = "네네 펴나나게 가세요~"
+                )
+            )
+        )
+    }
 }
+

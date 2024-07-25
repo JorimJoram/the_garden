@@ -29,18 +29,21 @@ class GroupingController(
             requestDate = defaultLocalDate()
         }
         val groupingList = groupingService.getGroupingGreaterThanEqual(LocalDate.parse(requestDate))
-        val applyList = groupingService.getGroupingApplicantList(user.username)
+        val applyList = groupingService.getGroupingApplicantList(user.username) //내가 신청했던 리스트를 가져온 거임
         groupingList.forEach {
             val applicantList = groupingService.getGroupingApplicantListByGroupingId(it.id!!)
             it.applicantList = applicantList
             it.formattedDate = getFormattedDate(it.meetingDate)
 
         }
-        //내가 신청했던 걸 담은 리스트와 담지 않았던 리스트를 비교해보자
-        if(groupingList.isNotEmpty()){
-            for(i:Int in applyList.indices) {
-                if(groupingList[i].applicantList.isNotEmpty())
-                    groupingList[i].isApply = applyList[i] in groupingList[i].applicantList
+        //내가 신청했던 걸 담은 리스트와 담지 않았던 리스트를 비교해보자 -> GPT에게 도움 받은 버전
+        if (groupingList.isNotEmpty()) {
+            // applyList를 Set으로 변환하여 빠른 검색이 가능하도록 합니다.
+            val applySet = applyList.toSet()
+
+            // groupingList를 순회하며, 각 항목의 applicantList가 applySet에 포함되어 있는지 확인합니다.
+            for (group in groupingList) {
+                group.isApply = group.applicantList.any { it in applySet }
             }
         }
 
