@@ -59,10 +59,7 @@ class GroupingService(
     }
 
     fun deleteGroupingApplicant(groupId: Long, username: String){
-        return groupingApplicantRepository.delete(GroupingApplicant(
-            account = accountRepository.findByUsername(username).get(),
-            grouping =  groupingRepository.findById(groupId).get(),
-        ))
+        return groupingApplicantRepository.deleteByAccountUsernameAndGroupingId(username, groupId)
     }
 
     fun isApplicant(groupingId: Long, account:Account): Boolean {

@@ -27,6 +27,7 @@ function setApplicants(){
     .then(response => {
         var data = response.data;
         var dataCell = document.getElementById('grouping_detail_applicantCell');
+        dataCell.innerHTML = '';
         data.forEach(item => {
             const container = document.createElement('div');
             
@@ -129,10 +130,8 @@ function applicantButtonEvent(){
     }
 
     function createApplicant(){
-        console.log('create')
         axios.post(`/grouping/api/applicant/create/${getGroupId()}`)
         .then(response => {
-            console.log('create ', response.data)
             if(response.data.id > 0){
                 applyButton.style.backgroundColor = "rgb(0, 168, 77)"//초록색
                 setApplicants()
@@ -143,10 +142,8 @@ function applicantButtonEvent(){
     }
 
     function removeApplicant(){
-        console.log('remove')
         axios.delete(`/grouping/api/applicant/del/${getGroupId()}`)
         .then(response => {
-            console.log('remove ' + response.data)
             applyButton.style.backgroundColor = "rgb(0, 82, 164)"//파란색
             setApplicants()
         }).catch(error => {

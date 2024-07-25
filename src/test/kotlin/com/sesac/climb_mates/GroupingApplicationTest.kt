@@ -91,28 +91,8 @@ class GroupingApplicationTest(
     }
 
     @Test
-    fun createGroupingApplicant(){
-        println(
-            groupingService.createGroupingApplicant(
-                GroupingApplicant(
-                    grouping = groupingService.getGroupingById(3L),
-                    account =  accountService.getAccountByUsername("test1").get(),
-                )
-            )
-        )
-    }
-
-    @Test
-    fun createGroupingReview(){
-        println(
-            groupingService.createGroupingReview(
-                GroupingReview(
-                    grouping = groupingService.getGroupingById(3L),
-                    account = accountService.getAccountByUsername("test2").get(),
-                    content = "네네 펴나나게 가세요~"
-                )
-            )
-        )
+    fun deleteApplicants(){
+        groupingService.deleteGroupingApplicant(3L, "test1");
     }
 }
 
