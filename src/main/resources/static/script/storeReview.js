@@ -39,8 +39,6 @@ function getReviewList(){
 }
 
 function setReviewList(itemList){
-    console.log('getReviewList');
-    console.log(itemList)
     const reviewListContainer = document.getElementById('store_review_list')
     reviewListContainer.innerHTML = '';
     itemList.forEach(item => {

@@ -56,14 +56,14 @@ function setGroupingReview(){
         reviewListContainer.innerHTML = '';
         itemList.forEach(item => {
             const rowElement = document.createElement('tr');
-            //별점 추가
+            
             const profileCell = document.createElement('td')
             const profile = document.createElement('img')
             profile.src = item.account.imagePath;
             profile.className = "applicant_img"
             profileCell.appendChild(profile);
             rowElement.appendChild(profileCell)
-            //내용 추가
+            
             const contentCell = document.createElement('td');
             contentCell.textContent = item.content;
             rowElement.appendChild(contentCell);
@@ -115,4 +115,42 @@ function sendReview(){
     }).catch(error => {
         console.error('Error fetching ', error);
     })
+}
+
+function applicantButtonEvent(){
+    var applyButton = document.getElementById('grouping_detail_applyButton');
+    var color = window.getComputedStyle(applyButton).backgroundColor;
+    console.log(color);
+
+    if(color == 'rgb(0, 168, 77)'){ //초록색 -> 이미 등록된 상황이라면
+        applyButton.addEventListener("click", removeApplicant())
+    }else{
+        applyButton.addEventListener("click", createApplicant())
+    }
+
+    function createApplicant(){
+        console.log('create')
+        axios.post(`/grouping/api/applicant/create/${getGroupId()}`)
+        .then(response => {
+            console.log('create ', response.data)
+            if(response.data.id > 0){
+                applyButton.style.backgroundColor = "rgb(0, 168, 77)"//초록색
+                setApplicants()
+            }
+        }).catch(error => {
+            console.error(error)
+        })
+    }
+
+    function removeApplicant(){
+        console.log('remove')
+        axios.delete(`/grouping/api/applicant/del/${getGroupId()}`)
+        .then(response => {
+            console.log('remove ' + response.data)
+            applyButton.style.backgroundColor = "rgb(0, 82, 164)"//파란색
+            setApplicants()
+        }).catch(error => {
+            console.error(error)
+        })
+    }
 }

@@ -8,7 +8,9 @@ import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.GroupingService
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.userdetails.User
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -53,5 +55,13 @@ class GroupingRestApi(
     @PostMapping("/review/create")
     fun createGroupingReview(@RequestBody review: GroupingReviewDTO, @AuthenticationPrincipal user: User): Long {
         return groupingService.createGroupingReview(review, user).id!!
+    }
+    @PostMapping("/applicant/create/{groupId}")
+    fun createGroupingApplicant(@PathVariable(name="groupId")groupId: Long, @AuthenticationPrincipal user: User): GroupingApplicant {
+        return groupingService.createGroupingApplicant(groupId, user.username);
+    }
+    @DeleteMapping("/applicant/del/{groupId}")
+    fun deleteGroupingApplicant(@PathVariable(name="groupId")groupId: Long, @AuthenticationPrincipal user: User){
+        return groupingService.deleteGroupingApplicant(groupId, user.username)
     }
 }

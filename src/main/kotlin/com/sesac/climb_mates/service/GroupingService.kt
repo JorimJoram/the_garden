@@ -51,8 +51,18 @@ class GroupingService(
         return groupingRepository.save(grouping)
     }
 
-    fun createGroupingApplicant(groupingApplicant: GroupingApplicant): Any {
-        return groupingApplicantRepository.save(groupingApplicant)
+    fun createGroupingApplicant(groupId:Long, username:String): GroupingApplicant {
+        return groupingApplicantRepository.save(GroupingApplicant(
+            account = accountRepository.findByUsername(username).get(),
+            grouping =  groupingRepository.findById(groupId).get(),
+        ))
+    }
+
+    fun deleteGroupingApplicant(groupId: Long, username: String){
+        return groupingApplicantRepository.delete(GroupingApplicant(
+            account = accountRepository.findByUsername(username).get(),
+            grouping =  groupingRepository.findById(groupId).get(),
+        ))
     }
 
     fun isApplicant(groupingId: Long, account:Account): Boolean {
