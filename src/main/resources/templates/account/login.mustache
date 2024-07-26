@@ -2,26 +2,16 @@
 <html lang="en">
 <head>
     {{>layout/header}}
+    <link rel="stylesheet" href="/css/main/loginPage.css">
     <title>로그인</title>
 </head>
 <body>
-{{>layout/bottom_navi}}
-<div id="login_wrapper" class="garden_container">
-    <h1 id="login_head">로그인</h1>
-    <form action="/login/action" method="post">
-        <div class="account_input_container">
-            <input type="text" name="username" id="user_id" class="login_input" placeholder="USER ID">
-        </div>
-        <div class="account_input_container">
-            <input type="password" name="password" id="user_pw" class="login_input" placeholder="USER PW">
-            <div style="text-align: left;">
-                <span id="login_failure_span" style="margin:3px;"></span>
-            </div>
-        </div>
+<div class="garden_container" id="login_container">
+    <h1 id="login_head" style="text-align:center">Sprout 로그인</h1>
+    <form id="login_form" action="/login/action" method="post">
+        {{>account/login_fragment/username_password_input}}
+        {{>account/login_fragment/button_container}}
         <div id="login_button_container">
-            <div>
-                <button class="jaksim_btn" type="submit" id="login_loginButton">로그인</button>
-            </div>
             <div class="jaksim_font" id="login_account_container">
                 <div style="order: 1;">
                     <a class="login_a_tag jaksim_font" type="button" onclick="window.location.href='/account';">회원가입</a>
@@ -34,5 +24,6 @@
     </form>
 </div>
 
+{{>layout/bottom_navi}}
 </body>
 </html>

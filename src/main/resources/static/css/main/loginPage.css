@@ -1,0 +1,17 @@
+#login_container{
+    margin-top: 20vh;
+}
+
+#login_loginButton{
+    width:100%;
+
+    background-color: rgb(67,75,172);
+    border: none;
+    border-radius: 5px;
+    padding:2vw;
+
+    font: size 1em;
+    font-weight: bold;
+
+    color: white;
+}

@@ -76,4 +76,9 @@ class GroupingController(
         val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
         return date.format(formatter)
     }
+
+    @GetMapping("/create")
+    private fun createPage(): String {
+        return "grouping/create"
+    }
 }

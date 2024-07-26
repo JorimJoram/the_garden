@@ -32,10 +32,11 @@ class SecurityConfig(
     fun filterChain(http:HttpSecurity): SecurityFilterChain{
         http.csrf { it.disable() }
         http.authorizeHttpRequests{
-            it
-                .requestMatchers("/", "/script/**", "/css/**", "/img/**","/test",
-                    "/article/**", "/store/**", "/login/**", "/account/**", "/sms/**", "/grouping/**"
-                ).permitAll()
+            it.requestMatchers("/css/**", "/script/**", "/images/**").permitAll()
+                .requestMatchers("/login").not().authenticated()
+                .anyRequest().authenticated()
+//            it.requestMatchers("/script/**", "/css/**", "/img/**","/test","/login/**","/error/**").permitAll()
+//            it.requestMatchers("/", "/article/**", "/store/**", "/account/**", "/sms/**", "/grouping/**").authenticated()
         }
         http.formLogin{
             it
@@ -43,12 +44,13 @@ class SecurityConfig(
                 .loginProcessingUrl("/login/action")
                 .successHandler(customSuccessHandler)
                 .failureHandler(customFailureHandler)
+                .permitAll()
         }
         http.logout {
             it.deleteCookies("JSESSIONID")
             it.invalidateHttpSession(true)
             it.logoutUrl("/logout").permitAll()
-            it.logoutSuccessUrl("/")
+            it.logoutSuccessUrl("/login")
         }
         return http.build()
     }

@@ -73,3 +73,12 @@
     width:7vw;
     height:7vw;
 }
+
+.garden_input{
+    width:100%;
+    border: 1px solid #000000;
+    border-radius: 5px;
+
+    padding:2vw;
+    font-size:1em;
+}

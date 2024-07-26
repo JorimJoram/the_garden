@@ -1,6 +1,11 @@
 <p>어디서 만날까요</p>
-<select name="grouping_create_style" id="grouping_create_style">
-    <option value="한식"></option>
+<select name="grouping_create_style" id="grouping_create_style" onchange="selectStyle(event)">
+    <option value="" selected>선택</option>
+    <option value="한식">한식</option>
+    <option value="일식">일식</option>
+    <option value="양식">양식</option>
+    <option value="중식">중식</option>
+    <option value="아시아">아시아</option>
 </select>
 <select name="grouping_create_store" id="grouping_create_store">
     <option value=""></option>

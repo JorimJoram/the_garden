@@ -2,6 +2,7 @@ package com.sesac.climb_mates.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 
 @Configuration
@@ -14,4 +15,8 @@ class ResourceConfig:WebMvcConfigurer {
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler(connectPath).addResourceLocations(resourcePath)
     }
+
+//    override fun addViewControllers(registry: ViewControllerRegistry) {
+//        registry.addViewController("/").setViewName("redirect:/login")
+//    }
 }
