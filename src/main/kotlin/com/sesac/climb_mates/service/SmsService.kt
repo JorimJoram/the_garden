@@ -28,13 +28,13 @@ class SmsService(
 
     fun createMailForm(arrEmail:String): MimeMessage {
         val sender = "lsd4026@naver.com"
-        val title = "[the GARDEN]계정생성 인증번호 입니다."
+        val title = "[SPROUT]계정생성 인증번호 입니다."
 
         val message = emailSender.createMimeMessage()
         message.addRecipients(MimeMessage.RecipientType.TO, arrEmail)
         message.subject = title
         message.setFrom(sender)
-        message.setText(String.format("이메일 인증번호: ${this.key}<br>대소문자 관계 없이 작성해주시면 됩니다"), "utf-8", "html")
+        message.setText(String.format("이메일 인증번호: ${this.key}<br>복사 후 붙여넣기를 통해 인증을 완료해주세요!"), "utf-8", "html")
         //javascript .toUpperCase( )이용하면 모두 대문자로 변형 됩니다
 
         return message

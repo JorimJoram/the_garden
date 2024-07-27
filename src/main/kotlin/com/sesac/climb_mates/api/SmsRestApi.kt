@@ -13,6 +13,7 @@ class SmsRestApi(
 ) {
     @GetMapping("/send")
     fun sendMail(@RequestParam(name="mail", defaultValue = "none")mail:String): String {
+        //println("${mail} 전송")
         return smsService.validateEmail(mail)
     }
 

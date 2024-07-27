@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{>layout/header}}
+    <script src="/script/account/account_2.js"></script>
+    <title>{{head_title}}</title>
+</head>
+<body>
+    <h2 style="text-align:center;">캠퍼스와 이름을 알려주세요!</h2>
+    <p>이름</p>
+    <input type="text" id="account_name" onblur="checkAccountName(event)">
+    <span id="account_name_result"></span>
+
+    {{>account/account_layout/select_campus}}
+    {{>account/account_layout/personal}}
+
+    <div>
+        <button onclick="toUsernameAndPassword()">다음으로</button>
+    </div>
+</body>
+</html>

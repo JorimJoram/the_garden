@@ -57,16 +57,16 @@ class ClimbMatesApplicationTests(
 
 	@Test
 	fun createAccount(){
-		for(i:Int in 1..5){
-			val account = Account(
-				username = "test${i}",
-				password = "1234",
-				classRoom = "성북DT",
-				email = "test${i}@naver.com",
-				role = "ADMIN"
-			)
-			println(accountService.createAccount(account))
-		}
+//		for(i:Int in 1..5){
+//			val account = Account(
+//				username = "test${i}",
+//				password = "1234",
+//				classRoom = "성북DT",
+//				email = "test${i}@naver.com",
+//				role = "ADMIN"
+//			)
+//			println(accountService.createAccount(account))
+//		}
 	}
 	@Test
 	fun createSingleStore(){

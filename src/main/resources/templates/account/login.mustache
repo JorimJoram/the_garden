@@ -11,16 +11,7 @@
     <form id="login_form" action="/login/action" method="post">
         {{>account/login_fragment/username_password_input}}
         {{>account/login_fragment/button_container}}
-        <div id="login_button_container">
-            <div class="jaksim_font" id="login_account_container">
-                <div style="order: 1;">
-                    <a class="login_a_tag jaksim_font" type="button" onclick="window.location.href='/account';">회원가입</a>
-                </div>
-                <div style="order: 2;">
-                    <a class="login_a_tag jaksim_font" href="/find/userid">아이디</a><span> / </span><a class="login_a_tag jaksim_font" href="/find/userpw">비밀번호</a><span>찾기</span>
-                </div>
-            </div>
-        </div>
+        {{>account/login_fragment/link_container}}
     </form>
 </div>
 

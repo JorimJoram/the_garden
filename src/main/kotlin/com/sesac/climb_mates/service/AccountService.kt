@@ -26,4 +26,10 @@ class AccountService(
     fun checkUsernameDup(username:String): Boolean {
         return accountRepository.findByUsername(username).isEmpty //true -> 생성 가능
     }
+    fun checkEmailDup(email:String): Boolean {
+        return accountRepository.findByEmail(email).isEmpty //true -> 생성 가능
+    }
+    fun checkNicknameDup(nickname:String): Boolean {
+        return accountRepository.findByNickname(nickname).isEmpty //true -> 생성 가능
+    }
 }
