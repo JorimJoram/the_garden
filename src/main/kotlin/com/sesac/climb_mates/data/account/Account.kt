@@ -15,7 +15,7 @@ data class Account(
     var password:String,
 
     @Column(name="nickname", nullable = false, unique = true)
-    val nickname:String,
+    var nickname:String,
     @Column(name="email", nullable = false, unique = true)
     var email:String,
     @Column(name="tel", nullable = false)

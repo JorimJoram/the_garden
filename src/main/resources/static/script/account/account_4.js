@@ -67,7 +67,6 @@ function sendData(){
         birth: sessionStorage.getItem('birth'),
         gender: sessionStorage.getItem('gender'),
     }
-    console.log(data);
     axios.post(`/account/api/create`, data)
     .then(response => {
         if(response.data.id > 0){

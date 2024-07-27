@@ -81,12 +81,18 @@ function setGroupingReview(){
             dateCell.textContent = formattedDate(item.createdDate);
             underRowElement.appendChild(dateCell);
 
+            rowElement.addEventListener('click', (event) => removeComment(event, item.id));
+
             reviewListContainer.append(underRowElement);
         });
             
         }).catch(error => {
             console.error('Error fetching ', error)
         })
+}
+
+function removeCommnet(event, id){
+    console.log(`clicked id : ${id}`);
 }
 
 function formattedDate(date){

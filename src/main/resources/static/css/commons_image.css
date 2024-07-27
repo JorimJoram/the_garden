@@ -1,0 +1,9 @@
+.profile_image{
+    object-fit: cover; /* 이미지의 비율을 유지하며 컨테이너 내에서 맞춤 */
+    object-position: center; /* 이미지의 중앙을 기준으로 표시 */
+}
+
+#preview_profile{
+    width: 10vw;
+    height: 10vw;
+}

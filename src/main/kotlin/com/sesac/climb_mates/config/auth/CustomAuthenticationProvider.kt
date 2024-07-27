@@ -1,5 +1,6 @@
 package com.sesac.climb_mates.config.auth
 
+import com.sesac.climb_mates.service.AccountService
 import jakarta.servlet.http.HttpSession
 import org.springframework.security.authentication.AuthenticationProvider
 import org.springframework.security.authentication.BadCredentialsException
@@ -12,7 +13,8 @@ import org.springframework.stereotype.Component
 class CustomAuthenticationProvider(
     private val passwordEncoder: PasswordEncoder,
     private val customUserDetailService: CustomUserDetailService,
-    private val session:HttpSession
+    private val session:HttpSession,
+    private val accountService: AccountService
 ): AuthenticationProvider {
 
     override fun authenticate(authentication: Authentication?): Authentication {
@@ -25,6 +27,7 @@ class CustomAuthenticationProvider(
 
         //인증이 모두 끝난 후
         session.setAttribute("session_user", storedAccountInfo)
+        session.setAttribute("session_profile", accountService.getAccountByUsername(username).get().imagePath)
 
         return UsernamePasswordAuthenticationToken(storedAccountInfo, null, storedAccountInfo.authorities)
         //원래는 비밀번호를 2번째에서 같이 내보내야하는데, 굳이 토큰에 비밀번호를 넘기는 이유를 모르겠어서 + 이미 저장했던 계정 객체 그 자체를 보내는데 왜 필요한지 아예 몰라서

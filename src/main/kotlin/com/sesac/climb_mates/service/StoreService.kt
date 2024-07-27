@@ -57,7 +57,7 @@ class StoreService(
         return storeTimeRepository.findByStoreId(storeId)
     }
 
-    fun getStoreImageByStoreId(storeId: Long): Optional<StoreImage> {
+    fun getStoreImageByStoreId(storeId: Long): List<StoreImage> {
         return storeImageRepository.findByStoreId(storeId)
     }
 

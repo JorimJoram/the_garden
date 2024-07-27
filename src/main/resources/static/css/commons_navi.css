@@ -16,3 +16,9 @@
     color:white;
     table-layout:fixed
 }
+#navi_profile{
+    width: 6vw;
+    height:6vw;
+
+    border-radius: 50%;
+}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{>layout/header}}
+    <script src="/script/mypage/mypageConfig.js"></script>
+    <link rel="stylesheet" href="/css/commons_image.css">
+    <title>마이페이지</title>
+</head>
+<body>
+    <div class="garden_container">
+        {{#userData}}
+            {{>account/mypage_layout/image}}
+            {{>account/mypage_layout/nickname}}
+        {{/userData}}
+    </div>
+</body>
+</html>

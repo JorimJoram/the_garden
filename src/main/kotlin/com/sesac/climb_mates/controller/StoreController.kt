@@ -46,24 +46,18 @@ class StoreController(
                 breakStart = ""
             )
         }
-        val storeImage = storeService.getStoreImageByStoreId(storeId).orElseGet {
-            StoreImage(
-                store = storeService.getStoreById(storeId),
-                path = "/img/store/버거스태인.png",
-                size= 0
-            )
-        }
-        val numList = (1..menuData.size).toList()
+        val storeImage = storeService.getStoreImageByStoreId(storeId)
         val userSession = session.getAttribute("session_user")
 
         model.addAttribute("storeData", storeData)
-        model.addAttribute("menuData", menuData.subList(0,4))
         model.addAttribute("storeTimeData", storeTimeData)
-        model.addAttribute("storeImage", storeImage)
+        model.addAttribute("mainImage", storeImage[0])
+        model.addAttribute("storeImage", storeImage.subList(1,5))
         model.addAttribute("groupingList", groupingListByStoreIdList)
         model.addAttribute("groupCnt", groupingListByStoreIdList.size)
         model.addAttribute("today", defaultLocalDate())
-        model.addAttribute("indexList", numList)
+        model.addAttribute("menuData", menuData)
+        //model.addAttribute("indexList", numList)
         model.addAttribute("session_user", userSession)
 
         return "store/info"

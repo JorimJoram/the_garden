@@ -7,22 +7,18 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
 
 @Controller
-class AccountController(
+class MypageController(
     private val accountService: AccountService
 ) {
-    @GetMapping("/account")
-    fun createAccount(model:Model): String {
-        return "account/account_seq/account_1"
-    }
+    @GetMapping("/mypage/main")
+    fun myPage(@AuthenticationPrincipal user: User, model: Model): String {
+        val userData = accountService.getAccountByUsername(user.username).orElseGet {
+            Account(id=-1L,username="", password="", nickname = "", email = "", tel = "", birth = "", gender = -1, campus = "", education = "")
+        }
+        model.addAttribute("userData", userData)
 
-    @GetMapping("/account/{num}")
-    fun createAccountSeq(@PathVariable("num") num:Int, model: Model): String {
-        model.addAttribute("head_title", "회원가입 $num")
-        return "account/account_seq/account_${num}"
+        return "account/mypage";
     }
 }
-
-

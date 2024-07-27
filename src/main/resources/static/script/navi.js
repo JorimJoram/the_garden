@@ -2,6 +2,10 @@ function toLogin(){
     window.location.href = "/login";
 }
 
+function toMyPage(){
+    window.location.href="/mypage/main"
+}
+
 function toMain(){
     window.location.href="/";
 }
