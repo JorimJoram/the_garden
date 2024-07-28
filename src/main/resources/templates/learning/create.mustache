@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{>layout/header}}
+    <script src="/script/learning/createConfig.js"></script>
+    <title>러닝메이트 모집공고</title>
+</head>
+<body>
+    <div class="garden_container">
+        {{>learning/create_fragment/applicant_cnt}}
+        {{>learning/create_fragment/style}}
+        {{>learning/create_fragment/freq}}
+        {{>learning/create_fragment/letters}}
+        <button onclick="sendData()">작성하기</button>
+    </div>
+</body>
+</html>
