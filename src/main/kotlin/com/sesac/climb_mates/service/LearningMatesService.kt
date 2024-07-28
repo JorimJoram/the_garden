@@ -58,4 +58,8 @@ class LearningMatesService(
     fun getLearningMatesReviewList(learningId: Long): List<LearningReview> {
         return learningMatesReviewRepository.findByLearningMatesId(learningId)
     }
+
+    fun getAllList(): MutableList<LearningMates> {
+        return learningMatesRepository.findAll()
+    }
 }

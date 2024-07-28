@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{>layout/header}}
+    <script src="/script/learning/listConfig.js"></script>
+    <title>러닝메이트 게시판</title>
+</head>
+<body>
+    <div class="garden_container">
+        <h2>러닝메이트 리스트</h2>
+        <table style="border:1px solid #000000; border-radius:5px; width:100%;">
+            {{#learningMates}}
+                <tr>
+                    <td><h2 onclick="toDetail({{id}})">{{title}}</h2></td>
+                </tr>
+                <tr>
+                    <td>{{account.name}}</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            <img src="/img/default/sprout.png" class="detail_applicant_img">{{style}}
+                            <img src="/img/default/history.png" alt="" class="detail_applicant_img">{{freq}}
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>{{formattedDate}}</td>
+                </tr>
+            {{/learningMates}}
+        </table>
+    </div>
+</body>
+</html>

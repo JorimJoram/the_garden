@@ -3,6 +3,7 @@ package com.sesac.climb_mates.data.learning_mates
 import com.sesac.climb_mates.data.account.Account
 import jakarta.persistence.*
 import java.time.LocalDateTime
+import kotlin.jvm.Transient
 
 @Entity
 @Table(name="learning_mates")
@@ -28,4 +29,7 @@ data class LearningMates(
 
     @Column(name="created_date", nullable = false)
     val createdDate: LocalDateTime = LocalDateTime.now()
-)
+){
+    @Transient
+    var formattedDate:String? = null;
+}
