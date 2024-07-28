@@ -14,6 +14,8 @@ data class Account(
     @Column(name="pw", nullable = false)
     var password:String,
 
+    @Column(name="name", nullable = false)
+    var name:String,
     @Column(name="nickname", nullable = false, unique = true)
     var nickname:String,
     @Column(name="email", nullable = false, unique = true)

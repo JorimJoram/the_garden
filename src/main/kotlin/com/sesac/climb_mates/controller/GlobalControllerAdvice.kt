@@ -9,7 +9,6 @@ class GlobalControllerAdvice {
     @ModelAttribute("profileImage")
     fun addProfileImageToModel(httpSession: HttpSession): String {
         val imagePath = httpSession.getAttribute("session_profile") as? String
-        println("profileImage:${imagePath}")
         return imagePath ?: "/img/default/profile.png"
     }
 }

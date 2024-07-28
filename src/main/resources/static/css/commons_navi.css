@@ -16,9 +16,25 @@
     color:white;
     table-layout:fixed
 }
-#navi_profile{
+.navi_profile{
     width: 6vw;
     height:6vw;
 
     border-radius: 50%;
+}
+.detail_container{
+    border: 1px solid #000; 
+    border-radius: 1.5vw; 
+    min-height: 10vw; 
+    padding: 1.5vw; 
+    margin-top:3vw; 
+    margin-bottom: 3vw;
+}
+.detail_content{
+    word-wrap:break-word; 
+    overflow-wrap:break-word;
+}
+.detail_img{
+    width:3w;
+    height:3vw;
 }

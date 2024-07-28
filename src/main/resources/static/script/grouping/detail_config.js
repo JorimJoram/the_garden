@@ -61,7 +61,7 @@ function setGroupingReview(){
             const profileCell = document.createElement('td')
             const profile = document.createElement('img')
             profile.src = item.account.imagePath;
-            profile.className = "applicant_img"
+            profile.className = "detail_applicant_img"
             profileCell.appendChild(profile);
             rowElement.appendChild(profileCell)
             

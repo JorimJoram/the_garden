@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{>layout/header}}
+    <script src="/script/learning/detailConfig.js"></script>
+    <title>{{learning.title}}</title>
+</head>
+<body>
+    <div class="garden_container">
+        {{#learning}}
+            {{>layout/details_title_bar}}
+            {{>learning/detail_fragment/content}}
+            {{>learning/detail_fragment/applicant}}
+        {{/learning}}
+        <button id="learning_detail_applyButton" onclick="applicantButtonEvent()">test</button>
+    </div>
+</body>
+</html>
