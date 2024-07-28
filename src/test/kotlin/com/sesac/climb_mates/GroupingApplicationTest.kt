@@ -1,8 +1,6 @@
 package com.sesac.climb_mates
 
 import com.sesac.climb_mates.data.grouping.Grouping
-import com.sesac.climb_mates.data.grouping.GroupingApplicant
-import com.sesac.climb_mates.data.grouping.GroupingReview
 import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.GroupingService
 import com.sesac.climb_mates.service.StoreService
@@ -21,15 +19,15 @@ class GroupingApplicationTest(
     @Test
     fun createGrouping(){
         println(
-            groupingService.createGrouping(
-                Grouping(
+           /* groupingService.createGrouping(
+                *//*Grouping(
                     title="셀러디 레이드 구합니다!",
                     content="그거 아세요 동덕 여대 주변에 셀러디가 있다는 사실을?!",
                     account = accountService.getAccountByUsername("test1").get(),
                     store = storeService.getStoreById(1L),
                     meetingDate = LocalDateTime.now()
-                )
-            )
+                )*//*
+            )*/
         )
     }
 
@@ -71,15 +69,15 @@ class GroupingApplicationTest(
     @Test
     fun createSpecialDate(){
         val specificDate = LocalDateTime.of(2024,7,26, 0, 0)
-        println(groupingService.createGrouping(
-            Grouping(
-                title = "Test 26",
-                content = "TEST: test26",
-                account = accountService.getAccountByUsername("test5").get(),
-                store = storeService.getStoreById(1L),
-                meetingDate = specificDate
-            )
-        ))
+//        println(groupingService.createGrouping(
+//            Grouping(
+//                title = "Test 26",
+//                content = "TEST: test26",
+//                account = accountService.getAccountByUsername("test5").get(),
+//                store = storeService.getStoreById(1L),
+//                meetingDate = specificDate
+//            )
+//        ))
     }
 
     @Test

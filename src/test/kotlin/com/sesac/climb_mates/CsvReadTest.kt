@@ -26,14 +26,31 @@ class CsvReadTest(
      */
     @Test
     fun setStoreList(){
-        val storeSet:MutableSet<MutableList<String>> = mutableSetOf()
+        //val storeSet:MutableSet<MutableList<String>> = mutableSetOf()
+        val storeSet:MutableSet<String> = mutableSetOf()
         readCSV("the_garden").forEach{
             storeSet.add(
-                mutableListOf(it[0], it[10], it[1], it[2], it[3], it[9])
+                //mutableListOf(it[0], it[10], it[1], it[2], it[3], it[9])
+                it[0]
             )
         }
-        val locationList = storeSet.toList() //가게 정보 구분 완료
-        saveStoreList(locationList)
+        val locationList = storeSet.toList().sortedWith(compareBy(
+            { it.toCharArray().firstOrNull()?.let { c -> if (c in '가'..'힣') 0 else 1 } ?: 2 }, // 한글 먼저
+            { it } // 그 다음으로 영어 순
+        ))
+        setStoreImage(locationList)
+    }
+
+    private fun setStoreImage(storeList:List<String>){
+        for (i in 0 until storeList.size*5){
+            storeService.createStoreImage(
+                StoreImage(
+                    store = storeService.getStoreByName(storeList[(i/5)]),
+                    path = "/img/store/${storeList[(i/5)]}/${String.format("%03d", i+1)}.png",
+                    size = 0
+                )
+            )
+        }
     }
 
     @Test
