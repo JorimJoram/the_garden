@@ -1,9 +1,6 @@
 package com.sesac.climb_mates.api
 
-import com.sesac.climb_mates.data.grouping.Grouping
-import com.sesac.climb_mates.data.grouping.GroupingApplicant
-import com.sesac.climb_mates.data.grouping.GroupingReview
-import com.sesac.climb_mates.data.grouping.GroupingReviewDTO
+import com.sesac.climb_mates.data.grouping.*
 import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.GroupingService
 import org.springframework.security.core.annotation.AuthenticationPrincipal
@@ -50,6 +47,12 @@ class GroupingRestApi(
     @GetMapping("/review/list")
     fun getGroupingReviewList(@RequestParam(name="groupId")groupId: Long): List<GroupingReview> {
         return groupingService.getGroupingReviewListByGroupingId(groupId)
+    }
+
+    @PostMapping("/create")
+    fun createGrouping(@RequestBody groupingDTO: GroupingDTO, @AuthenticationPrincipal user: User): Grouping {
+        println("DTO: ${groupingDTO}")
+        return groupingService.createGrouping(groupingDTO, user.username)
     }
 
     @PostMapping("/review/create")

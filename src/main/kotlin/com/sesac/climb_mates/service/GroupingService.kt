@@ -3,15 +3,19 @@ package com.sesac.climb_mates.service
 import com.sesac.climb_mates.data.account.Account
 import com.sesac.climb_mates.data.account.AccountRepository
 import com.sesac.climb_mates.data.grouping.*
+import com.sesac.climb_mates.data.store.StoreRepository
 import org.springframework.security.core.userdetails.User
 import org.springframework.stereotype.Service
 import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 @Service
 class GroupingService(
     private val groupingRepository: GroupingRepository,
     private val groupingApplicantRepository: GroupingApplicantRepository,
     private val groupingReviewRepository: GroupingReviewRepository,
+    private val storeRepository: StoreRepository,
     private val accountRepository: AccountRepository
 ) {
     fun getGroupingList(): List<Grouping> {
@@ -47,8 +51,20 @@ class GroupingService(
         return groupingApplicantRepository.findByAccountUsername(username)
     }
 
-    fun createGrouping(grouping: Grouping): Grouping {
-        return groupingRepository.save(grouping)
+    fun createGrouping(dto: GroupingDTO, username: String): Grouping {
+        return groupingRepository.save(Grouping(
+            title = dto.title,
+            content = dto.content,
+            account = accountRepository.findByUsername(username).get(),
+            store = storeRepository.findById(dto.storeId).get(),
+            meetingDate = toLocalDateTime(dto.meetingDate)
+        ))
+    }
+
+    private fun toLocalDateTime(date:String): LocalDateTime {
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm")
+        val localDateTime = LocalDateTime.parse(date, formatter)
+        return localDateTime
     }
 
     fun createGroupingApplicant(groupId:Long, username:String): GroupingApplicant {
