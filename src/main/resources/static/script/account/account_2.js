@@ -77,19 +77,9 @@ function checkPersonalStart(event){
 }
 
 function checkPersonalEnd(event){
-    const regex = /^\d{1}$/;
-    var result = regex.test(event.target.value)
-    var resultSpan = document.getElementById('account_personal_result')
-    if(result){
-        isPersonalEnd = true;
-        sessionStorage.setItem('gender', event.target.value);
-        resultSpan.textContent = '';
-        checkState()
-    }else{
-        isPersonalEnd = false;
-        resultSpan.style.color = '#ff0000';
-        resultSpan.textContent = "뒷자리 1자리를 입력해주세요"
-    }
+    isPersonalEnd = true;
+    sessionStorage.setItem('gender', event.target.value);
+    checkState()
 }
 
 function checkState(){

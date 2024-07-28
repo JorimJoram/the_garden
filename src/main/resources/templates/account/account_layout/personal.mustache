@@ -1,5 +1,12 @@
 <div id="personal_container">
-    <input type="number" id="personal_start" onblur="checkPersonalStart(event)">
-    <input type="number" id="personal_gender" onblur="checkPersonalEnd(event)">
+    <p>생년월일</p>
+    <input type="number" id="personal_start" onblur="checkPersonalStart(event)" placeholder="생년월일 6자리를 입력해주세요">
     <span id="account_personal_result"></span>
+    <p>성별</p>
+    <select name="personal_gender" id="personal_gender" onchange="checkPersonalEnd(event)">
+        <option value="0">선택</option>
+        <option value="1">남자</option>
+        <option value="2">여자</option>
+    </select>
+
 </div>
