@@ -1,8 +1,6 @@
 package com.sesac.climb_mates.api
 
-import com.sesac.climb_mates.data.learning_mates.LearningApplicant
-import com.sesac.climb_mates.data.learning_mates.LearningMates
-import com.sesac.climb_mates.data.learning_mates.LearningMatesDTO
+import com.sesac.climb_mates.data.learning_mates.*
 import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.LearningMatesService
 import org.springframework.security.core.annotation.AuthenticationPrincipal
@@ -23,6 +21,16 @@ class LearningMatesRestApi(
     @PostMapping("/applicant/create/{learningId}")
     fun createLearningApplicant(@PathVariable(name="learningId")learningId: Long, @AuthenticationPrincipal user: User): LearningApplicant {
         return learningMatesService.createLearningApplicant(learningId, user.username)
+    }
+
+    @PostMapping("/review/create")
+    fun createLearningMatesReview(@RequestBody review:LearningReviewDTO, @AuthenticationPrincipal user: User): Long {
+        return learningMatesService.createLearningMatesReview(review, user.username).id!!
+    }
+
+    @GetMapping("/review/list")
+    fun getLearningMatesReview(@RequestParam(name="learningId") learningId: Long): List<LearningReview> {
+        return learningMatesService.getLearningMatesReviewList(learningId)
     }
 
     @GetMapping("/apply-list")

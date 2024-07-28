@@ -14,6 +14,10 @@ function toGrouping(){
     window.location.href="/grouping/list";
 }
 
+function toLearning(){
+    window.location.href="/learning/list";
+}
+
 function toBack(){
     const currentPath = window.location.pathname;
     if(currentPath.startsWith('/grouping/detail')){

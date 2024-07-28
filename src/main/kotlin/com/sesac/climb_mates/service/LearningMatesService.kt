@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service
 class LearningMatesService(
     private val learningMatesRepository: LearningMatesRepository,
     private val learningApplicantRepository: LearningApplicantRepository,
+    private val learningMatesReviewRepository: LearningReviewRepository,
     private val accountRepository: AccountRepository
 ) {
     fun createLearningMates(dto:LearningMatesDTO, username:String): LearningMates {
@@ -42,5 +43,19 @@ class LearningMatesService(
 
     fun deleteLearningApplicant(learningId: Long, username: String) {
         return learningApplicantRepository.deleteByAccountUsernameAndLearningMatesId(username, learningId)
+    }
+
+    fun createLearningMatesReview(review: LearningReviewDTO, username: String): LearningReview {
+        return learningMatesReviewRepository.save(
+            LearningReview(
+                learningMates = learningMatesRepository.findById(review.learningMatesId).get(),
+                account = accountRepository.findByUsername(username).get(),
+                content = review.content
+            )
+        )
+    }
+
+    fun getLearningMatesReviewList(learningId: Long): List<LearningReview> {
+        return learningMatesReviewRepository.findByLearningMatesId(learningId)
     }
 }

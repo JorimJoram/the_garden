@@ -1,9 +1,11 @@
 window.onload = function(){
     setApplicants()
     setApplyButton()
+    setLearningReview()
 }
 
 function setApplicants(){
+    
     axios.get(`/learning/api/apply-list?learningId=${getLearningId()}`)
     .then(response => {
         var data = response.data;
@@ -80,4 +82,80 @@ function setApplyButton(){
     }).catch(error => {
         console.error('Error fetching ', error)
     })
+}
+
+function setLearningReview(){
+    axios.get(`/learning/api/review/list?learningId=${getLearningId()}`)
+    .then(response => {
+        var itemList = response.data;
+        const reviewListContainer = document.getElementById('review_data_table')
+
+        reviewListContainer.innerHTML = '';
+        itemList.forEach(item => {
+            const rowElement = document.createElement('tr');
+            
+            const profileCell = document.createElement('td')
+            const profile = document.createElement('img')
+            profile.src = item.account.imagePath;
+            profile.className = "detail_applicant_img"
+            profileCell.appendChild(profile);
+            rowElement.appendChild(profileCell)
+            
+            const contentCell = document.createElement('td');
+            contentCell.textContent = item.content;
+            rowElement.appendChild(contentCell);
+
+            reviewListContainer.appendChild(rowElement);
+
+            const underRowElement = document.createElement('tr')
+            
+            const profileNameCell = document.createElement('td')
+            profileNameCell.textContent = item.account.username;
+            profileNameCell.addEventListener('click', (event) => removeCommnet(event, item.id));
+            underRowElement.appendChild(profileNameCell)
+
+            const dateCell = document.createElement('td')
+            dateCell.textContent = formattedDate(item.createdDate);
+            underRowElement.appendChild(dateCell);
+
+            reviewListContainer.append(underRowElement);
+        });
+            
+        }).catch(error => {
+            console.error('Error fetching ', error)
+        })
+}
+
+function removeCommnet(event, id){
+    console.log(`clicked id : ${id}`);
+}
+
+function sendReview(){
+    if( document.getElementById('learning_review_content').value.trim()== ''){
+        alert('댓글을 다시 확인해주세요')
+        return ;
+    }
+
+    var json = {
+        learningMatesId: getLearningId(),
+        content: document.getElementById('learning_review_content').value
+    }
+
+    axios.post(`/learning/api/review/create`, json)
+    .then(response => {
+        console.log(response.data);
+        var item = response.data;
+        if(item.id != -1){
+            document.getElementById('learning_review_content').value = '';
+            setLearningReview();
+        }
+    }).catch(error => {
+        console.error('Error fetching ', error);
+    })
+}
+
+function formattedDate(date){
+    const dateStr = new Date(date.split('.')[0] + 'Z');
+    const formattedDate = dateStr.toISOString().slice(0, 19).replace('T', ' ');
+    return formattedDate;
 }
