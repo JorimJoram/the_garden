@@ -60,6 +60,7 @@ function sendData(){
         username: sessionStorage.getItem('username'),
         password: sessionStorage.getItem('password'),
         nickname: sessionStorage.getItem('nickname'),
+        name:sessionStorage.getItem('name'),
         tel: sessionStorage.getItem('tel'),
         email: sessionStorage.getItem('email'),
         campus: sessionStorage.getItem('campus'),

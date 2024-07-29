@@ -9,7 +9,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 class ResourceConfig:WebMvcConfigurer {
 
     private val connectPath = "/img/**"
-    private val resourcePath = "file:///C:/Users/user/IdeaProjects/theGARDEN/src/main/resources/static/img/"
+    private val resourcePath = "file:///D:/mat-zip/src/main/resources/static/img/"
         //"file:///Users/janghyolim/Desktop/code/climb-mates/src/main/resources/static/img/"
         //"file:///D:/mat-zip/src/main/resources/static/img/"
 

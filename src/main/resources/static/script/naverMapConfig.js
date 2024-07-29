@@ -186,7 +186,7 @@ async function markDefaultStore(map) {
           ` <img src="../img/map_marker/${markerTypes[item.style]}" style="width: 30px; height: 30px;"/>`, //이미지 위치 확인
           ` </div>`,
           `</div>`
-        ].join(''),
+        ].join(''), //border-radius: 50%;"
         size: new naver.maps.Size(30, 30),
         scaledSize: new naver.maps.Size(30, 30),
         origin: new naver.maps.Point(0, 0)
