@@ -1,0 +1,17 @@
+.account_term{
+    width:100%;
+    height:30vh;
+
+    white-space: pre-wrap;
+
+    overflow:auto;
+    border:1px solid #000;
+
+    padding-top: 3vw;
+    padding-bottom:3vw;
+    box-sizing: border-box;
+}
+
+.account_term_title{
+    text-align:center;
+}

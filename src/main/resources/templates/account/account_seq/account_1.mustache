@@ -3,12 +3,13 @@
 <head>
     {{>layout/header}}
     <script src="/script/account/account_1.js"></script>
+    <link rel="stylesheet" href="/css/account.css">
     <title>회원가입 1</title>
 </head>
 <body>
-    <label for="personal_info">개인정보 이용 동의</label>
-    <input type="checkbox" id="personal_info" onclick="selectPersonalInfo()">
-    <label for="account_info">회원가입 및 이용 동의</label>
-    <input type="checkbox" id="account_info" onclick="selectAccountInfo()">
+    <div class="garden_container">
+        {{>account/account_layout/terms/term_using}}
+        {{>account/account_layout/terms/term_private}}
+    </div>
 </body>
 </html>
