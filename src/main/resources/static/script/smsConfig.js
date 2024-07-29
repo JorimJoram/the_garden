@@ -43,7 +43,7 @@ function showValidTime(resultSpan){
 
         if(currentTime >= endTime){
             timeout = true;
-            resultSpan.textContent = ' 시간이 초과되었습니다.';
+            resultSpan.textContent = '시간이 초과되었습니다.';
             resultSpan.style.color = 'red';
         }
 

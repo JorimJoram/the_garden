@@ -2,8 +2,8 @@
     <p class="account_component_item"><img src="/img/default/radio_point.png" class="account_point_img" alt="">메일인증</p>
     <input type="email" class="garden_input" id="account_email" onblur="emailCheck(event)" placeholder="이메일은 입력해주세요">
     <input type="text" class="garden_input" id="account_email_code" placeholder="인증번호를 입력해주세요" style="margin-top:1vh">
-    <div id="account_email_button_container" style="margin-top:1vh;">
-        <button class="garden_button" onclick="checkEmailCode()">인증하기</button>
-        <span id="account_email_time"></span><span id="account_email_result"></span>
+    <div id="account_email_button_container" style="margin-top:1vh; display:flex;align-items: center;">
+        <button class="garden_button" onclick="checkEmailCode()" style="height:4vh;">인증하기</button>
+        <span id="account_email_time" style="margin-left:3vw;"></span><span id="account_email_result" style="margin-left:3vw;"></span>
     </div>
 </div>
