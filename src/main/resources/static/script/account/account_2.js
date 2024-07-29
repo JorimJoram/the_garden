@@ -41,24 +41,7 @@ function selectClass(event){
     }
 }
 
-function checkAccountName(event){
-    var resultSpan = document.getElementById('account_name_result');
 
-    if(!checkRegex(event.target.value)){//실패했다면
-        resultSpan.style.color = "#ff0000";
-        resultSpan.textContent = "이름을 다시 입력해주세요";
-    }else{
-        resultSpan.textContent = '';
-        sessionStorage.setItem('name', event.target.value);
-        isName = true;
-        checkState();
-    }
-}
-
-function checkRegex(name){
-    const regex = /^[가-힣]+$/;
-    return regex.test(name)
-}
 
 function checkPersonalStart(event){
     const regex = /^\d{6}$/;

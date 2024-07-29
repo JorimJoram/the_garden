@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    {{>layout/header}}
+    <link rel="stylesheet" href="/css/account.css">
+    <script src="/script/accountConfig.js"></script>
+    <title>{{head_title}}</title>
+</head>
+<body>
+    {{>account/account_layout/bar/account_title_bar}}
+    <div class="garden_container">
+        {{>account/account_layout/username}}
+        {{>account/account_layout/password}}
+        {{>account/account_layout/name}}
+        {{>account/account_layout/birth}}
+    </div>
+</body>
+</html>

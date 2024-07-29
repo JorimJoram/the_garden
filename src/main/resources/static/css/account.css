@@ -31,3 +31,16 @@
 
     color:white;
 }
+
+.account_point_img{
+    width: 6vw;
+    height: 6vw;
+}
+
+.account_component_item{
+    display:flex;
+    align-items:center;
+}
+.account_item_container{
+    margin:1vh;
+}

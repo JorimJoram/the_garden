@@ -1,116 +1,96 @@
-var usernameState = false;
-var passwordState = false;
-var passwordRegexState = false;
-var confirmState = false;
-var nameState = false;
-var telState = false;
+var isUsername = false;
+var isPassword = false;
+var globalPassword = '';
 
-function checkUsername(){
-    var usernameInput = document.getElementById("account_username");
-    var resultSpan = document.getElementById("account_username_result");
-    var usernameResult = false;
-    var username = usernameInput.value;
+var isName = false;
 
-    
+
+/**
+ * Username 처리
+ * @param event
+ */
+function usernameCheck(event){
+    const username = event.target.value;
+    const usernameResult = document.getElementById('account_username_result')
     if(checkUsernameRegex(username)){
         axios.get(`/account/api/username-dup?username=${username}`)
-        .then(response => {
-            usernameResult = response.data
-            if(!response.data){
-                usernameState = false;
-                resultSpan.textContent = "이미 등록된 계정입니다";
-                resultSpan.style.color='red';
-            }else{
-                usernameState = true;
-                resultSpan.textContent = "사용 가능한 계정입니다";
-                resultSpan.style.color='black';
-            }
-        }).catch(error => {
-            console.error('Error fetching ', error);
-            throw error;
-        })
+            .then(response => {
+                if(response.data){
+                    isUsername = true;
+                    usernameResult.textContent = '';
+                }else{
+                    isUsername  = false;
+                    usernameResult.style.color = '#ff0000';
+                    usernameResult.textContent = '이미 등록된 아이디입니다.'
+                }
+            })
     }else{
-        resultSpan.textContent = "아이디를 다시 확인해주세요";
-    }  
+        isUsername = false
+        usernameResult.style.color = '#ff0000';
+        usernameResult.textContent = '아이디를 다시 입력해주세요'
+    }
 }
 
 function checkUsernameRegex(username){
-    var englishRegex = /^[A-Za-z]+$/;
-    if(username.length <= 4)
-        return false;
-
-    if(englishRegex.test(username)){
-        return false;
-    }else{
-        return true
-    }
-}
-
-function checkPasswordRegex(){
-    var passwordResultSpan = document.getElementById('account_password_result');
-    var passwordInput = document.getElementById('account_password');
-    var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{5,}$/;
-    passwordRegexState = passwordRegex.test(passwordInput.value);
-    
-    confirmState = false
-    if(passwordRegexState){
-        passwordRegexState = true;
-        passwordResultSpan.textContent = '';
-    }else{
-        passwordRegexState = false;
-        passwordResultSpan.textContent = '비밀번호 형식을 다시 확인해주세요';
-        passwordResultSpan.style.color = 'red';
-    }
-}
-
-function checkPassword(){
-    var password = document.getElementById("account_password").value;
-    var confirm = document.getElementById("account_confirm").value;
-    var resultTag = document.getElementById("account_password_result")
-
-    if(password == confirm && passwordRegexState){
-        confirmState = true
-        resultTag.textContent = "";
-    }else{
-        confirmState = false
-        resultTag.textContent = "비밀번호를 다시 확인해주세요";
-    }   
+    const regex = /^[a-zA-Z0-9]{5,}$/;
+    return regex.test(username);
 }
 
 /**
- * 한글 입력 잘 했는지 확인
+ * Password 처리
  */
-function checkKoreanRegex(){
-    var nameInput = document.getElementById('account_name');
-    var nameSpan = document.getElementById('account_name_check');
-    var koreanPattern = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/
-    var testResult = koreanPattern.test(nameInput.value);
-    if(!testResult){
-        nameSpan.textContent = "이름을 다시 입력해주세요"
-        nameSpan.style.color = 'red'
-        nameState = false;
+function passwordRegex(event){
+    const regex = /^[A-Za-z0-9!@#$%^&*()_+={}\[\]|;:'",.<>?/-]{5,}$/;
+    const result = document.getElementById('account_password_result');
+    if(regex.test(event.target.value)){
+        //성공했다면
+        globalPassword = event.target.value;
+        result.textContent = '';
     }else{
-        nameState = true;
+        isPassword = false;
+        result.style.color = '#ff0000';
+        result.textContent = '비밀번호를 다시 입력해주세요'
     }
 }
 
-function checkTelRegex(telInput){
-    console.log(telInput.value);
-    var resultSpan = document.getElementById('account_tel_result')
-    var phonePattern = /^\d{11}$/;
-    if(phonePattern.test(telInput.value)){
-        telState = true;
-        resultSpan.textContent = "";
+function checkPassword(event){
+    const confirmPassword = event.target.value;
+    const result = document.getElementById('account_password_result');
+    if(confirmPassword === globalPassword){
+        //비밀번호가 서로 같다면
+        result.textContent = '';
+        isPassword = true;
     }else{
-        telState=false;
-        resultSpan.textContent = "전화번호를 다시 입력해주세요"
+        isPassword = false;
+        result.style.color = '#ff0000';
+        result.textContent = '비밀번호가 서로 일치하지 않습니다'
     }
 }
 
-function selectCampus(selectElement){
-    console.log(`selected Campus: ${selectElement.value}`);
+/**
+ * name처리
+ */
+function nameCheck(event){
+    const name = event.target.value;
+    const result = document.getElementById('account_name_result')
+
+    const regex = /^[가-힣]{2,}$/;
+
+    if(regex.test(name)){
+        isName = true;
+        result.textContent = '';
+    }else{
+        isName = false;
+        result.style.color = '#ff0000';
+        result.textContent = '이름을 다시 입력해주세요';
+    }
 }
 
-function selectClass(selectElement){
-    console.log(`selected Class: ${selectElement.value}`);
+/**
+ * 생년월일 처리
+ */
+function birthCheck(event){
+    const birth = event.target.value;
+    const result = document.getElementById('account_birth_result');
+    console.log(birth);
 }

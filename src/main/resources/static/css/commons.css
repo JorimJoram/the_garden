@@ -76,10 +76,14 @@
 
 .garden_input{
     width:100%;
-    border: 1px solid #000000;
-    border-radius: 5px;
+    border: 1px solid #D9D9D9;
+    border-radius: 4px;
 
     padding:2vw;
     font-size:1em;
 }
 
+.garden_input:focus{
+    background-color: #FAFAFA;
+    outline: 2px solid #D9D9D9;
+}

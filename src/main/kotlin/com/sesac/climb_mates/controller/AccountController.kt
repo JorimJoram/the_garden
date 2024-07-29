@@ -19,6 +19,12 @@ class AccountController(
         return "account/account_seq/account_1"
     }
 
+    @GetMapping("/account/main")
+    fun createAccountMain(model: Model): String {
+        model.addAttribute("head_title", "회원가입")
+        return "account/account"
+    }
+
     @GetMapping("/account/{num}")
     fun createAccountSeq(@PathVariable("num") num:Int, model: Model): String {
         model.addAttribute("head_title", "회원가입 $num")

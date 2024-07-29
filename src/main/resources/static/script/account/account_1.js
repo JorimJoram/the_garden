@@ -3,20 +3,20 @@ var isAccountInfo = false;
 
 function selectPersonalInfo(){
     var personalInfoCheck = document.getElementById('personal_info');
-    isPersonalInfo = personalInfoCheck.checked ? true : false;
+    isPersonalInfo = !!personalInfoCheck.checked;
 
     checkState();
 }
 
 function selectAccountInfo(){
     var accountInfoCheck = document.getElementById('account_info');
-    isAccountInfo = accountInfoCheck.checked ? true : false;
+    isAccountInfo = !!accountInfoCheck.checked;
 
     checkState()
 }
 
 function checkState(){
     if(isPersonalInfo && isAccountInfo){
-        window.location.href = "/account/2";
+        window.location.href = "/account/main";
     }
 }
