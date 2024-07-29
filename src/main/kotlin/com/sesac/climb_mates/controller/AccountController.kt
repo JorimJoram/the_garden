@@ -15,6 +15,7 @@ class AccountController(
 ) {
     @GetMapping("/account")
     fun createAccount(model:Model): String {
+        model.addAttribute("head_title", "회원가입 약관")
         return "account/account_seq/account_1"
     }
 
