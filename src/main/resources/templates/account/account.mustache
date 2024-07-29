@@ -4,6 +4,7 @@
     {{>layout/header}}
     <link rel="stylesheet" href="/css/account.css">
     <script src="/script/accountConfig.js"></script>
+    <script src="/script/smsConfig.js"></script>
     <title>{{head_title}}</title>
 </head>
 <body>
@@ -13,6 +14,13 @@
         {{>account/account_layout/password}}
         {{>account/account_layout/name}}
         {{>account/account_layout/birth}}
+        {{>account/account_layout/gender}}
+        {{>account/account_layout/education}}
+        {{>account/account_layout/email}}
+
+        <div style="display:flex; justify-content: center;align-items:center;">
+            <button class="garden_button" id="account_create_button">계정생성</button>
+        </div>
     </div>
 </body>
 </html>

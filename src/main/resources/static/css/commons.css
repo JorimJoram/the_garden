@@ -87,3 +87,13 @@
     background-color: #FAFAFA;
     outline: 2px solid #D9D9D9;
 }
+
+.garden_button{
+    background-color:#127C74;
+    color: #ffffff;
+
+    border:none;
+    border-radius: 20px;
+
+    box-shadow: none;
+}

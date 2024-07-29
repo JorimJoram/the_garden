@@ -44,3 +44,8 @@
 .account_item_container{
     margin:1vh;
 }
+#account_create_button{
+    margin: 0 auto;
+    height:3vh;
+    width:100%;
+}

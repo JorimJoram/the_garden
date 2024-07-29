@@ -1,5 +1,7 @@
 var emailCode = "";
 var authState = false
+var timeout = false
+var requestId;
 /**
  * 버튼을 막 누르게 되면 제가 가진 자원을 남용하게 됩니다
  * 따라서 버튼을 클릭한 후에 3분 정도 시간을 두게 만드는 법을 추천합니다
@@ -7,24 +9,18 @@ var authState = false
 function sendEvent(){
     var emailInput = document.getElementById('account_email');
     var resultSpan = document.getElementById('account_email_result');
-    var sendButton = document.getElementById('account_email_sendButton');
-    var checkButton = document.getElementById('account_email_codeCheck');
     var email = emailInput.value
     if(checkMailRegex(email)){
         alert('인증번호가 발송되었습니다.')
-        sendButton.disabled = true;
-        checkButton.disabled = false;
-        showValidTime(resultSpan, sendButton, checkButton);
+        showValidTime(resultSpan);
         sendMail(email);
     }else{
         resultSpan.textContent = "이메일 형식을 다시 확인해주세요";
         resultSpan.style.color = 'red';
-        sendButton.disabled = false;
-        checkButton.disabled = true;
     }
 }
 
-function showValidTime(resultSpan, sendButton, checkButton){
+function showValidTime(resultSpan){
     var timeSpan = document.getElementById('account_email_time');
     var time = 180; //seconds
     timeout = false;
@@ -47,9 +43,7 @@ function showValidTime(resultSpan, sendButton, checkButton){
 
         if(currentTime >= endTime){
             timeout = true;
-            sendButton.disabled = true;
-            checkButton.disabled = false;
-            resultSpan.textContent = '시간이 초과되었습니다.';
+            resultSpan.textContent = ' 시간이 초과되었습니다.';
             resultSpan.style.color = 'red';
         }
 
@@ -63,19 +57,22 @@ function stopTimer(){
     cancelAnimationFrame(requestId);
 }
 
+
+
 /**
  * 인증번호 확인
  */
-function checkEmailCode(){
+function checkEmailCode(event){
     console.log(`code: ${emailCode}`)
     var authCodeInput = document.getElementById('account_email_code');
-    var authCodeResultSpan = document.getElementById('account_emailAuth_result')
+    var authCodeResultSpan = document.getElementById('account_email_result')
     var authCode = authCodeInput.value;
-    if(authCode == emailCode){
+    console.log(`authCode: ${authCode}`)
+    if(authCode === emailCode){
         stopTimer();
         authState = true;
         authCodeResultSpan.textContent = '확인되었습니다'
-        authCodeResultSpan.style.color = 'black'
+        authCodeResultSpan.style.color = '#127C74'
     }else{
         authCodeResultSpan.textContent = '인증번호를 다시 입력해주세요'
         authCodeResultSpan.style.color = 'red'

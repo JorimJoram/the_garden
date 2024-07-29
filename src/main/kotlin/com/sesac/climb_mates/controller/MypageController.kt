@@ -15,7 +15,7 @@ class MypageController(
     @GetMapping("/mypage/main")
     fun myPage(@AuthenticationPrincipal user: User, model: Model): String {
         val userData = accountService.getAccountByUsername(user.username).orElseGet {
-            Account(id=-1L,username="", password="", nickname = "", email = "", tel = "", birth = "", gender = -1, campus = "", education = "", name="")
+            Account(id=-1L,username="", password="", nickname = "", email = "", birth = "", gender = -1, campus = "", education = "", name="")
         }
         model.addAttribute("userData", userData)
 

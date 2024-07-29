@@ -20,8 +20,6 @@ data class Account(
     var nickname:String,
     @Column(name="email", nullable = false, unique = true)
     var email:String,
-    @Column(name="tel", nullable = false)
-    val tel:String,
 
     @Column(name="birth", nullable = false)
     val birth:String,
