@@ -5,6 +5,8 @@ var globalPassword = '';
 var isName = false;
 var isBirth = false;
 var isGender = false;
+var isEmail = false;
+var isCampus = false;
 
 /**
  * Username 처리
@@ -110,15 +112,7 @@ function birthCheck(event){
  */
 function genderCheck(event){
     const gender = event.target.value;
-    const result = document.getElementById('account_gender_result')
-    if(gender !== 0){
-        isGender = true;
-        result.textContent = '';
-    }else{
-        isGender = false;
-        result.style.color = '#ff0000';
-        result.textContent = '성별을 선택해주세요';
-    }
+    isGender = gender !== 0;
 }
 /**
  * 분반처리
@@ -178,4 +172,56 @@ function emailCheck(event){
         result.style.color = '#ff0000';
         result.textContent = "이메일 형식을 다시 확인해주세요"
     }
+}
+
+function checkStatus(){
+    var status = {
+        username : isUsername,
+        password: isPassword,
+        name : isName,
+        birth: isBirth,
+        gender: isGender,
+        campus: isCampus,
+        email: authState
+    }
+    var blank = '';
+
+    for(var key in status){
+        if(status[key] === false){
+            blank = key;
+            console.log(`${key} is false`);
+        }
+    }
+    return blank;
+}
+
+function sendData(){
+    var blank = checkStatus()
+    if(blank!==''){
+        alert(`${blank} 확인부탁드립니다.`);
+        return ;
+    }
+    var data = {
+        username: document.getElementById('account_username').value,
+        password: document.getElementById('account_password').value,
+        name: document.getElementById('account_name').value,
+        nickname: document.getElementById('account_username').value,
+        email: document.getElementById('account_email').value,
+        birth: document.getElementById('account_birth').value,
+        gender: document.getElementById('account_gender').value,
+        campus: document.getElementById('account_select_campus').value,
+        education: document.getElementById('account_select_class').value
+
+    }
+    axios.post(`/account/api/create`, data)
+        .then(response => {
+            if(response.data.id > 0){
+                alert('가입이 완료되었습니다');
+                window.location.href="/login";
+            }else{
+                alert('가입 간에 문제가 발생했습니다\n다시 시도해주세요');
+            }
+        }).catch(error => {
+            console.error(error)
+    });
 }

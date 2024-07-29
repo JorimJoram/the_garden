@@ -30,8 +30,8 @@ class CampusApplicationTest(
         for(i:Int in seongbukClassList.indices){
             println(campusService.createCampusClass(
                 CampusClass(
-                    campus = campusService.getCampusByName("성동캠퍼스").get(),
-                    name = seongdongClassList[i],
+                    campus = campusService.getCampusByName("성북캠퍼스").get(),
+                    name = seongbukClassList[i],
                 )
             ))
         }

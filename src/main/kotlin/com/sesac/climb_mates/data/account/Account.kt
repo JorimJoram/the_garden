@@ -31,6 +31,9 @@ data class Account(
     @Column(name="education", nullable = true)
     val education:String,
 
+    @Column(name="tel", nullable = true)
+    val tel:String? = null,
+
     @Column(name = "role", nullable = false)
     var role: String? = "USER", //USER / ADMIN으로 구분
     @Column(name="image_path", nullable = true)
