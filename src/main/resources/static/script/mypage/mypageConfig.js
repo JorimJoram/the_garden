@@ -20,7 +20,7 @@ function fetchImage(){
     .then(response => {
         if(response.data){
             alert('프로필 이미지가 변경되었습니다');
-            window.location.reload;
+            window.location.reload();
         }
     })
     .catch(error => {

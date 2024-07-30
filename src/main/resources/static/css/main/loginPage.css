@@ -6,7 +6,7 @@
 #login_loginButton{
     width:100%;
 
-    background-color: rgb(67,75,172);
+    background-color: #127C74;
     border: none;
     border-radius: 5px;
     padding:2vw;
@@ -20,7 +20,7 @@
 #login_to_account{
     text-decoration: none;
     
-    color: rgb(67,75,172);
+    color: #124C74;
     font-weight: bold;
     font-size:1em;
 }

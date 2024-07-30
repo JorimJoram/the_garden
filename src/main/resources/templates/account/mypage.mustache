@@ -3,10 +3,10 @@
 <head>
     {{>layout/header}}
     <script src="/script/mypage/mypageConfig.js"></script>
-    <link rel="stylesheet" href="/css/commons_image.css">
     <title>마이페이지</title>
 </head>
 <body>
+    {{>account/mypage_layout/head_bar}}
     <div class="garden_container">
         {{#userData}}
             {{>account/mypage_layout/image}}
