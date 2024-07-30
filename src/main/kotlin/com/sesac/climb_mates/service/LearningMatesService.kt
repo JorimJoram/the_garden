@@ -62,4 +62,5 @@ class LearningMatesService(
     fun getAllList(): MutableList<LearningMates> {
         return learningMatesRepository.findAll()
     }
+
 }

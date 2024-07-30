@@ -4,7 +4,6 @@ import com.opencsv.CSVReader
 import com.sesac.climb_mates.data.store.Menu
 import com.sesac.climb_mates.data.store.Store
 import com.sesac.climb_mates.data.store.img.StoreImage
-import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.StoreService
 import org.json.JSONObject
 import org.junit.jupiter.api.Test
@@ -34,6 +33,20 @@ class CsvReadTest(
                 it[0]
             )
         }
+//        val storeList = storeSet.toList()
+//        storeList.forEach {
+//            val loc = getGeolocation(it[1])!!
+//            println(storeService.createStore(Store(
+//                name=it[0],
+//                location=it[1],
+//                lat=loc.first,
+//                lon=loc.second,
+//                attr=it[5],
+//                style = it[2],
+//                isZero = it[3].toInt(),
+//                isSupport = it[4].toInt()
+//            )))
+//        }
         val locationList = storeSet.toList().sortedWith(compareBy(
             { it.toCharArray().firstOrNull()?.let { c -> if (c in '가'..'힣') 0 else 1 } ?: 2 }, // 한글 먼저
             { it } // 그 다음으로 영어 순

@@ -6,14 +6,14 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
     </div>
-    <div class="carousel-inner" style="width:100%; height:60vw;">
+    <div class="carousel-inner" style="width:100vw; height:100vw;">
         <div class="carousel-item active">
             {{#mainImage}}
                 <img src="{{path}}" class="d-block w-100" alt="{{store.name}}">
             {{/mainImage}}
         </div>
         {{#storeImage}}
-            <div class="carousel-item" style="max-height:60vw; overflow:hidden">
+            <div class="carousel-item" style="max-height:100vw; overflow:hidden">
                 <img src="{{path}}" class="d-block w-100" alt="{{store.name}}">
             </div>
         {{/storeImage}}

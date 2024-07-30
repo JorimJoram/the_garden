@@ -1,6 +1,6 @@
 <div id="store_review_title_container" style="margin-top:3vh;">
     <span>댓글</span>
-    <button onclick="getReviewList()" style="width:8vw; height:8vw; background-color:#fff; border: 1px solid #000; border-radius:50%;">
+    <button onclick="getReviewList()" style="width:8vw; height:8vw; background-color:#fff;">
         <img style="width:5vw; height:5vw;" src="/img/default/refresh.png" alt="">
     </button>
 </div>
@@ -8,11 +8,11 @@
     {{^session_user}}
         <div>
             <label for="star">별점: </label><select name="star" id="store_review_star" disabled>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5" selected>5</option>
+            <option value="1" style="color:#127C74">★</option>
+            <option value="2" style="color:#127C74">★★</option>
+            <option value="3" style="color:#127C74">★★★</option>
+            <option value="4" style="color:#127C74">★★★★</option>
+            <option value="5" selected style="color:#127C74">★★★★★</option>
         </select>
         </div>
         <div id="store_review_text_container">
@@ -22,13 +22,14 @@
     {{/session_user}}
     {{#session_user}}
         <div>
-            <label for="star">별점: </label><select name="star" id="store_review_star">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5" selected>5</option>
-            </select>
+            <label for="star" style="margin-right:2vw;">별점:</label>
+            <select name="star" id="store_review_star">
+                <option value="1" style="color:#127C74">★</option>
+                <option value="2" style="color:#127C74">★★</option>
+                <option value="3" style="color:#127C74">★★★</option>
+                <option value="4" style="color:#127C74">★★★★</option>
+                <option value="5" selected style="color:#127C74">★★★★★</option>
+                </select>
         </div>
         <div id="store_review_text_container">
             <textarea name="content" id="store_review_content"></textarea>

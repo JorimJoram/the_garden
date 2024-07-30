@@ -30,6 +30,13 @@ data class LearningMates(
     @Column(name="created_date", nullable = false)
     val createdDate: LocalDateTime = LocalDateTime.now()
 ){
+
+    var applicantComment: String = ""
+
     @Transient
     var formattedDate:String? = null;
+    @Transient
+    var applyList:List<LearningApplicant>? = null
+    @Transient
+    var applyCnt:Int? = 0
 }

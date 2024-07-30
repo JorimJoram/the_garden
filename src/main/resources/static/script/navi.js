@@ -22,6 +22,8 @@ function toBack(){
     const currentPath = window.location.pathname;
     if(currentPath.startsWith('/grouping/detail')){
         window.location.href = '/grouping/list';
+    }else if(currentPath.startsWith("/learning/detail")){
+        window.location.href="/learning/list"
     }else{
         window.history.back()
     }
