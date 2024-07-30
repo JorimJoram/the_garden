@@ -100,6 +100,7 @@
 }
 
 .head_title{
+    max-width: 12ch;
     white-space: nowrap; /* 한 줄로 표시 */
     overflow: hidden; /* 넘치는 부분 숨기기 */
     text-overflow: ellipsis; /* 말줄임표(...) 표시 */
