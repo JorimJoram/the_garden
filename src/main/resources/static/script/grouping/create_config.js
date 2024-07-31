@@ -22,6 +22,10 @@ function getStoreListByStyle(style){
 }
 
 function sendData(){
+    if(document.getElementById('grouping_create_time').value === ''||document.getElementById('grouping_create_title').value.trim() === '' || document.getElementById('grouping_create_content').value.trim() === ''){
+        alert('내용을 채워주세요');
+        return ;
+    }
     var data = {
         title: document.getElementById('grouping_create_title').value,
         content: document.getElementById('grouping_create_content').value,

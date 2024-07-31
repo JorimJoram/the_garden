@@ -92,10 +92,9 @@ function setStoreReview(){
             userNameContainer.className = 'user-name-container';
 
             const userName = document.createElement('h3');
-            userName.textContent = review.account.username;
+            userName.textContent = review.account.nickname;
 
             const deleteSpan = document.createElement('span');
-            console.log(`who am i: ${whoAmI} | answerUsername:${review.account.username}`)
             if(whoAmI.textContent == review.account.username){
                 deleteSpan.className = 'delete';
                 deleteSpan.textContent = '[삭제]';

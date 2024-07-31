@@ -200,7 +200,7 @@ async function markDefaultStore(map) {
       '<div class="iw_inner" style="border-radius:10px;">',
         '<div style="padding:3vw;">',
         `   <div style="display:flex; align-items:center;"><h3>${item.name}</h3><span style="margin-left:1vw;font-size:1em; color: #595959;">${item.style}</span></div>`,
-        `   <p>${item.location}</p>`,
+        // `   <p>${item.location}</p>`,
         `   ${switchIsZero(item.isZero)}`,
         `   <br><a href="/store/info/${item.id}" targetx="_blank">자세히 보기</a>`,
         '   </p>',
@@ -349,14 +349,13 @@ async function markStoreByStyle(storeList) {
       '<div class="iw_inner" style="border-radius:10px;">',
         '<div style="padding:3vw;">',
         `   <div style="display:flex; align-items:center;"><h3>${item.name}</h3><span style="margin-left:1vw;font-size:1em; color: #595959;">${item.style}</span></div>`,
-        `   <p>${item.location}</p>`,
         `   ${switchIsZero(item.isZero)}`,
         `   <br><a href="/store/info/${item.id}" targetx="_blank">자세히 보기</a>`,
         '   </p>',
         '</div>',
       '</div>'
     ].join('');
-    
+    // `   <p>${item.location}</p>`,
     let infowindow = new naver.maps.InfoWindow({
       content: contentString
     });

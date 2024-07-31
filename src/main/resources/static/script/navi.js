@@ -18,6 +18,10 @@ function toLearning(){
     window.location.href="/learning/list";
 }
 
+function toLogout(){
+    window.location.href="/logout";
+}
+
 function toBack(){
     const currentPath = window.location.pathname;
     if(currentPath.startsWith('/grouping/detail')){

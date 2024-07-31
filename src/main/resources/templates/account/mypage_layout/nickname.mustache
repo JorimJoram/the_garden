@@ -1,5 +1,9 @@
-<div id="nickname_container">
+<div id="nickname_container" style="margin-top:3vh;">
+    <p>닉네임(활동명) 변경</p>
     <input type="text" id="mypage_nickname" class="garden_input" value="{{nickname}}">
-    <button onclick="changeNickname()">수정</button>
     <span id="mypage_nickname_result"></span>
+
+    <div style="display: flex;justify-content: center;align-items: center; margin-top:2vh;">
+        <button onclick="changeNickname()" class="garden_button" style="width:40vw;">닉네임 변경</button>
+    </div>
 </div>

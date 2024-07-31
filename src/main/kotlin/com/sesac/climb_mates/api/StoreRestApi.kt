@@ -17,6 +17,10 @@ class StoreRestApi(
     fun getListsByStyle(@RequestParam(name = "style", defaultValue = "default")style:String): List<Store> {
         return storeService.getStoreByStyle(style)
     }
+    @GetMapping("/info")
+    fun getStoreInfoByName(@RequestParam("name")name:String): Store {
+        return storeService.getStoreByName(name)
+    }
 
     @GetMapping("/review/list")
     fun getReviewList(@RequestParam(name="store_id")storeId:Long): List<StoreReview> {

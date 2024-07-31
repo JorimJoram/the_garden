@@ -170,4 +170,9 @@ class StoreApplicationTest(
             )
         )
     }
+
+    @Test
+    fun getStoreByName(){
+        println(storeService.getStoreByName("샤브로21"))
+    }
 }

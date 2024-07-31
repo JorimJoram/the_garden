@@ -8,8 +8,6 @@ window.onload = function(){
     whoAmI = document.getElementById('grouping_my_username');
 }
 
-
-
 function getGroupId(){
     const url = window.location.href;
     const parts = url.split('/');
@@ -64,7 +62,7 @@ function setGroupingReview(){
             userNameContainer.className = 'user-name-container';
 
             const userName = document.createElement('h3');
-            userName.textContent = review.account.username;
+            userName.textContent = review.account.nickname;
 
             const deleteSpan = document.createElement('span');
             console.log(`who am i: ${whoAmI} | answerUsername:${review.account.username}`)
@@ -208,4 +206,17 @@ function deleteGrouping(groupId){
             console.error(error);
         })
     }
+}
+
+function toStore(){
+    var store = document.getElementById('grouping_store_name').textContent;
+    axios.get(`/store/api/info?name=${store}`)
+    .then(response => {
+        console.log(response.data)
+        if(response.data.id > 0){
+            window.location.href=`/store/info/${response.data.id}`
+        }
+    }).catch(error => {
+        console.error(error)
+    })
 }

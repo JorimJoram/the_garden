@@ -1,9 +1,9 @@
 <div id="image_container">
-    <div style="width:25vw; height:25vw; display:block;">
-        <img id="preview_profile" class="profile_image" src="{{imagePath}}" alt="Image Preview" style="width:25vw; height:25vw; border-radius:50%;">
+    <div class="image-wrapper">
+        <img id="preview_profile" class="profile_image" src="{{imagePath}}" alt="Image Preview" style="width:25vw; height:25vw;">
     </div>
     <div id="profile_container">
         <input id="mypage_image" type="file" onchange="readImage(this)">
+        <button type="button" onclick="fetchImage()" class="garden_button" style="width:40vw;">프로필 이미지 변경</button>
     </div>
-    <button type="button" onclick="fetchImage()">프로필 이미지 변경</button>
 </div>

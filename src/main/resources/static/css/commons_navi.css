@@ -38,3 +38,11 @@
     width:3w;
     height:3vw;
 }
+.navi_right_button{
+    margin-left:auto;
+    margin-right:3vw;
+    background-color:#777;
+    border:1px solid #AAA;
+    border-radius:5px;
+    color:white;
+}

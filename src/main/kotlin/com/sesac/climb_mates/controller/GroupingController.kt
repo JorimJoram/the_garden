@@ -43,7 +43,7 @@ class GroupingController(
 
             // groupingList를 순회하며, 각 항목의 applicantList가 applySet에 포함되어 있는지 확인합니다.
             for (group in groupingList) {
-                group.ment=if(group.applicantList.isNotEmpty()){ "${group.applicantList.random().account.username}님 포함 ${group.applicantList.size}명 참가예정" }else{ "" }
+                group.ment=if(group.applicantList.isNotEmpty()){ "${group.applicantList.random().account.nickname}님 포함 ${group.applicantList.size}명 참가예정" }else{ "" }
                 group.isApply = group.applicantList.any { it in applySet }
             }
         }
