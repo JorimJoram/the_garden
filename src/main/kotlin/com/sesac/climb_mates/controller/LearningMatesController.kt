@@ -20,20 +20,21 @@ class LearningMatesController(
     }
     @GetMapping("/list")
     fun listPage(model: Model): String {
-        val learningList = learningMatesService.getAllList()
-        var ments = ""
-        learningList.forEach{
-            it.applyList = learningMatesService.getApplicantListById(it.id!!)
-            it.applyCnt = it.applyList!!.size
-            it.formattedDate = formatLocalDateTimeToSeconds(it.createdDate)
-            it.applicantComment = when(it.applyCnt){
-                0 -> "러닝 메이트가 필요해요!"
-                else -> "${it.applyCnt}명이 참여할 예정이에요!"
-            }
-        }
-        model.addAttribute("learningMates", learningList)
-
-        return "learning/list"
+//        val learningList = learningMatesService.getAllList()
+//        var ments = ""
+//        learningList.forEach{
+//            it.applyList = learningMatesService.getApplicantListById(it.id!!)
+//            it.applyCnt = it.applyList!!.size
+//            it.formattedDate = formatLocalDateTimeToSeconds(it.createdDate)
+//            it.applicantComment = when(it.applyCnt){
+//                0 -> "러닝 메이트가 필요해요!"
+//                else -> "${it.applyCnt}명이 참여할 예정이에요!"
+//            }
+//        }
+//        model.addAttribute("learningMates", learningList)
+//
+//        return "learning/list"
+        return "learning/construct"
     }
     @GetMapping("/detail/{id}")
     fun detailPage(@PathVariable("id")id:Long, model: Model): String {

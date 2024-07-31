@@ -63,6 +63,12 @@ class GroupingRestApi(
     fun createGroupingApplicant(@PathVariable(name="groupId")groupId: Long, @AuthenticationPrincipal user: User): GroupingApplicant {
         return groupingService.createGroupingApplicant(groupId, user.username);
     }
+
+    @DeleteMapping("/del/{groupId}")
+    fun deleteGrouping(@PathVariable(name="groupId")groupId: Long, @AuthenticationPrincipal user: User){
+        return groupingService.deleteGrouping(groupId, user.username)
+    }
+
     @DeleteMapping("/applicant/del/{groupId}")
     fun deleteGroupingApplicant(@PathVariable(name="groupId")groupId: Long, @AuthenticationPrincipal user: User){
         return groupingService.deleteGroupingApplicant(groupId, user.username)

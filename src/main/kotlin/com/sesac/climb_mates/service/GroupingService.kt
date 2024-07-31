@@ -101,4 +101,11 @@ class GroupingService(
             )
         )
     }
+
+    fun deleteGrouping(groupId: Long, username: String) {
+        val grouping = groupingRepository.findById(groupId).get()
+        if(grouping.account.username == username){
+
+        }
+    }
 }
