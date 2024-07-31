@@ -39,41 +39,40 @@ function setApplicants(){
 function setGroupingReview(){
     axios.get(`/grouping/api/review/list?groupId=${getGroupId()}`)
     .then(response => {
-        var itemList = response.data;
-        const reviewListContainer = document.getElementById('review_data_table')
+        const reviews = response.data;
+        const reviewContainer = document.getElementById('review-container');
 
-        reviewListContainer.innerHTML = '';
-        itemList.forEach(item => {
-            const rowElement = document.createElement('tr');
-            
-            const profileCell = document.createElement('td')
-            const profile = document.createElement('img')
-            profile.src = item.account.imagePath;
-            profile.className = "detail_applicant_img"
-            profileCell.appendChild(profile);
-            rowElement.appendChild(profileCell)
-            
-            const contentCell = document.createElement('td');
-            contentCell.textContent = item.content;
-            rowElement.appendChild(contentCell);
+        reviews.forEach(review => {
+            console.log(review);
+            const reviewElement = document.createElement('div');
+            reviewElement.className = 'review';
 
-            reviewListContainer.appendChild(rowElement);
+            const img = document.createElement('img');
+            img.src = review.account.imagePath;
+            img.alt = review.account.username;
 
-            const underRowElement = document.createElement('tr')
-            
-            const profileNameCell = document.createElement('td')
-            profileNameCell.textContent = item.account.username;
-            underRowElement.appendChild(profileNameCell)
+            const content = document.createElement('div');
+            content.className = 'content';
 
-            const dateCell = document.createElement('td')
-            dateCell.textContent = formattedDate(item.createdDate);
-            underRowElement.appendChild(dateCell);
+            const userName = document.createElement('h3');
+            userName.textContent = review.account.username;
 
-            rowElement.addEventListener('click', (event) => removeComment(event, item.id));
+            const reviewText = document.createElement('p');
+            reviewText.textContent = review.content;
 
-            reviewListContainer.append(underRowElement);
-        });
-            
+            const date = document.createElement('p');
+            date.className = 'date';
+            date.textContent = new Date(review.createdDate).toLocaleDateString();
+
+            content.appendChild(userName);
+            content.appendChild(reviewText);
+            content.appendChild(date);
+
+            reviewElement.appendChild(img);
+            reviewElement.appendChild(content);
+
+            reviewContainer.appendChild(reviewElement);
+            });
         }).catch(error => {
             console.error('Error fetching ', error)
         })
@@ -114,14 +113,14 @@ function sendReview(){
 
 function setApplyButton(){
     var applyButton = document.getElementById("grouping_detail_applyButton")
-    applyButton.style.backgroundColor = "#127C74"
+    applyButton.style.backgroundColor = "rgb(18,124,116)"
     applyButton.style.color="#ffffff";
     applyButton.textContent = '참여하기';
     axios.get(`/grouping/api/apply-cert?groupId=${getGroupId()}`)
     .then(response => {
         if(response.data == false){
             applyButton.style.backgroundColor = "#ffffff"
-            applyButton.style.color = "#127C74"
+            applyButton.style.color = "rgb(18,124,116)"
             applyButton.textContent = '취소하기'
         }else{
 
@@ -147,7 +146,7 @@ function applicantButtonEvent(){
         .then(response => {
             if(response.data.id > 0){
                 applyButton.style.backgroundColor = "rgb(255,255,255)"//흰색
-                applyButton.style.color = "#127C74";
+                applyButton.style.color = "rgb(18,124,116)";
                 applyButton.textContent = '취소하기'
                 setApplicants()
             }

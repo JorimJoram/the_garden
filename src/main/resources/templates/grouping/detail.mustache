@@ -20,6 +20,11 @@
             <button id="grouping_detail_applyButton" onclick="applicantButtonEvent()" class="list_create_button content_create_button"></button>
         </div>
         {{/isMine}}
+        {{#isMine}}
+        <div class="list_create_button_container">
+            <button id="grouping_detail_applyButton" onclick="applicantButtonEvent()" class="list_create_button content_create_button" style="display:none;"></button>
+        </div>
+        {{/isMine}}
     </div>
 </body>
 </html>
