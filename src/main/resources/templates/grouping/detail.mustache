@@ -15,7 +15,11 @@
             {{>grouping/detail_fragment/applicant}}
             {{>grouping/detail_fragment/review}}
         {{/grouping}}
-        <button id="grouping_detail_applyButton" onclick="applicantButtonEvent()">test</button>
+        {{^isMine}}
+        <div class="list_create_button_container">
+            <button id="grouping_detail_applyButton" onclick="applicantButtonEvent()" class="list_create_button content_create_button"></button>
+        </div>
+        {{/isMine}}
     </div>
 </body>
 </html>

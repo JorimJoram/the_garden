@@ -106,11 +106,28 @@
     text-overflow: ellipsis; /* 말줄임표(...) 표시 */
 }
 
+.list_create_button_container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    width:100vw;
+}
 .list_create_button{
     margin-top:3vh;
+
+    height:4vh;
+    padding:3vw;
 
     display:flex;
     justify-content: center;
     align-items: center;
 
+}
+
+.content_create_button{
+    width:50vw;
+    border: 2px solid #127C74;
+    border-radius: 20px;
+    color:white;
 }

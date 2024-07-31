@@ -4,18 +4,6 @@ window.onload = function(){
     setGroupingReview()
 }
 
-function setApplyButton(){
-    var applyButton = document.getElementById("grouping_detail_applyButton")
-    applyButton.style.backgroundColor = "#0052A4"
-    axios.get(`/grouping/api/apply-cert?groupId=${getGroupId()}`)
-    .then(response => {
-        if(response.data == false)
-            applyButton.style.backgroundColor = "#00A84D"
-    }).catch(error => {
-        console.error('Error fetching ', error)
-    })
-}
-
 function getGroupId(){
     const url = window.location.href;
     const parts = url.split('/');
@@ -124,12 +112,31 @@ function sendReview(){
     })
 }
 
+function setApplyButton(){
+    var applyButton = document.getElementById("grouping_detail_applyButton")
+    applyButton.style.backgroundColor = "#127C74"
+    applyButton.style.color="#ffffff";
+    applyButton.textContent = '참여하기';
+    axios.get(`/grouping/api/apply-cert?groupId=${getGroupId()}`)
+    .then(response => {
+        if(response.data == false){
+            applyButton.style.backgroundColor = "#ffffff"
+            applyButton.style.color = "#127C74"
+            applyButton.textContent = '취소하기'
+        }else{
+
+        }
+    }).catch(error => {
+        console.error('Error fetching ', error)
+    })
+}
+
 function applicantButtonEvent(){
     var applyButton = document.getElementById('grouping_detail_applyButton');
     var color = window.getComputedStyle(applyButton).backgroundColor;
     console.log(color);
 
-    if(color == 'rgb(0, 168, 77)'){ //초록색 -> 이미 등록된 상황이라면
+    if(color == 'rgb(255, 255, 255)'){ //흰색 -> 이미 등록된 상황이라면
         applyButton.addEventListener("click", removeApplicant())
     }else{
         applyButton.addEventListener("click", createApplicant())
@@ -139,7 +146,9 @@ function applicantButtonEvent(){
         axios.post(`/grouping/api/applicant/create/${getGroupId()}`)
         .then(response => {
             if(response.data.id > 0){
-                applyButton.style.backgroundColor = "rgb(0, 168, 77)"//초록색
+                applyButton.style.backgroundColor = "rgb(255,255,255)"//흰색
+                applyButton.style.color = "#127C74";
+                applyButton.textContent = '취소하기'
                 setApplicants()
             }
         }).catch(error => {
@@ -150,7 +159,9 @@ function applicantButtonEvent(){
     function removeApplicant(){
         axios.delete(`/grouping/api/applicant/del/${getGroupId()}`)
         .then(response => {
-            applyButton.style.backgroundColor = "rgb(0, 82, 164)"//파란색
+            applyButton.style.backgroundColor = "rgb(18,124,116)"//파란색
+            applyButton.style.color = "#ffffff"
+            applyButton.textContent = '참여하기'
             setApplicants()
         }).catch(error => {
             console.error(error)

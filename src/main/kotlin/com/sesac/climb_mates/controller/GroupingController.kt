@@ -58,10 +58,12 @@ class GroupingController(
         val userSession = session.getAttribute("session_user")
         groupingDetail.formattedDate = getFormattedDate(groupingDetail.meetingDate)
         groupingDetail.isApply = !groupingService.isApplicant(id, accountService.getAccountByUsername(user.username).get())
+        val isMine = accountData.username == groupingDetail.account.username //true -> 내가 적은거임
 
         model.addAttribute("Account", accountData)
         model.addAttribute("grouping", groupingDetail)
         model.addAttribute("session_user", userSession)
+        model.addAttribute("isMine", isMine)
         return "grouping/detail"
     }
 

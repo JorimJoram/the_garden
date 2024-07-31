@@ -47,3 +47,6 @@ src/main/resources/application.properties
 ## ResourceConfig ##
 src/main/kotlin/com/sesac/climb_mates/config/ResourceConfig.kt
 ResourceConfig.kt
+
+src/main/resources/static/img
+src/main/resources/static/img/**
