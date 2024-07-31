@@ -2,7 +2,7 @@
     padding: 1vw;
     min-height:95vh;
     margin: 1vw 1vw 1vw 1vw;
-    padding-bottom:10vh;
+    padding-bottom:13vh;
 }
 
 #head_container{
@@ -104,4 +104,13 @@
     white-space: nowrap; /* 한 줄로 표시 */
     overflow: hidden; /* 넘치는 부분 숨기기 */
     text-overflow: ellipsis; /* 말줄임표(...) 표시 */
+}
+
+.list_create_button{
+    margin-top:3vh;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
 }
