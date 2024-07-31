@@ -38,5 +38,7 @@ data class Grouping(
     @Transient
     var applicantList:List<GroupingApplicant> = mutableListOf()
     @Transient
+    var ment = ""
+    @Transient
     var isApply = false
 }

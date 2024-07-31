@@ -69,19 +69,19 @@ class CsvReadTest(
     @Test
     fun setMenuList(){
         val menuList:MutableList<MutableList<String>> = mutableListOf()
-        readCSV("the_garden").forEach{
+        readCSV("sprout").forEach{
             menuList.add(
                 mutableListOf(it[0], it[4], it[5])
             )
         }
         menuList.forEach {
-            storeService.createMenu(
+            println(storeService.createMenu(
                 Menu(
                     store = storeService.getStoreByName(it[0]),
                     name = it[1],
                     price = it[2].toInt()
                 )
-            )
+            ))
         }
     }
 

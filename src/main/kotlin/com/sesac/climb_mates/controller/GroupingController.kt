@@ -34,7 +34,7 @@ class GroupingController(
             val applicantList = groupingService.getGroupingApplicantListByGroupingId(it.id!!)
             it.applicantList = applicantList
             it.formattedDate = getFormattedDate(it.meetingDate)
-
+            println(it.ment)
         }
         //내가 신청했던 걸 담은 리스트와 담지 않았던 리스트를 비교해보자 -> GPT에게 도움 받은 버전
         if (groupingList.isNotEmpty()) {
@@ -43,6 +43,7 @@ class GroupingController(
 
             // groupingList를 순회하며, 각 항목의 applicantList가 applySet에 포함되어 있는지 확인합니다.
             for (group in groupingList) {
+                group.ment=if(group.applicantList.isNotEmpty()){ "${group.applicantList.random().account.username}님 포함 ${group.applicantList.size}명 참가예정" }else{ "" }
                 group.isApply = group.applicantList.any { it in applySet }
             }
         }
@@ -64,6 +65,7 @@ class GroupingController(
         model.addAttribute("grouping", groupingDetail)
         model.addAttribute("session_user", userSession)
         model.addAttribute("isMine", isMine)
+        model.addAttribute("my_username", user.username)
         return "grouping/detail"
     }
 
@@ -75,7 +77,7 @@ class GroupingController(
     }
 
     private fun getFormattedDate(date: LocalDateTime): String {
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
         return date.format(formatter)
     }
 

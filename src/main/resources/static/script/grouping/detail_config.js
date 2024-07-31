@@ -1,8 +1,14 @@
+var whoAmI = ''
+
 window.onload = function(){
     setApplyButton()
     setApplicants()
     setGroupingReview()
+
+    whoAmI = document.getElementById('grouping_my_username');
 }
+
+
 
 function getGroupId(){
     const url = window.location.href;
@@ -41,7 +47,7 @@ function setGroupingReview(){
     .then(response => {
         const reviews = response.data;
         const reviewContainer = document.getElementById('review-container');
-
+        reviewContainer.innerHTML = '';
         reviews.forEach(review => {
             console.log(review);
             const reviewElement = document.createElement('div');
@@ -54,8 +60,23 @@ function setGroupingReview(){
             const content = document.createElement('div');
             content.className = 'content';
 
+            const userNameContainer = document.createElement('div');
+            userNameContainer.className = 'user-name-container';
+
             const userName = document.createElement('h3');
             userName.textContent = review.account.username;
+
+            const deleteSpan = document.createElement('span');
+            console.log(`who am i: ${whoAmI} | answerUsername:${review.account.username}`)
+            if(whoAmI.textContent == review.account.username){
+                deleteSpan.className = 'delete';
+                deleteSpan.textContent = '[삭제]';
+                deleteSpan.style.cursor = 'pointer';
+                deleteSpan.addEventListener('click', () => deleteReview(review.id))
+            }            
+
+            userNameContainer.appendChild(userName);
+            userNameContainer.appendChild(deleteSpan);
 
             const reviewText = document.createElement('p');
             reviewText.textContent = review.content;
@@ -64,7 +85,7 @@ function setGroupingReview(){
             date.className = 'date';
             date.textContent = new Date(review.createdDate).toLocaleDateString();
 
-            content.appendChild(userName);
+            content.appendChild(userNameContainer);
             content.appendChild(reviewText);
             content.appendChild(date);
 
@@ -78,8 +99,17 @@ function setGroupingReview(){
         })
 }
 
-function removeCommnet(event, id){
-    console.log(`clicked id : ${id}`);
+function deleteReview(id){
+    
+    if(confirm('댓글을 삭제하시겠습니까?')){
+        axios.delete(`/grouping/api/review/del/${id}`)
+        .then(response => {
+            console.log(`response.data: ${response.data}`);
+            setGroupingReview();
+        }).catch(error => {
+            console.error(error);
+        })
+    }
 }
 
 function formattedDate(date){
@@ -164,6 +194,18 @@ function applicantButtonEvent(){
             setApplicants()
         }).catch(error => {
             console.error(error)
+        })
+    }
+}
+
+function deleteGrouping(groupId){
+    if(confirm('한끼팟을 삭제하시겠습니까?')){
+        axios.delete(`/grouping/api/del/${groupId}`)
+        .then(response => {
+            console.log(response.data);
+            window.location.href='/grouping/list';
+        }).catch(error => {
+            console.error(error);
         })
     }
 }

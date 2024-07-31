@@ -10,31 +10,64 @@
     {{>layout/head_title_with_back}}
     <p id="grouping_explain" style="background-color:#FAFAFA; color:#7F7F7F; padding:4vw; ">새로운 사람과 같이 밥 먹고 싶지만 먼저<br>말걸기가 어렵다면 <strong>한끼팟</strong>을 이용해보세요!</p>
     <div class="garden_container">
+
+            <table style="border:1px solid #000000; border-radius:5px; width:100%;">
+                {{#groupList}}
+                    <tr>
+                        <td><h2 onclick="toDetail({{id}})">{{title}}</h2></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="/img/default/sprout.png" class="detail_applicant_img">
+                            {{store.name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="/img/default/history.png" alt="" class="detail_applicant_img">
+                            {{formattedDate}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>{{ment}}</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img class="profile_image navi_profile" src="{{account.imagePath}}" alt="{{account.username}}">
+                            <span style="margin-left:3vw;">{{account.username}}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        {{#isApply}}
+                        <td><span style="font-weight:bold; color:#127C74">참여예정</span></td>
+                        {{/isApply}}
+                    </tr>
+                {{/groupList}}
+            </table>
         {{#groupList}}
-            <div>
-                <h3 onclick="toDetail({{id}})">{{title}}</h3>
-                <p>{{formattedDate}}</p>
-                <p>{{store.name}}</p>
-                <div class="grouping_image_name_container">
-                    <img class="grouping_list_AccountProfile" src="{{account.imagePath}}" alt="{{account.username}}">
-                    <p>작성자: {{account.username}}</p>
-                </div>
-            </div>
-            <div>
-                <p>참여자</p>
-                {{#isApply}}
-                    <button style="background-color:#909090">참여중</button>
-                {{/isApply}}
-                {{^isApply}}
-                    <button>참여하기</button>
-                {{/isApply}}
-                <div class="grouping_list_AccountProfile">
-                {{#applicantList}}
-                    <img class="grouping_list_ApplicantProfile" src="{{account.imagePath}}" alt="{{account.username}}">
-                    <span>{{account.username}}</span>
-                {{/applicantList}}
-                </div>
-            </div>
+            <!--            <div>-->
+            <!--                <h3 onclick="">{{title}}</h3>-->
+            <!--                <p>{{formattedDate}}</p>-->
+            <!--                <p>{{store.name}}</p>-->
+            <!--                <div >-->
+            <!--                    -->
+            <!--                </div>-->
+            <!--            </div>-->
+            <!--            <div>-->
+            <!--                <p>참여자</p>-->
+                <!--                {{#isApply}}-->
+            <!--                    <button style="background-color:#909090">참여중</button>-->
+                <!--                {{/isApply}}-->
+                <!--                {{^isApply}}-->
+            <!--                    <button>참여하기</button>-->
+                <!--                {{/isApply}}-->
+            <!--                <div class="grouping_list_AccountProfile">-->
+                <!--                {{#applicantList}}-->
+            <!--                    <img class="grouping_list_ApplicantProfile" src="{{account.imagePath}}" alt="{{account.username}}">-->
+            <!--                    <span>{{account.username}}</span>-->
+                <!--                {{/applicantList}}-->
+            <!--                </div>-->
+            <!--            </div>-->
         {{/groupList}}
         <div class="list_create_button_container">
             <button onclick="window.location.href='/grouping/create'" class="garden_button list_create_button">생성하기</button>

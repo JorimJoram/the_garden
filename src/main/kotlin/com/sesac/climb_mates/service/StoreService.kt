@@ -101,4 +101,8 @@ class StoreService(
             )
         }
     }
+
+    fun deleteReview(reviewId: Long) {
+        storeReviewRepository.deleteById(reviewId)
+    }
 }

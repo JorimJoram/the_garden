@@ -3,6 +3,7 @@ package com.sesac.climb_mates
 import com.opencsv.CSVReader
 import com.sesac.climb_mates.data.store.Menu
 import com.sesac.climb_mates.data.store.Store
+import com.sesac.climb_mates.data.store.time.StoreTime
 import com.sesac.climb_mates.service.StoreService
 import org.json.JSONObject
 import org.junit.jupiter.api.Test
@@ -131,5 +132,42 @@ class StoreApplicationTest(
     @Test
     fun getSingleStore(){
         println(storeService.getStoreById(1L))
+    }
+
+    @Test
+    fun createStoreTime(){
+        val storeList = mutableListOf(
+            "최고김밥", "제나키친", "장어세상", "원조나드리장터순대국", "미소야", "버거스태인", "먹자해장국", "OK능이마을", "샐러드프린세스", "포옹남 하월곡", "어멍식당", "송송식탁", "샤브로21", "명가해물짬뽕", "광수참치", "골라먹는맛", "개성손만두", "김만희떡볶이"
+        )
+        val dowList = mutableListOf(
+            "매일", "월~금", "매일", "매일", "매일", "화~일", "매일", "매일", "매일", "매일", "월~토", "월~토", "매일", "화~일", "매일", "매일", "매일"," 월~토"
+        )
+        val startList = mutableListOf(
+            "8:30", "11:00", "11:00", "07:00", "10:30", "11:30", "10:30", "11:00", "10:00", "11:00", "11:00","11:00","11:00", "10:40", "11:30", "11:00", "11:00", "12:00"
+        )
+        val endList = mutableListOf(
+            "20:00", "22:00", "22:00", "24:00", "21:00", "20:30", "21:00", "22:00", "20:30", "21:00", "20:00","21:00", "22:00", "21:30", "23:00", "22:00", "22:00"
+        )
+        for(i:Int in storeList.indices){
+            storeService.createStoreTime(
+                StoreTime(
+                    store = storeService.getStoreByName(storeList[i]),
+                    startTime = startList[i],
+                    endTime = endList[i],
+                    DoW = dowList[i],
+                )
+            )
+        }
+    }
+    @Test
+    fun createSingleTime(){
+        storeService.createStoreTime(
+            StoreTime(
+                store = storeService.getStoreById(18),
+                startTime = "12:00",
+                endTime = "22:00",
+                DoW = "월~토",
+            )
+        )
     }
 }

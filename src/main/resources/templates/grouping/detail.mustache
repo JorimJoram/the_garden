@@ -8,8 +8,9 @@
 </head>
 <body>
 {{>layout/bottom_navi}}
-    <div class="garden_container">
+    <div class="garden_container" style="margin-right:3vw; margin-left:3vw;">
         {{#grouping}}
+            <span style="display:none" id="grouping_my_username">{{my_username}}</span>
             {{>layout/details_title_bar}}
             {{>grouping/detail_fragment/head}}
             {{>grouping/detail_fragment/applicant}}

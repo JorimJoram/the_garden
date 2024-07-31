@@ -1,7 +1,12 @@
 <div id="grouping_detail_head">
-    <div style="margin-top:3vw;">
-        <img src="/img/default/calendar.png" style="width:5vw; height:5vw; " alt="">
-        <span>{{formattedDate}}</span>
+    <div style="margin-top:3vw; display:flex; justify-content:space-between; align-items:center; width:100%;">
+        <div style="display:flex; align-items:center;">
+            <img src="/img/default/calendar.png" style="width:5vw; height:5vw; " alt="">
+            <span>{{formattedDate}}</span>
+        </div>
+        {{#isMine}}
+            <span>[<strong style="margin-left:auto; color:#127C74;" onclick="deleteGrouping({{id}})"> 삭제 </strong>]</span>
+        {{/isMine}}
     </div>
     <div style="margin-top:3vw;">
         <img src="/img/default/marker_with_person.png" style="width:5vw; height:5vw" alt="">

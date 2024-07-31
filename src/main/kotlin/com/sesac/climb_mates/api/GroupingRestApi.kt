@@ -3,6 +3,7 @@ package com.sesac.climb_mates.api
 import com.sesac.climb_mates.data.grouping.*
 import com.sesac.climb_mates.service.AccountService
 import com.sesac.climb_mates.service.GroupingService
+import jakarta.persistence.Id
 import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.core.userdetails.User
 import org.springframework.web.bind.annotation.DeleteMapping
@@ -72,5 +73,10 @@ class GroupingRestApi(
     @DeleteMapping("/applicant/del/{groupId}")
     fun deleteGroupingApplicant(@PathVariable(name="groupId")groupId: Long, @AuthenticationPrincipal user: User){
         return groupingService.deleteGroupingApplicant(groupId, user.username)
+    }
+
+    @DeleteMapping("/review/del/{reviewId}")
+    fun deleteGroupingReview(@PathVariable(name="reviewId")reviewId: Long){
+        return groupingService.deleteReview(reviewId)
     }
 }

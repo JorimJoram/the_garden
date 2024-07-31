@@ -31,7 +31,6 @@
 
 #grouping_review_title_container{
     display:flex;
-    justify-content: space-between;
     align-items: center;
     margin-bottom: 5vw;
     width: 100%;

@@ -11,3 +11,20 @@
 .grouping_list_AccountProfile{
     position:inline-block;
 }
+
+.grouping_image_name_container{
+     display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative; /* 이 컨테이너를 기준으로 absolute 포지셔닝 */
+}
+
+.right-container{
+    position: absolute;
+    right: 10px; /* 오른쪽 끝에서 10px 떨어지게 설정 */
+    top: 50%;
+    transform: translateY(-50%); /* 수직으로 가운데 정렬 */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}

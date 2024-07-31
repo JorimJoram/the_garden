@@ -27,4 +27,9 @@ class StoreRestApi(
     fun createReview(@AuthenticationPrincipal user:User, @RequestBody review: StoreReviewDTO): Long {
         return storeService.createReview(review, user).id!!
     }
+
+    @DeleteMapping("/review/del/{reviewId}")
+    fun deleteReview(@PathVariable(name="reviewId")reviewId:Long){
+        return storeService.deleteReview(reviewId);
+    }
 }
