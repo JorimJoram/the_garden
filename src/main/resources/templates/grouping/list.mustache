@@ -7,8 +7,8 @@
     <title>한끼팟</title>
 </head>
 <body>
-    {{>layout/head_title}}
-    <p id="grouping_explain" style="background-color:#FAFAFA; color:#7F7F7F; padding:4vw; ">새로운 사람과 같이 밥 먹고 싶지만 먼저 말걸기가 어렵다면 <strong>한끼팟</strong>을 이용해보세요!</p>
+    {{>layout/head_title_with_back}}
+    <p id="grouping_explain" style="background-color:#FAFAFA; color:#7F7F7F; padding:4vw; ">새로운 사람과 같이 밥 먹고 싶지만 먼저<br>말걸기가 어렵다면 <strong>한끼팟</strong>을 이용해보세요!</p>
     <div class="garden_container">
         {{#groupList}}
             <div>
@@ -41,6 +41,5 @@
         </div>
     </div>
     {{>layout/bottom_navi}}
-
 </body>
 </html>

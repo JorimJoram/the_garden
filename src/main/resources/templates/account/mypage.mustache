@@ -6,12 +6,13 @@
     <title>마이페이지</title>
 </head>
 <body>
-    {{>account/mypage_layout/head_bar}}
+    {{>layout/head_title_with_back}}
     <div class="garden_container">
         {{#userData}}
             {{>account/mypage_layout/image}}
             {{>account/mypage_layout/nickname}}
         {{/userData}}
     </div>
+    {{>layout/bottom_navi}}
 </body>
 </html>

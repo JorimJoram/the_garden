@@ -1,5 +1,7 @@
 <div id="image_container">
-    <img id="preview_profile" class="profile_image" src="{{imagePath}}" alt="Image Preview" style="width:25vw; height:25vw; border-radius:50%;">
+    <div style="width:25vw; height:25vw; display:block;">
+        <img id="preview_profile" class="profile_image" src="{{imagePath}}" alt="Image Preview" style="width:25vw; height:25vw; border-radius:50%;">
+    </div>
     <div id="profile_container">
         <input id="mypage_image" type="file" onchange="readImage(this)">
     </div>
