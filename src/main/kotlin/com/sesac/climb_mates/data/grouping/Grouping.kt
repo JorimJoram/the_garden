@@ -2,6 +2,7 @@ package com.sesac.climb_mates.data.grouping
 
 import com.sesac.climb_mates.data.account.Account
 import com.sesac.climb_mates.data.store.Store
+import com.sesac.climb_mates.data.store.review.StoreReview
 import jakarta.persistence.*
 import org.springframework.cglib.core.Local
 import java.time.LocalDate

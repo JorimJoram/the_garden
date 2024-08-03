@@ -104,9 +104,11 @@ class GroupingService(
 
     fun deleteGrouping(groupId: Long, username: String) {
         val grouping = groupingRepository.findById(groupId).get()
-        if(grouping.account.username == username){
-            return groupingRepository.deleteById(groupId)
+        val reviewList = groupingReviewRepository.findByGroupingId(groupId)
+        if(reviewList.isNotEmpty()){
+            reviewList.forEach { it.id?.let { it1 -> groupingReviewRepository.deleteById(it1) } }
         }
+        return groupingRepository.deleteById(groupId)
     }
 
     fun deleteReview(reviewId: Long) {
