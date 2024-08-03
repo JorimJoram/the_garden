@@ -64,7 +64,7 @@
 - **Deploy**: PortForwarding을 통한 개인 컴퓨터
 
 ## Server Architecture
-(이미지 잘 만드십쇼)
+<img alt="캡처" height="auto" src="readme_img/architecture.png" width="80%" align="center"/>
 
 ## Developer
 - 강윤석(기획 및 프로젝트 총괄)
