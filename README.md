@@ -24,13 +24,16 @@
 
 
 ## 이미지
-
-<img alt="캡처" height="250" src="./readme_img/로그인.png" width="100"/>
-<img alt="캡처" height="250" src="./readme_img/회원가입.png" width="100"/>
-<img alt="캡처" height="250" src="./readme_img/마이페이지.png" width="100"/>
-<img alt="캡처" height="250" src="./readme_img/메인1.png" width="100"/>
-<img alt="캡처" height="250" src="readme_img/식당_자세히_보기.png" width="100"/>
-<img alt="캡처" height="250" src="readme_img/한끼팟.png" width="100"/>
+<figure class="thrid">
+    <img alt="캡처" height="250" src="./readme_img/로그인.png" width="100"/>
+    <img alt="캡처" height="250" src="./readme_img/회원가입.png" width="100"/>
+    <img alt="캡처" height="250" src="./readme_img/마이페이지.png" width="100"/>
+</figure>
+<figure class="thrid">
+    <img alt="캡처" height="250" src="./readme_img/메인1.png" width="100"/>
+    <img alt="캡처" height="250" src="readme_img/식당_자세히_보기.png" width="100"/>
+    <img alt="캡처" height="250" src="readme_img/한끼팟.png" width="100"/>
+</figure>
 
 
 
