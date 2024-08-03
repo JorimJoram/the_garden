@@ -1,5 +1,3 @@
-# Readme.md
-
 # SPROUT
 
 
