@@ -36,4 +36,9 @@ class CampusApplicationTest(
             ))
         }
     }
+
+    @Test
+    fun deleteCampus(){
+        campusService.deleteById(5L)
+    }
 }

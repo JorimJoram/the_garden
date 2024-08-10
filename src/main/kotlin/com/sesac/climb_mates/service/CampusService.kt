@@ -32,4 +32,8 @@ class CampusService(
     fun createCampusClass(campusClass:CampusClass): CampusClass {
         return campusClassRepository.save(campusClass)
     }
+
+    fun deleteById(id: Long) {
+        campusRepository.deleteById(id)
+    }
 }
