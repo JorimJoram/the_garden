@@ -32,7 +32,7 @@ class SecurityConfig(
     fun filterChain(http:HttpSecurity): SecurityFilterChain{
         http.csrf { it.disable() }
         http.authorizeHttpRequests{
-            it.requestMatchers("/css/**", "/script/**", "/img/**", "/error/**", "/sms/**").permitAll()
+            it.requestMatchers("/css/**", "/script/**", "/img/**", "/error/**", "/sms/**","/api/**").permitAll()
                 .requestMatchers("/login/**", "/account/**").not().authenticated()
                 .anyRequest().authenticated()
         }
